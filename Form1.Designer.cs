@@ -47,6 +47,9 @@ namespace HitsZoo
             this.textBoxVoice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.professionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // horseButton
@@ -85,7 +88,7 @@ namespace HitsZoo
             this.staffButton.Location = new System.Drawing.Point(478, 45);
             this.staffButton.Margin = new System.Windows.Forms.Padding(4);
             this.staffButton.Name = "staffButton";
-            this.staffButton.Size = new System.Drawing.Size(147, 36);
+            this.staffButton.Size = new System.Drawing.Size(202, 36);
             this.staffButton.TabIndex = 3;
             this.staffButton.Text = "Сотрудник";
             this.staffButton.UseVisualStyleBackColor = true;
@@ -93,7 +96,7 @@ namespace HitsZoo
             // 
             // visitorButton
             // 
-            this.visitorButton.Location = new System.Drawing.Point(633, 45);
+            this.visitorButton.Location = new System.Drawing.Point(688, 44);
             this.visitorButton.Margin = new System.Windows.Forms.Padding(4);
             this.visitorButton.Name = "visitorButton";
             this.visitorButton.Size = new System.Drawing.Size(147, 36);
@@ -142,16 +145,16 @@ namespace HitsZoo
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(564, 88);
+            this.textBoxName.Location = new System.Drawing.Point(571, 88);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(216, 22);
+            this.textBoxName.Size = new System.Drawing.Size(264, 22);
             this.textBoxName.TabIndex = 8;
             // 
             // textBoxAge
             // 
-            this.textBoxAge.Location = new System.Drawing.Point(564, 116);
+            this.textBoxAge.Location = new System.Drawing.Point(571, 116);
             this.textBoxAge.Name = "textBoxAge";
-            this.textBoxAge.Size = new System.Drawing.Size(216, 22);
+            this.textBoxAge.Size = new System.Drawing.Size(264, 22);
             this.textBoxAge.TabIndex = 9;
             // 
             // nameLabel
@@ -162,7 +165,6 @@ namespace HitsZoo
             this.nameLabel.Size = new System.Drawing.Size(33, 16);
             this.nameLabel.TabIndex = 11;
             this.nameLabel.Text = "Имя";
-            this.nameLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // ageLabel
             // 
@@ -187,7 +189,6 @@ namespace HitsZoo
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 16);
             this.label1.TabIndex = 14;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -198,11 +199,35 @@ namespace HitsZoo
             this.label2.TabIndex = 15;
             this.label2.Text = "Голос";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(571, 142);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(109, 22);
+            this.textBox1.TabIndex = 16;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // professionLabel
+            // 
+            this.professionLabel.AutoSize = true;
+            this.professionLabel.Location = new System.Drawing.Point(484, 150);
+            this.professionLabel.Name = "professionLabel";
+            this.professionLabel.Size = new System.Drawing.Size(81, 16);
+            this.professionLabel.TabIndex = 18;
+            this.professionLabel.Text = "Профессия";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1262, 802);
+            this.Controls.Add(this.professionLabel);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxVoice);
@@ -245,6 +270,9 @@ namespace HitsZoo
         private System.Windows.Forms.TextBox textBoxVoice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label professionLabel;
     }
 }
 
