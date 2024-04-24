@@ -47,7 +47,7 @@ namespace HitsZoo
             this.textBoxVoice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxOccupation = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.professionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -61,6 +61,7 @@ namespace HitsZoo
             this.horseButton.TabIndex = 0;
             this.horseButton.Text = "Казахский конь";
             this.horseButton.UseVisualStyleBackColor = true;
+            this.horseButton.Click += new System.EventHandler(this.HorseButton_Click);
             // 
             // capybaraButton
             // 
@@ -71,7 +72,7 @@ namespace HitsZoo
             this.capybaraButton.TabIndex = 1;
             this.capybaraButton.Text = "Капибара";
             this.capybaraButton.UseVisualStyleBackColor = true;
-            this.capybaraButton.Click += new System.EventHandler(this.capybaraButton_Click);
+            this.capybaraButton.Click += new System.EventHandler(this.CapybaraButton_Click);
             // 
             // barsButton
             // 
@@ -82,6 +83,7 @@ namespace HitsZoo
             this.barsButton.TabIndex = 2;
             this.barsButton.Text = "Кыргызский барс";
             this.barsButton.UseVisualStyleBackColor = true;
+            this.barsButton.Click += new System.EventHandler(this.BarsButton_Click);
             // 
             // staffButton
             // 
@@ -92,7 +94,7 @@ namespace HitsZoo
             this.staffButton.TabIndex = 3;
             this.staffButton.Text = "Сотрудник";
             this.staffButton.UseVisualStyleBackColor = true;
-            this.staffButton.Click += new System.EventHandler(this.staffButton_Click);
+            this.staffButton.Click += new System.EventHandler(this.StaffButton_Click);
             // 
             // visitorButton
             // 
@@ -103,6 +105,7 @@ namespace HitsZoo
             this.visitorButton.TabIndex = 4;
             this.visitorButton.Text = "Посетитель";
             this.visitorButton.UseVisualStyleBackColor = true;
+            this.visitorButton.Click += new System.EventHandler(this.VisitorButton_Click);
             // 
             // addEntity
             // 
@@ -199,12 +202,12 @@ namespace HitsZoo
             this.label2.TabIndex = 15;
             this.label2.Text = "Голос";
             // 
-            // textBox1
+            // textBoxOccupation
             // 
-            this.textBox1.Location = new System.Drawing.Point(571, 142);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(109, 22);
-            this.textBox1.TabIndex = 16;
+            this.textBoxOccupation.Location = new System.Drawing.Point(571, 142);
+            this.textBoxOccupation.Name = "textBoxOccupation";
+            this.textBoxOccupation.Size = new System.Drawing.Size(109, 22);
+            this.textBoxOccupation.TabIndex = 16;
             // 
             // contextMenuStrip1
             // 
@@ -227,7 +230,7 @@ namespace HitsZoo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1262, 802);
             this.Controls.Add(this.professionLabel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxOccupation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxVoice);
@@ -270,7 +273,7 @@ namespace HitsZoo
         private System.Windows.Forms.TextBox textBoxVoice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxOccupation;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label professionLabel;
     }

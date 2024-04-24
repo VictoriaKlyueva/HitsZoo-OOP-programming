@@ -41,27 +41,63 @@ namespace HitsZoo
             zoo.printPersons();
         }
 
-        // Создание капибары
-        private void capybaraButton_Click(object sender, EventArgs e)
-        {   
+        // Создание коня
+        private void HorseButton_Click(object sender, EventArgs e)
+        {
             string voice = textBoxVoice.Text;
-            Animal currentAnimal = new Animal(voice);
-            zoo.addAnimal(currentAnimal);
+            Horse horse = new Horse(voice);
+            zoo.addAnimal(horse);
+        }
+
+        // Создание капибары
+        private void CapybaraButton_Click(object sender, EventArgs e)
+        {
+            string voice = textBoxVoice.Text;
+            Capybara capybara = new Capybara(voice);
+            zoo.addAnimal(capybara);
+        }
+
+        // Создание кыргызского барса
+        private void BarsButton_Click(object sender, EventArgs e)
+        {
+            string voice = textBoxVoice.Text;
+            Bars bars = new Bars(voice);
+            zoo.addAnimal(bars);
         }
 
         // Создание работника
-        private void staffButton_Click(object sender, EventArgs e)
+        private void StaffButton_Click(object sender, EventArgs e)
         {
             string name = textBoxName.Text;
             string age = textBoxAge.Text;
-            Person currentPerson;
-            try
+            string occupation = textBoxOccupation.Text;
+            Staff currentPerson;
+            if (age != "")
             {
+                currentPerson = new Staff(name, Convert.ToInt32(age), occupation);
+            }
+            else
+            {
+                currentPerson = new Staff(name, Convert.ToInt32(18), occupation);
+            }
+            zoo.addPerson(currentPerson);
+        }
+
+        // Создание посетителя
+        private void VisitorButton_Click(object sender, EventArgs e)
+        {
+            string name = textBoxName.Text;
+            string age = textBoxAge.Text;
+
+            Person currentPerson;
+            if (age != "")
+            {
+                // Сделать обработку ввода нечисловых значений
                 currentPerson = new Person(name, Convert.ToInt32(age));
             }
-            catch
+            else
             {
-                currentPerson = new Person("Вика Клюева", Convert.ToInt32(18));
+                currentPerson = new Person(name, 18);
             }
             zoo.addPerson(currentPerson);
         }

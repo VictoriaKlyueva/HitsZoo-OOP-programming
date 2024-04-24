@@ -4,10 +4,10 @@ namespace HitsZoo
 {
     public class Animal
     {
-        int criticalHunger = new Random().Next(10, 20);
+        public int criticalHunger;
         public int currentHunger = 0;
         public bool isHungry = false;
-        string voice = "meow";
+        public string voice = "meow";
 
         public void update()
         {
@@ -30,13 +30,14 @@ namespace HitsZoo
 
         public void print()
         {
-            Console.WriteLine($"Численный голод: {currentHunger}  " +
+            Console.WriteLine($"Численный голод: {currentHunger} " +
                               $" Голод: {isHungry}");
         }
 
-        public Animal(string voice)
+        public Animal(string voice, int criticalHunger=5)
         {
             this.voice = voice;
+            this.criticalHunger = criticalHunger;
         }
     }
 }

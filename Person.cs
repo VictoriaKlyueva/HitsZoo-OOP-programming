@@ -13,7 +13,7 @@ namespace HitsZoo
             this.age = age;
         }
 
-        public void print()
+        public virtual void print()
         {
             Console.WriteLine(name + " " + age);
         }
