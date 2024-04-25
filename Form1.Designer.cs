@@ -50,6 +50,35 @@ namespace HitsZoo
             this.textBoxOccupation = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.professionLabel = new System.Windows.Forms.Label();
+            this.editAnimalLabel = new System.Windows.Forms.Label();
+            this.idAnimalEditLabel = new System.Windows.Forms.Label();
+            this.textBoxIdAnimalEdit = new System.Windows.Forms.TextBox();
+            this.criticalHungerLabel = new System.Windows.Forms.Label();
+            this.textBoxCriticalHungerEdit = new System.Windows.Forms.TextBox();
+            this.voiceLabel = new System.Windows.Forms.Label();
+            this.textBoxVoiceEdit = new System.Windows.Forms.TextBox();
+            this.staffLabel = new System.Windows.Forms.Label();
+            this.idStaffEditLabel = new System.Windows.Forms.Label();
+            this.textBoxIdStaffEdit = new System.Windows.Forms.TextBox();
+            this.staffNameEditLabel = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxStaffAgeEdit = new System.Windows.Forms.TextBox();
+            this.staffAgeEditLabel = new System.Windows.Forms.Label();
+            this.textBoxOccupationEdit = new System.Windows.Forms.TextBox();
+            this.occupationEditLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.personIdEditLabel = new System.Windows.Forms.Label();
+            this.textBoxPersonIdEdit = new System.Windows.Forms.TextBox();
+            this.personNameEditLabel = new System.Windows.Forms.Label();
+            this.textBoxPersonNameEdit = new System.Windows.Forms.TextBox();
+            this.textBoxPersonAgeEdit = new System.Windows.Forms.TextBox();
+            this.personAgeEditLabel = new System.Windows.Forms.Label();
+            this.deleteAnimalLabel = new System.Windows.Forms.Label();
+            this.animalDeleteIdLabel = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.deletePersonLabel = new System.Windows.Forms.Label();
+            this.deletePersonIdLabel = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // horseButton
@@ -128,7 +157,7 @@ namespace HitsZoo
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.timeLabel.Location = new System.Drawing.Point(1152, 9);
+            this.timeLabel.Location = new System.Drawing.Point(1252, 9);
             this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(97, 29);
@@ -139,7 +168,7 @@ namespace HitsZoo
             // 
             this.time.AutoSize = true;
             this.time.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.time.Location = new System.Drawing.Point(1189, 44);
+            this.time.Location = new System.Drawing.Point(1252, 45);
             this.time.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.time.Name = "time";
             this.time.Size = new System.Drawing.Size(27, 29);
@@ -224,11 +253,290 @@ namespace HitsZoo
             this.professionLabel.TabIndex = 18;
             this.professionLabel.Text = "Профессия";
             // 
+            // editAnimalLabel
+            // 
+            this.editAnimalLabel.AutoSize = true;
+            this.editAnimalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.editAnimalLabel.Location = new System.Drawing.Point(13, 193);
+            this.editAnimalLabel.Name = "editAnimalLabel";
+            this.editAnimalLabel.Size = new System.Drawing.Size(309, 29);
+            this.editAnimalLabel.TabIndex = 20;
+            this.editAnimalLabel.Text = "Редактировать животное";
+            this.editAnimalLabel.Click += new System.EventHandler(this.editLabel_Click);
+            // 
+            // idAnimalEditLabel
+            // 
+            this.idAnimalEditLabel.AutoSize = true;
+            this.idAnimalEditLabel.Location = new System.Drawing.Point(15, 232);
+            this.idAnimalEditLabel.Name = "idAnimalEditLabel";
+            this.idAnimalEditLabel.Size = new System.Drawing.Size(21, 16);
+            this.idAnimalEditLabel.TabIndex = 21;
+            this.idAnimalEditLabel.Text = "Id:";
+            // 
+            // textBoxIdAnimalEdit
+            // 
+            this.textBoxIdAnimalEdit.Location = new System.Drawing.Point(42, 229);
+            this.textBoxIdAnimalEdit.Name = "textBoxIdAnimalEdit";
+            this.textBoxIdAnimalEdit.Size = new System.Drawing.Size(100, 22);
+            this.textBoxIdAnimalEdit.TabIndex = 22;
+            this.textBoxIdAnimalEdit.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // criticalHungerLabel
+            // 
+            this.criticalHungerLabel.AutoSize = true;
+            this.criticalHungerLabel.Location = new System.Drawing.Point(156, 232);
+            this.criticalHungerLabel.Name = "criticalHungerLabel";
+            this.criticalHungerLabel.Size = new System.Drawing.Size(136, 16);
+            this.criticalHungerLabel.TabIndex = 23;
+            this.criticalHungerLabel.Text = "Критический голод:";
+            this.criticalHungerLabel.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // textBoxCriticalHungerEdit
+            // 
+            this.textBoxCriticalHungerEdit.Location = new System.Drawing.Point(298, 229);
+            this.textBoxCriticalHungerEdit.Name = "textBoxCriticalHungerEdit";
+            this.textBoxCriticalHungerEdit.Size = new System.Drawing.Size(100, 22);
+            this.textBoxCriticalHungerEdit.TabIndex = 24;
+            // 
+            // voiceLabel
+            // 
+            this.voiceLabel.AutoSize = true;
+            this.voiceLabel.Location = new System.Drawing.Point(517, 232);
+            this.voiceLabel.Name = "voiceLabel";
+            this.voiceLabel.Size = new System.Drawing.Size(48, 16);
+            this.voiceLabel.TabIndex = 25;
+            this.voiceLabel.Text = "Голос:";
+            // 
+            // textBoxVoiceEdit
+            // 
+            this.textBoxVoiceEdit.Location = new System.Drawing.Point(571, 229);
+            this.textBoxVoiceEdit.Name = "textBoxVoiceEdit";
+            this.textBoxVoiceEdit.Size = new System.Drawing.Size(100, 22);
+            this.textBoxVoiceEdit.TabIndex = 26;
+            // 
+            // staffLabel
+            // 
+            this.staffLabel.AutoSize = true;
+            this.staffLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.staffLabel.Location = new System.Drawing.Point(13, 305);
+            this.staffLabel.Name = "staffLabel";
+            this.staffLabel.Size = new System.Drawing.Size(332, 29);
+            this.staffLabel.TabIndex = 27;
+            this.staffLabel.Text = "Редактировать сотрудника";
+            // 
+            // idStaffEditLabel
+            // 
+            this.idStaffEditLabel.AutoSize = true;
+            this.idStaffEditLabel.Location = new System.Drawing.Point(15, 346);
+            this.idStaffEditLabel.Name = "idStaffEditLabel";
+            this.idStaffEditLabel.Size = new System.Drawing.Size(21, 16);
+            this.idStaffEditLabel.TabIndex = 28;
+            this.idStaffEditLabel.Text = "Id:";
+            // 
+            // textBoxIdStaffEdit
+            // 
+            this.textBoxIdStaffEdit.Location = new System.Drawing.Point(42, 343);
+            this.textBoxIdStaffEdit.Name = "textBoxIdStaffEdit";
+            this.textBoxIdStaffEdit.Size = new System.Drawing.Size(100, 22);
+            this.textBoxIdStaffEdit.TabIndex = 29;
+            // 
+            // staffNameEditLabel
+            // 
+            this.staffNameEditLabel.AutoSize = true;
+            this.staffNameEditLabel.Location = new System.Drawing.Point(256, 346);
+            this.staffNameEditLabel.Name = "staffNameEditLabel";
+            this.staffNameEditLabel.Size = new System.Drawing.Size(36, 16);
+            this.staffNameEditLabel.TabIndex = 30;
+            this.staffNameEditLabel.Text = "Имя:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(298, 343);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 31;
+            // 
+            // textBoxStaffAgeEdit
+            // 
+            this.textBoxStaffAgeEdit.Location = new System.Drawing.Point(571, 343);
+            this.textBoxStaffAgeEdit.Name = "textBoxStaffAgeEdit";
+            this.textBoxStaffAgeEdit.Size = new System.Drawing.Size(100, 22);
+            this.textBoxStaffAgeEdit.TabIndex = 32;
+            // 
+            // staffAgeEditLabel
+            // 
+            this.staffAgeEditLabel.AutoSize = true;
+            this.staffAgeEditLabel.Location = new System.Drawing.Point(500, 346);
+            this.staffAgeEditLabel.Name = "staffAgeEditLabel";
+            this.staffAgeEditLabel.Size = new System.Drawing.Size(65, 16);
+            this.staffAgeEditLabel.TabIndex = 33;
+            this.staffAgeEditLabel.Text = "Возраст:";
+            // 
+            // textBoxOccupationEdit
+            // 
+            this.textBoxOccupationEdit.Location = new System.Drawing.Point(853, 343);
+            this.textBoxOccupationEdit.Name = "textBoxOccupationEdit";
+            this.textBoxOccupationEdit.Size = new System.Drawing.Size(100, 22);
+            this.textBoxOccupationEdit.TabIndex = 34;
+            // 
+            // occupationEditLabel
+            // 
+            this.occupationEditLabel.AutoSize = true;
+            this.occupationEditLabel.Location = new System.Drawing.Point(763, 346);
+            this.occupationEditLabel.Name = "occupationEditLabel";
+            this.occupationEditLabel.Size = new System.Drawing.Size(84, 16);
+            this.occupationEditLabel.TabIndex = 35;
+            this.occupationEditLabel.Text = "Профессия:";
+            this.occupationEditLabel.Click += new System.EventHandler(this.label3_Click_1);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label3.Location = new System.Drawing.Point(13, 407);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(330, 29);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "Редактировать посетителя";
+            // 
+            // personIdEditLabel
+            // 
+            this.personIdEditLabel.AutoSize = true;
+            this.personIdEditLabel.Location = new System.Drawing.Point(15, 447);
+            this.personIdEditLabel.Name = "personIdEditLabel";
+            this.personIdEditLabel.Size = new System.Drawing.Size(21, 16);
+            this.personIdEditLabel.TabIndex = 37;
+            this.personIdEditLabel.Text = "Id:";
+            // 
+            // textBoxPersonIdEdit
+            // 
+            this.textBoxPersonIdEdit.Location = new System.Drawing.Point(42, 444);
+            this.textBoxPersonIdEdit.Name = "textBoxPersonIdEdit";
+            this.textBoxPersonIdEdit.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPersonIdEdit.TabIndex = 38;
+            // 
+            // personNameEditLabel
+            // 
+            this.personNameEditLabel.AutoSize = true;
+            this.personNameEditLabel.Location = new System.Drawing.Point(256, 447);
+            this.personNameEditLabel.Name = "personNameEditLabel";
+            this.personNameEditLabel.Size = new System.Drawing.Size(36, 16);
+            this.personNameEditLabel.TabIndex = 39;
+            this.personNameEditLabel.Text = "Имя:";
+            this.personNameEditLabel.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // textBoxPersonNameEdit
+            // 
+            this.textBoxPersonNameEdit.Location = new System.Drawing.Point(298, 441);
+            this.textBoxPersonNameEdit.Name = "textBoxPersonNameEdit";
+            this.textBoxPersonNameEdit.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPersonNameEdit.TabIndex = 40;
+            // 
+            // textBoxPersonAgeEdit
+            // 
+            this.textBoxPersonAgeEdit.Location = new System.Drawing.Point(571, 441);
+            this.textBoxPersonAgeEdit.Name = "textBoxPersonAgeEdit";
+            this.textBoxPersonAgeEdit.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPersonAgeEdit.TabIndex = 41;
+            // 
+            // personAgeEditLabel
+            // 
+            this.personAgeEditLabel.AutoSize = true;
+            this.personAgeEditLabel.Location = new System.Drawing.Point(500, 444);
+            this.personAgeEditLabel.Name = "personAgeEditLabel";
+            this.personAgeEditLabel.Size = new System.Drawing.Size(65, 16);
+            this.personAgeEditLabel.TabIndex = 42;
+            this.personAgeEditLabel.Text = "Возраст:";
+            this.personAgeEditLabel.Click += new System.EventHandler(this.label4_Click_1);
+            // 
+            // deleteAnimalLabel
+            // 
+            this.deleteAnimalLabel.AutoSize = true;
+            this.deleteAnimalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.deleteAnimalLabel.Location = new System.Drawing.Point(13, 495);
+            this.deleteAnimalLabel.Name = "deleteAnimalLabel";
+            this.deleteAnimalLabel.Size = new System.Drawing.Size(229, 29);
+            this.deleteAnimalLabel.TabIndex = 43;
+            this.deleteAnimalLabel.Text = "Удалить животное";
+            this.deleteAnimalLabel.Click += new System.EventHandler(this.label4_Click_2);
+            // 
+            // animalDeleteIdLabel
+            // 
+            this.animalDeleteIdLabel.AutoSize = true;
+            this.animalDeleteIdLabel.Location = new System.Drawing.Point(15, 535);
+            this.animalDeleteIdLabel.Name = "animalDeleteIdLabel";
+            this.animalDeleteIdLabel.Size = new System.Drawing.Size(21, 16);
+            this.animalDeleteIdLabel.TabIndex = 44;
+            this.animalDeleteIdLabel.Text = "Id:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(42, 532);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 22);
+            this.textBox2.TabIndex = 45;
+            // 
+            // deletePersonLabel
+            // 
+            this.deletePersonLabel.AutoSize = true;
+            this.deletePersonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.deletePersonLabel.Location = new System.Drawing.Point(442, 495);
+            this.deletePersonLabel.Name = "deletePersonLabel";
+            this.deletePersonLabel.Size = new System.Drawing.Size(226, 29);
+            this.deletePersonLabel.TabIndex = 46;
+            this.deletePersonLabel.Text = "Удалить человека";
+            this.deletePersonLabel.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // deletePersonIdLabel
+            // 
+            this.deletePersonIdLabel.AutoSize = true;
+            this.deletePersonIdLabel.Location = new System.Drawing.Point(444, 535);
+            this.deletePersonIdLabel.Name = "deletePersonIdLabel";
+            this.deletePersonIdLabel.Size = new System.Drawing.Size(21, 16);
+            this.deletePersonIdLabel.TabIndex = 47;
+            this.deletePersonIdLabel.Text = "Id:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(471, 532);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 22);
+            this.textBox3.TabIndex = 48;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1262, 802);
+            this.ClientSize = new System.Drawing.Size(1362, 802);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.deletePersonIdLabel);
+            this.Controls.Add(this.deletePersonLabel);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.animalDeleteIdLabel);
+            this.Controls.Add(this.deleteAnimalLabel);
+            this.Controls.Add(this.personAgeEditLabel);
+            this.Controls.Add(this.textBoxPersonAgeEdit);
+            this.Controls.Add(this.textBoxPersonNameEdit);
+            this.Controls.Add(this.personNameEditLabel);
+            this.Controls.Add(this.textBoxPersonIdEdit);
+            this.Controls.Add(this.personIdEditLabel);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.occupationEditLabel);
+            this.Controls.Add(this.textBoxOccupationEdit);
+            this.Controls.Add(this.staffAgeEditLabel);
+            this.Controls.Add(this.textBoxStaffAgeEdit);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.staffNameEditLabel);
+            this.Controls.Add(this.textBoxIdStaffEdit);
+            this.Controls.Add(this.idStaffEditLabel);
+            this.Controls.Add(this.staffLabel);
+            this.Controls.Add(this.textBoxVoiceEdit);
+            this.Controls.Add(this.voiceLabel);
+            this.Controls.Add(this.textBoxCriticalHungerEdit);
+            this.Controls.Add(this.criticalHungerLabel);
+            this.Controls.Add(this.textBoxIdAnimalEdit);
+            this.Controls.Add(this.idAnimalEditLabel);
+            this.Controls.Add(this.editAnimalLabel);
             this.Controls.Add(this.professionLabel);
             this.Controls.Add(this.textBoxOccupation);
             this.Controls.Add(this.label2);
@@ -276,6 +584,35 @@ namespace HitsZoo
         private System.Windows.Forms.TextBox textBoxOccupation;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label professionLabel;
+        private System.Windows.Forms.Label editAnimalLabel;
+        private System.Windows.Forms.Label idAnimalEditLabel;
+        private System.Windows.Forms.TextBox textBoxIdAnimalEdit;
+        private System.Windows.Forms.Label criticalHungerLabel;
+        private System.Windows.Forms.TextBox textBoxCriticalHungerEdit;
+        private System.Windows.Forms.Label voiceLabel;
+        private System.Windows.Forms.TextBox textBoxVoiceEdit;
+        private System.Windows.Forms.Label staffLabel;
+        private System.Windows.Forms.Label idStaffEditLabel;
+        private System.Windows.Forms.TextBox textBoxIdStaffEdit;
+        private System.Windows.Forms.Label staffNameEditLabel;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxStaffAgeEdit;
+        private System.Windows.Forms.Label staffAgeEditLabel;
+        private System.Windows.Forms.TextBox textBoxOccupationEdit;
+        private System.Windows.Forms.Label occupationEditLabel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label personIdEditLabel;
+        private System.Windows.Forms.TextBox textBoxPersonIdEdit;
+        private System.Windows.Forms.Label personNameEditLabel;
+        private System.Windows.Forms.TextBox textBoxPersonNameEdit;
+        private System.Windows.Forms.TextBox textBoxPersonAgeEdit;
+        private System.Windows.Forms.Label personAgeEditLabel;
+        private System.Windows.Forms.Label deleteAnimalLabel;
+        private System.Windows.Forms.Label animalDeleteIdLabel;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label deletePersonLabel;
+        private System.Windows.Forms.Label deletePersonIdLabel;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
 
