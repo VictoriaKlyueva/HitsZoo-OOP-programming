@@ -262,7 +262,6 @@ namespace HitsZoo
             this.editAnimalLabel.Size = new System.Drawing.Size(309, 29);
             this.editAnimalLabel.TabIndex = 20;
             this.editAnimalLabel.Text = "Редактировать животное";
-            this.editAnimalLabel.Click += new System.EventHandler(this.editLabel_Click);
             // 
             // idAnimalEditLabel
             // 
@@ -279,7 +278,6 @@ namespace HitsZoo
             this.textBoxIdAnimalEdit.Name = "textBoxIdAnimalEdit";
             this.textBoxIdAnimalEdit.Size = new System.Drawing.Size(100, 22);
             this.textBoxIdAnimalEdit.TabIndex = 22;
-            this.textBoxIdAnimalEdit.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // criticalHungerLabel
             // 
@@ -289,7 +287,6 @@ namespace HitsZoo
             this.criticalHungerLabel.Size = new System.Drawing.Size(136, 16);
             this.criticalHungerLabel.TabIndex = 23;
             this.criticalHungerLabel.Text = "Критический голод:";
-            this.criticalHungerLabel.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBoxCriticalHungerEdit
             // 
@@ -387,7 +384,6 @@ namespace HitsZoo
             this.occupationEditLabel.Size = new System.Drawing.Size(84, 16);
             this.occupationEditLabel.TabIndex = 35;
             this.occupationEditLabel.Text = "Профессия:";
-            this.occupationEditLabel.Click += new System.EventHandler(this.label3_Click_1);
             // 
             // label3
             // 
@@ -423,7 +419,6 @@ namespace HitsZoo
             this.personNameEditLabel.Size = new System.Drawing.Size(36, 16);
             this.personNameEditLabel.TabIndex = 39;
             this.personNameEditLabel.Text = "Имя:";
-            this.personNameEditLabel.Click += new System.EventHandler(this.label4_Click);
             // 
             // textBoxPersonNameEdit
             // 
@@ -447,7 +442,6 @@ namespace HitsZoo
             this.personAgeEditLabel.Size = new System.Drawing.Size(65, 16);
             this.personAgeEditLabel.TabIndex = 42;
             this.personAgeEditLabel.Text = "Возраст:";
-            this.personAgeEditLabel.Click += new System.EventHandler(this.label4_Click_1);
             // 
             // deleteAnimalLabel
             // 
@@ -458,7 +452,6 @@ namespace HitsZoo
             this.deleteAnimalLabel.Size = new System.Drawing.Size(229, 29);
             this.deleteAnimalLabel.TabIndex = 43;
             this.deleteAnimalLabel.Text = "Удалить животное";
-            this.deleteAnimalLabel.Click += new System.EventHandler(this.label4_Click_2);
             // 
             // animalDeleteIdLabel
             // 
@@ -485,7 +478,6 @@ namespace HitsZoo
             this.deletePersonLabel.Size = new System.Drawing.Size(226, 29);
             this.deletePersonLabel.TabIndex = 46;
             this.deletePersonLabel.Text = "Удалить человека";
-            this.deletePersonLabel.Click += new System.EventHandler(this.label5_Click);
             // 
             // deletePersonIdLabel
             // 
@@ -507,7 +499,7 @@ namespace HitsZoo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 802);
+            this.ClientSize = new System.Drawing.Size(1362, 847);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.deletePersonIdLabel);
             this.Controls.Add(this.deletePersonLabel);

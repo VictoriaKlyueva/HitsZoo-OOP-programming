@@ -4,6 +4,8 @@ namespace HitsZoo
 {
     public class Animal
     {
+        public int id;
+        public string type = "animal";
         public int criticalHunger;
         public int currentHunger = 0;
         public bool isHungry = false;
@@ -30,12 +32,14 @@ namespace HitsZoo
 
         public void print()
         {
-            Console.WriteLine($"Численный голод: {currentHunger} " +
+            Console.WriteLine($"ID: {id} Type: {type} Численный голод: {currentHunger} " +
                               $" Голод: {isHungry}");
         }
 
-        public Animal(string voice, int criticalHunger=5)
-        {
+        public Animal(int id, string type, string voice, int criticalHunger=5)
+        {   
+            this.id = id;
+            this.type = type;
             this.voice = voice;
             this.criticalHunger = criticalHunger;
         }

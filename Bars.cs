@@ -8,8 +8,8 @@ namespace HitsZoo
 {
     public class Bars : Animal
     {
-        public Bars(string receivedVoice, int receivedCriticalHunger=15) :
-               base(receivedVoice, receivedCriticalHunger)
+        public Bars(int receivedId, string receivedType, string receivedVoice, int receivedCriticalHunger=15) :
+               base(receivedId, receivedType, receivedVoice, receivedCriticalHunger)
         { }
     }
 }

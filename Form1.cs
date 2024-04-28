@@ -45,7 +45,7 @@ namespace HitsZoo
         private void HorseButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            Horse horse = new Horse(voice);
+            Horse horse = new Horse(zoo.animalsCount, "Казахский конь", voice);
             zoo.addAnimal(horse);
         }
 
@@ -53,7 +53,7 @@ namespace HitsZoo
         private void CapybaraButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            Capybara capybara = new Capybara(voice);
+            Capybara capybara = new Capybara(zoo.animalsCount, "Капибара", voice);
             zoo.addAnimal(capybara);
         }
 
@@ -61,7 +61,7 @@ namespace HitsZoo
         private void BarsButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            Bars bars = new Bars(voice);
+            Bars bars = new Bars(zoo.animalsCount, "Кыргызский барс", voice);
             zoo.addAnimal(bars);
         }
 
@@ -74,11 +74,11 @@ namespace HitsZoo
             Staff currentPerson;
             if (age != "")
             {
-                currentPerson = new Staff(name, Convert.ToInt32(age), occupation);
+                currentPerson = new Staff(zoo.personsCount, "Работник", name, Convert.ToInt32(age), occupation);
             }
             else
             {
-                currentPerson = new Staff(name, Convert.ToInt32(18), occupation);
+                currentPerson = new Staff(zoo.personsCount, "Работник", "артем", Convert.ToInt32(18), occupation);
             }
             zoo.addPerson(currentPerson);
         }
@@ -93,53 +93,13 @@ namespace HitsZoo
             if (age != "")
             {
                 // Сделать обработку ввода нечисловых значений
-                currentPerson = new Person(name, Convert.ToInt32(age));
+                currentPerson = new Person(zoo.personsCount, "Посетитель", name, Convert.ToInt32(age));
             }
             else
             {
-                currentPerson = new Person(name, 18);
+                currentPerson = new Person(zoo.personsCount, "Посетитель", name, 18);
             }
             zoo.addPerson(currentPerson);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void editLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

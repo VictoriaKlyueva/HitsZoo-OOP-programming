@@ -10,14 +10,15 @@ namespace HitsZoo
     {
         public string occupation;
         public int wardAnimalId;
-        public Staff(string name, int age, string occupation) : base(name, age)
+        public Staff(int id, string type, string name, int age, string occupation) : base(id, type, name, age)
         {
             this.occupation = occupation;
         }
 
         public override void print()
         {
-            Console.WriteLine(name + " " + age + " " + occupation);
+            Console.WriteLine($"ID: {id} Type: {type} Имя: {name} " +
+                              $" Возраст: {age} Должность: {occupation} Животное: {wardAnimalId}");
         }
     }
 }

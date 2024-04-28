@@ -4,9 +4,9 @@ namespace HitsZoo
 {
     public class Zoo
     {
-        int animalsCount = 0;
+        public int animalsCount = 0;
         Animal[] animalsArray = new Animal[100];
-        int personsCount = 0;
+        public int personsCount = 0;
         Person[] personsArray = new Person[100];
 
         public void addAnimal(Animal animal)
