@@ -30,10 +30,12 @@ namespace HitsZoo
             Console.WriteLine(voice);
         }
 
-        public void print()
+        public string print()
         {
             Console.WriteLine($"ID: {id} Type: {type} Численный голод: {currentHunger} " +
                               $" Голод: {isHungry}");
+            return $"ID: {id} Type: {type} Численный голод: {currentHunger} " +
+                              $" Голод: {isHungry}";
         }
 
         public Animal(int id, string type, string voice, int criticalHunger=5)

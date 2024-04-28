@@ -15,10 +15,12 @@ namespace HitsZoo
             this.occupation = occupation;
         }
 
-        public override void print()
+        public override string print()
         {
             Console.WriteLine($"ID: {id} Type: {type} Имя: {name} " +
                               $" Возраст: {age} Должность: {occupation} Животное: {wardAnimalId}");
+            return $"ID: {id} Type: {type} Имя: {name} " +
+                              $" Возраст: {age} Должность: {occupation} Животное: {wardAnimalId} \n";
         }
     }
 }

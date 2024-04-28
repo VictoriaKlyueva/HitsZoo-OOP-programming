@@ -17,10 +17,12 @@ namespace HitsZoo
             this.age = age;
         }
 
-        public virtual void print()
+        public virtual string print()
         {
             Console.WriteLine($"ID: {id} Type: {type} Имя: {name} " +
-                              $" Возраст: {age}");
+                              $" Возраст: {age} \n");
+            return $"ID: {id} Type: {type} Имя: {name} " +
+                              $" Возраст: {age}";
         }
     }
 }

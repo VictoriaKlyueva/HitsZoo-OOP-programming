@@ -37,8 +37,7 @@ namespace HitsZoo
             time.Text = currentTime.ToString();
             zoo.updateAnimals();
 
-            zoo.printAnimals();
-            zoo.printPersons();
+            zoo.print(textBoxZoo, textBoxAnimals, textBoxPersons);
         }
 
         // Создание коня

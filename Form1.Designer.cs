@@ -79,6 +79,12 @@ namespace HitsZoo
             this.deletePersonLabel = new System.Windows.Forms.Label();
             this.deletePersonIdLabel = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxAnimals = new System.Windows.Forms.TextBox();
+            this.textBoxPersons = new System.Windows.Forms.TextBox();
+            this.PersonsLabel = new System.Windows.Forms.Label();
+            this.animalsLabel = new System.Windows.Forms.Label();
+            this.zooLabel = new System.Windows.Forms.Label();
+            this.textBoxZoo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // horseButton
@@ -157,7 +163,7 @@ namespace HitsZoo
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.timeLabel.Location = new System.Drawing.Point(1252, 9);
+            this.timeLabel.Location = new System.Drawing.Point(1794, 9);
             this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(97, 29);
@@ -168,7 +174,7 @@ namespace HitsZoo
             // 
             this.time.AutoSize = true;
             this.time.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.time.Location = new System.Drawing.Point(1252, 45);
+            this.time.Location = new System.Drawing.Point(1832, 43);
             this.time.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.time.Name = "time";
             this.time.Size = new System.Drawing.Size(27, 29);
@@ -371,7 +377,7 @@ namespace HitsZoo
             // 
             // textBoxOccupationEdit
             // 
-            this.textBoxOccupationEdit.Location = new System.Drawing.Point(853, 343);
+            this.textBoxOccupationEdit.Location = new System.Drawing.Point(298, 379);
             this.textBoxOccupationEdit.Name = "textBoxOccupationEdit";
             this.textBoxOccupationEdit.Size = new System.Drawing.Size(100, 22);
             this.textBoxOccupationEdit.TabIndex = 34;
@@ -379,7 +385,7 @@ namespace HitsZoo
             // occupationEditLabel
             // 
             this.occupationEditLabel.AutoSize = true;
-            this.occupationEditLabel.Location = new System.Drawing.Point(763, 346);
+            this.occupationEditLabel.Location = new System.Drawing.Point(208, 379);
             this.occupationEditLabel.Name = "occupationEditLabel";
             this.occupationEditLabel.Size = new System.Drawing.Size(84, 16);
             this.occupationEditLabel.TabIndex = 35;
@@ -473,7 +479,7 @@ namespace HitsZoo
             // 
             this.deletePersonLabel.AutoSize = true;
             this.deletePersonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.deletePersonLabel.Location = new System.Drawing.Point(442, 495);
+            this.deletePersonLabel.Location = new System.Drawing.Point(254, 495);
             this.deletePersonLabel.Name = "deletePersonLabel";
             this.deletePersonLabel.Size = new System.Drawing.Size(226, 29);
             this.deletePersonLabel.TabIndex = 46;
@@ -482,7 +488,7 @@ namespace HitsZoo
             // deletePersonIdLabel
             // 
             this.deletePersonIdLabel.AutoSize = true;
-            this.deletePersonIdLabel.Location = new System.Drawing.Point(444, 535);
+            this.deletePersonIdLabel.Location = new System.Drawing.Point(271, 535);
             this.deletePersonIdLabel.Name = "deletePersonIdLabel";
             this.deletePersonIdLabel.Size = new System.Drawing.Size(21, 16);
             this.deletePersonIdLabel.TabIndex = 47;
@@ -490,16 +496,78 @@ namespace HitsZoo
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(471, 532);
+            this.textBox3.Location = new System.Drawing.Point(298, 532);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 22);
             this.textBox3.TabIndex = 48;
+            // 
+            // textBoxAnimals
+            // 
+            this.textBoxAnimals.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxAnimals.Location = new System.Drawing.Point(901, 232);
+            this.textBoxAnimals.Multiline = true;
+            this.textBoxAnimals.Name = "textBoxAnimals";
+            this.textBoxAnimals.Size = new System.Drawing.Size(499, 603);
+            this.textBoxAnimals.TabIndex = 49;
+            // 
+            // textBoxPersons
+            // 
+            this.textBoxPersons.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxPersons.Location = new System.Drawing.Point(1427, 232);
+            this.textBoxPersons.Multiline = true;
+            this.textBoxPersons.Name = "textBoxPersons";
+            this.textBoxPersons.Size = new System.Drawing.Size(464, 603);
+            this.textBoxPersons.TabIndex = 50;
+            // 
+            // PersonsLabel
+            // 
+            this.PersonsLabel.AutoSize = true;
+            this.PersonsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.PersonsLabel.Location = new System.Drawing.Point(1420, 193);
+            this.PersonsLabel.Name = "PersonsLabel";
+            this.PersonsLabel.Size = new System.Drawing.Size(105, 39);
+            this.PersonsLabel.TabIndex = 51;
+            this.PersonsLabel.Text = "Люди";
+            // 
+            // animalsLabel
+            // 
+            this.animalsLabel.AutoSize = true;
+            this.animalsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.animalsLabel.Location = new System.Drawing.Point(894, 190);
+            this.animalsLabel.Name = "animalsLabel";
+            this.animalsLabel.Size = new System.Drawing.Size(182, 39);
+            this.animalsLabel.TabIndex = 52;
+            this.animalsLabel.Text = "Животные";
+            // 
+            // zooLabel
+            // 
+            this.zooLabel.AutoSize = true;
+            this.zooLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.zooLabel.Location = new System.Drawing.Point(894, 45);
+            this.zooLabel.Name = "zooLabel";
+            this.zooLabel.Size = new System.Drawing.Size(151, 39);
+            this.zooLabel.TabIndex = 53;
+            this.zooLabel.Text = "Зоопарк";
+            // 
+            // textBoxZoo
+            // 
+            this.textBoxZoo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxZoo.Location = new System.Drawing.Point(901, 116);
+            this.textBoxZoo.Name = "textBoxZoo";
+            this.textBoxZoo.Size = new System.Drawing.Size(762, 36);
+            this.textBoxZoo.TabIndex = 54;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 847);
+            this.ClientSize = new System.Drawing.Size(1904, 847);
+            this.Controls.Add(this.textBoxZoo);
+            this.Controls.Add(this.zooLabel);
+            this.Controls.Add(this.animalsLabel);
+            this.Controls.Add(this.PersonsLabel);
+            this.Controls.Add(this.textBoxPersons);
+            this.Controls.Add(this.textBoxAnimals);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.deletePersonIdLabel);
             this.Controls.Add(this.deletePersonLabel);
@@ -605,6 +673,12 @@ namespace HitsZoo
         private System.Windows.Forms.Label deletePersonLabel;
         private System.Windows.Forms.Label deletePersonIdLabel;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxAnimals;
+        private System.Windows.Forms.TextBox textBoxPersons;
+        private System.Windows.Forms.Label PersonsLabel;
+        private System.Windows.Forms.Label animalsLabel;
+        private System.Windows.Forms.Label zooLabel;
+        private System.Windows.Forms.TextBox textBoxZoo;
     }
 }
 
