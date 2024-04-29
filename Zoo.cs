@@ -113,9 +113,21 @@ namespace HitsZoo
             }
         }
 
+        private void UpdateStaff()
+        {
+            for (int i = 0; i < staffCount; i++)
+            {   
+                if (staffArray[i].wardAnimalId != -1)
+                {
+                    staffArray[i].Update(FindAnimalById(staffArray[i].wardAnimalId));
+                }
+            }
+        }
+
         public void Update()
         {
             UpdateAnimals();
+            UpdateStaff();
         }
 
         public Animal FindAnimalById(int id)

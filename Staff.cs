@@ -16,6 +16,14 @@ namespace HitsZoo
             this.wardAnimalId = wardAnimalId;
         }
 
+        public void Update(Animal animal)
+        {
+            if (animal.isHungry)
+            {
+                animal.Feed();
+            }
+        }
+
         public void Edit(string name, int age, string occupation, int wardAnimalId)
         {
             Edit(name, age);

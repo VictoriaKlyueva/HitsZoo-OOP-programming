@@ -10,8 +10,9 @@ namespace HitsZoo
     {
         public override string Print()
         {
+            string hungerStatus = (isHungry) ? "Голоден" : "Сыт";
             return $"ID: {id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
-                   $"Голод: {currentHunger} {isHungry}";
+                   $"Голод: {currentHunger} {hungerStatus}";
         }
 
         public Bars(int id, string voice, int criticalHunger=15) :
