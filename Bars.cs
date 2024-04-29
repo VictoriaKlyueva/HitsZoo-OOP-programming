@@ -8,8 +8,14 @@ namespace HitsZoo
 {
     public class Bars : Animal
     {
-        public Bars(int receivedId, string receivedVoice, int receivedCriticalHunger=15) :
-               base(receivedId, receivedVoice, receivedCriticalHunger)
+        public override string Print()
+        {
+            return $"ID: {id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
+                   $"Голод: {currentHunger} {isHungry}";
+        }
+
+        public Bars(int id, string voice, int criticalHunger=15) :
+               base(id, voice, criticalHunger)
         { }
     }
 }

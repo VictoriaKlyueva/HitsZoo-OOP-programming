@@ -9,9 +9,11 @@ namespace HitsZoo
         public int currentHunger = 0;
         public bool isHungry = false;
         public string voice = "meow";
+        public bool isFree = true;
 
         public void Update()
         {
+            currentHunger += 1;
             if (currentHunger > criticalHunger)
             {
                 isHungry = true;
@@ -34,10 +36,9 @@ namespace HitsZoo
             return voice;
         }
 
-        public string Print()
+        public virtual string Print()
         {
-            return $"ID: {id} Type: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Численный голод: {currentHunger} " +
-                              $" Голод: {isHungry}";
+            return $"ID: {id} Class: Animal Голод: {currentHunger} {isHungry}";
         }
 
         public void Edit(int criticalHunger, string voice)

@@ -23,7 +23,7 @@ namespace HitsZoo
 
         public virtual string Print()
         {
-            return $"ID: {id} Type: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Имя: {name} " +
+            return $"ID: {id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Имя: {name} " +
                               $" Возраст: {age}";
         }
     }

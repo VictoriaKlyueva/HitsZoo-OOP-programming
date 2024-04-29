@@ -27,16 +27,15 @@ namespace HitsZoo
 
         }
 
-        Zoo zoo = new Zoo();
-        int currentTime = 0;
+        private Zoo zoo = new Zoo();
+        private int currentTime = 0;
 
-        // обработчик события Tick таймера
-        void timer_Tick(object sender, EventArgs e)
+        // Обработчик события Tick таймераы
+        private void Timer_Tick(object sender, EventArgs e)
         {
             currentTime += 1;
-            time.Text = currentTime.ToString();
-            zoo.UpdateAnimals();
-
+            timeShowLabel.Text = currentTime.ToString();
+            zoo.Update();
             zoo.PrintStatus(textBoxZoo, textBoxAnimals, textBoxPersons);
         }
 
@@ -44,69 +43,62 @@ namespace HitsZoo
         private void HorseButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            Horse horse = new Horse(zoo.animalsCount, voice);
-            zoo.AddAnimal(horse);
+            zoo.AddHorse(voice);
         }
 
         // Создание капибары
         private void CapybaraButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            Capybara capybara = new Capybara(zoo.animalsCount, voice);
-            zoo.AddAnimal(capybara);
+            zoo.AddCapybara(voice);
         }
 
         // Создание кыргызского барса
         private void BarsButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            Bars bars = new Bars(zoo.animalsCount, voice);
-            zoo.AddAnimal(bars);
+            zoo.AddBars(voice);
         }
 
         // Создание работника
         private void StaffButton_Click(object sender, EventArgs e)
         {
-            string name = textBoxName.Text;
-            string age = textBoxAge.Text;
-            string occupation = textBoxOccupation.Text;
-            Staff currentPerson;
-            if (age != "")
+            try
             {
-                currentPerson = new Staff(zoo.staffCount, name, Convert.ToInt32(age), occupation);
+                string name = textBoxName.Text;
+                int age = Convert.ToInt32(textBoxAge.Text);
+                string occupation = textBoxOccupation.Text;
+                zoo.AddStaff(name, age, occupation);
             }
-            else
+            catch
             {
-                currentPerson = new Staff(zoo.staffCount, "артем", Convert.ToInt32(18), occupation);
+                MessageBox.Show("Введите корректные значения");
             }
-            zoo.AddStaff(currentPerson);
         }
 
         // Создание посетителя
         private void VisitorButton_Click(object sender, EventArgs e)
-        {
-            string name = textBoxName.Text;
-            string age = textBoxAge.Text;
-
-            Person currentPerson;
-            if (age != "")
+        {   
+            try
             {
-                // Сделать обработку ввода нечисловых значений
-                currentPerson = new Person(zoo.visitorsCount, name, Convert.ToInt32(age));
+                string name = textBoxName.Text;
+                int age = Convert.ToInt32(textBoxAge.Text);
+                zoo.AddVisitor(name, age);
             }
-            else
+            catch
             {
-                currentPerson = new Person(zoo.visitorsCount, name, 18);
+                MessageBox.Show("Введите корректные значения");
             }
-            zoo.AddVisitor(currentPerson);
         }
 
+        // Подача голоса
         private void VoiceButton_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(textBoxVoiceSubmit.Text);
             textBoxVoiceResult.Text = zoo.FindAnimalById(id).SubmitVote();
         }
 
+        // Редактирование животного
         private void AnimalEditButton_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(textBoxIdAnimalEdit.Text);
@@ -116,16 +108,19 @@ namespace HitsZoo
             zoo.FindAnimalById(id).Edit(criticalHunger, voice);
         }
 
+        // Редактирование сотрудника
         private void StaffEditButton_Click(Object sender, EventArgs e)
         {
             int id = Convert.ToInt32(textBoxIdStaffEdit.Text);
             string name = textBoxStaffNameEdit.Text;
             int age = Convert.ToInt32(textBoxStaffAgeEdit.Text);
             string occupation = textBoxOccupationEdit.Text;
+            int wardAnimalId = Convert.ToInt32(textBoxStaffEditWardAnimal.Text);
 
-            zoo.FindStaffById(id).Edit(name, age, occupation);
+            zoo.FindStaffById(id).Edit(name, age, occupation, wardAnimalId);
         }
 
+        // Редактирование посетителя
         private void VisitorEditButton_Click(Object sender, EventArgs e)
         {
             int id = Convert.ToInt32(textBoxPersonIdEdit.Text);
@@ -135,6 +130,7 @@ namespace HitsZoo
             zoo.FindVisitorById(id).Edit(name, age);
         }
 
+        // Удаление животного
         private void AnimalDeleteButton_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(textBoxAnimalDeleteId.Text);
@@ -142,6 +138,7 @@ namespace HitsZoo
             textBoxAnimalDeleteId.Text = "";
         }
 
+        // Удаление посетителя
         private void VisitorDeleteButton_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(textBoxVisitorDeleteId.Text);
@@ -149,11 +146,12 @@ namespace HitsZoo
             textBoxVisitorDeleteId.Text = "";
         }
 
+        // Удаление сотрудника
         private void StaffDeleteButton_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(textBoxStaffDeleteId.Text);
             zoo.RemoveStaff(zoo.FindStaffById(id));
-            textBoxVisitorDeleteId.Text = "";
+            textBoxStaffDeleteId.Text = "";
         }
     }
 }

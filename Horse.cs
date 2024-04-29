@@ -8,7 +8,13 @@ namespace HitsZoo
 {
     public class Horse : Animal
     {
-        public Horse(int receivedId, string receivedVoice, int receivedCriticalHunger=5) : 
-               base(receivedId, receivedVoice, receivedCriticalHunger) { }
+        public override string Print()
+        {
+            return $"ID: {id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
+                   $"Голод: {currentHunger} {isHungry}";
+        }
+
+        public Horse(int id, string voice, int criticalHunger=5) : 
+               base(id, voice, criticalHunger) { }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Deployment.Application;
 using System.Linq;
 
 namespace HitsZoo
@@ -7,14 +8,38 @@ namespace HitsZoo
     {
         public int animalsCount = 0;
         Animal[] animalsArray = new Animal[100];
+
         public int visitorsCount = 0;
         Person[] visitorsArray = new Person[100];
+
         public int staffCount = 0;
         Staff[] staffArray = new Staff[100];
 
-        public void AddAnimal(Animal animal)
+        private int currentAnimalId = 0;
+        private int currentStaffId = 0;
+        private int currentVisitorId = 0;
+
+        public void AddHorse(string voice)
         {
-            animalsArray[animalsCount] = animal;
+            Horse horse = new Horse(currentAnimalId, voice);
+            animalsArray[animalsCount] = horse;
+            currentAnimalId++;
+            animalsCount++;
+        }
+
+        public void AddCapybara(string voice)
+        {
+            Capybara capybara = new Capybara(currentAnimalId, voice);
+            animalsArray[animalsCount] = capybara;
+            currentAnimalId++;
+            animalsCount++;
+        }
+
+        public void AddBars(string voice)
+        {
+            Bars bars = new Bars(currentAnimalId, voice);
+            animalsArray[animalsCount] = bars;
+            currentAnimalId++;
             animalsCount++;
         }
 
@@ -24,10 +49,25 @@ namespace HitsZoo
             animalsCount--;
         }
 
+        public void AddVisitor(string name, int age)
+        {
+            Person visitor = new Person(currentVisitorId, name, age);
+            visitorsArray[visitorsCount] = visitor;
+            currentVisitorId++;
+            visitorsCount++;
+        }
         public void RemoveVisitor(Person visitorForRemoving)
         {
             visitorsArray = visitorsArray.Where(val => val != visitorForRemoving).ToArray();
             visitorsCount--;
+        }
+
+        public void AddStaff(string name, int age, string occupation)
+        {
+            Staff staff = new Staff(currentStaffId, name, age, occupation, AssignAnimal());
+            staffArray[staffCount] = staff;
+            currentStaffId++;
+            staffCount++;
         }
 
         public void RemoveStaff(Staff staffForRemoving)
@@ -36,25 +76,46 @@ namespace HitsZoo
             staffCount--;
         }
 
-        public void AddVisitor(Person visitor)
+        private int AssignAnimal()
         {
-            visitorsArray[visitorsCount] = visitor;
-            visitorsCount++;
+            foreach (Animal animal in animalsArray)
+            {
+                if (animal == null) return -1;
+                if (animal.isFree)
+                {
+                    animal.isFree = false;
+                    return animal.id;
+                }
+            }
+            return -1;
         }
 
-        public void AddStaff(Staff staff)
-        {
-            staffArray[staffCount] = staff;
-            staffCount++;
-        }
-
-        public void UpdateAnimals()
+        private void UpdateAnimals()
         {
             for (int i = 0; i < animalsCount; i++)
             {
-                animalsArray[i].currentHunger += 1;
                 animalsArray[i].Update();
+
+                // Обновление статуса животного, если его закрепили или открепили
+                bool found = false;
+                for (int j = 0; j < staffCount; j++)
+                {
+                    if (staffArray[j].wardAnimalId == animalsArray[i].id)
+                    {
+                        animalsArray[i].isFree = false;
+                        found = true;
+                    }
+                }
+                if (!found)
+                {
+                    animalsArray[i].isFree = true;
+                }
             }
+        }
+
+        public void Update()
+        {
+            UpdateAnimals();
         }
 
         public Animal FindAnimalById(int id)
@@ -114,7 +175,7 @@ namespace HitsZoo
                           System.Windows.Forms.TextBox textBoxAnimals,
                           System.Windows.Forms.TextBox textBoxPersons)
         {
-            textBoxZoo.Text = $"Животных: {animalsCount} Работников: {staffCount} Посетителей: {visitorsCount} ";
+            textBoxZoo.Text = $"Животных: {animalsCount}   Работников: {staffCount}   Посетителей: {visitorsCount}   ";
 
             PrintAnimals(textBoxAnimals);
             PrintPersons(textBoxPersons);

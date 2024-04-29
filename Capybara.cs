@@ -8,9 +8,14 @@ namespace HitsZoo
 {
     public class Capybara : Animal
     {
-        public int criticalHunger = 15;
-        public Capybara(int receivedId, string receivedVoice, int receivedCriticalHunger=10) :
-               base(receivedId, receivedVoice, receivedCriticalHunger)
+        public override string Print()
+        {
+            return $"ID: {id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
+                   $"Голод: {currentHunger} {isHungry}";
+        }
+
+        public Capybara(int id, string voice, int criticalHunger=10) :
+               base(id, voice, criticalHunger)
         { }
     }
 }

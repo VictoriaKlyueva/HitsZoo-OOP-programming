@@ -39,7 +39,7 @@ namespace HitsZoo
             this.addEntity = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.timeLabel = new System.Windows.Forms.Label();
-            this.time = new System.Windows.Forms.Label();
+            this.timeShowLabel = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -92,6 +92,8 @@ namespace HitsZoo
             this.staffDeleteButton = new System.Windows.Forms.Button();
             this.staffDeleteIdLabel = new System.Windows.Forms.Label();
             this.textBoxStaffDeleteId = new System.Windows.Forms.TextBox();
+            this.textBoxStaffEditWardAnimal = new System.Windows.Forms.TextBox();
+            this.staffEditWardAnimalLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // horseButton
@@ -164,13 +166,13 @@ namespace HitsZoo
             // 
             this.timer.Enabled = true;
             this.timer.Interval = 1000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            this.timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.timeLabel.Location = new System.Drawing.Point(1794, 9);
+            this.timeLabel.Location = new System.Drawing.Point(1814, 9);
             this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(97, 29);
@@ -179,14 +181,14 @@ namespace HitsZoo
             // 
             // time
             // 
-            this.time.AutoSize = true;
-            this.time.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.time.Location = new System.Drawing.Point(1832, 43);
-            this.time.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(27, 29);
-            this.time.TabIndex = 7;
-            this.time.Text = "0";
+            this.timeShowLabel.AutoSize = true;
+            this.timeShowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.timeShowLabel.Location = new System.Drawing.Point(1853, 44);
+            this.timeShowLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.timeShowLabel.Name = "time";
+            this.timeShowLabel.Size = new System.Drawing.Size(27, 29);
+            this.timeShowLabel.TabIndex = 7;
+            this.timeShowLabel.Text = "0";
             // 
             // textBoxName
             // 
@@ -461,57 +463,57 @@ namespace HitsZoo
             // textBoxAnimals
             // 
             this.textBoxAnimals.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxAnimals.Location = new System.Drawing.Point(901, 232);
+            this.textBoxAnimals.Location = new System.Drawing.Point(901, 144);
             this.textBoxAnimals.Multiline = true;
             this.textBoxAnimals.Name = "textBoxAnimals";
-            this.textBoxAnimals.Size = new System.Drawing.Size(499, 603);
+            this.textBoxAnimals.Size = new System.Drawing.Size(386, 603);
             this.textBoxAnimals.TabIndex = 49;
             // 
             // textBoxPersons
             // 
             this.textBoxPersons.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxPersons.Location = new System.Drawing.Point(1427, 232);
+            this.textBoxPersons.Location = new System.Drawing.Point(1293, 144);
             this.textBoxPersons.Multiline = true;
             this.textBoxPersons.Name = "textBoxPersons";
-            this.textBoxPersons.Size = new System.Drawing.Size(464, 603);
+            this.textBoxPersons.Size = new System.Drawing.Size(618, 603);
             this.textBoxPersons.TabIndex = 50;
             // 
             // PersonsLabel
             // 
             this.PersonsLabel.AutoSize = true;
-            this.PersonsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.PersonsLabel.Location = new System.Drawing.Point(1420, 193);
+            this.PersonsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.PersonsLabel.Location = new System.Drawing.Point(1288, 111);
             this.PersonsLabel.Name = "PersonsLabel";
-            this.PersonsLabel.Size = new System.Drawing.Size(105, 39);
+            this.PersonsLabel.Size = new System.Drawing.Size(79, 29);
             this.PersonsLabel.TabIndex = 51;
             this.PersonsLabel.Text = "Люди";
             // 
             // animalsLabel
             // 
             this.animalsLabel.AutoSize = true;
-            this.animalsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.animalsLabel.Location = new System.Drawing.Point(894, 190);
+            this.animalsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.animalsLabel.Location = new System.Drawing.Point(896, 111);
             this.animalsLabel.Name = "animalsLabel";
-            this.animalsLabel.Size = new System.Drawing.Size(182, 39);
+            this.animalsLabel.Size = new System.Drawing.Size(134, 29);
             this.animalsLabel.TabIndex = 52;
             this.animalsLabel.Text = "Животные";
             // 
             // zooLabel
             // 
             this.zooLabel.AutoSize = true;
-            this.zooLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.zooLabel.Location = new System.Drawing.Point(894, 45);
+            this.zooLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.zooLabel.Location = new System.Drawing.Point(896, 9);
             this.zooLabel.Name = "zooLabel";
-            this.zooLabel.Size = new System.Drawing.Size(151, 39);
+            this.zooLabel.Size = new System.Drawing.Size(112, 29);
             this.zooLabel.TabIndex = 53;
             this.zooLabel.Text = "Зоопарк";
             // 
             // textBoxZoo
             // 
-            this.textBoxZoo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxZoo.Location = new System.Drawing.Point(901, 116);
+            this.textBoxZoo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.textBoxZoo.Location = new System.Drawing.Point(899, 45);
             this.textBoxZoo.Name = "textBoxZoo";
-            this.textBoxZoo.Size = new System.Drawing.Size(762, 36);
+            this.textBoxZoo.Size = new System.Drawing.Size(388, 24);
             this.textBoxZoo.TabIndex = 54;
             // 
             // animalEditButton
@@ -635,11 +637,29 @@ namespace HitsZoo
             this.textBoxStaffDeleteId.Size = new System.Drawing.Size(64, 22);
             this.textBoxStaffDeleteId.TabIndex = 66;
             // 
+            // textBoxStaffEditWardAnimal
+            // 
+            this.textBoxStaffEditWardAnimal.Location = new System.Drawing.Point(571, 379);
+            this.textBoxStaffEditWardAnimal.Name = "textBoxStaffEditWardAnimal";
+            this.textBoxStaffEditWardAnimal.Size = new System.Drawing.Size(100, 22);
+            this.textBoxStaffEditWardAnimal.TabIndex = 67;
+            // 
+            // staffEditWardAnimalLabel
+            // 
+            this.staffEditWardAnimalLabel.AutoSize = true;
+            this.staffEditWardAnimalLabel.Location = new System.Drawing.Point(471, 382);
+            this.staffEditWardAnimalLabel.Name = "staffEditWardAnimalLabel";
+            this.staffEditWardAnimalLabel.Size = new System.Drawing.Size(94, 16);
+            this.staffEditWardAnimalLabel.TabIndex = 68;
+            this.staffEditWardAnimalLabel.Text = "Id животного:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 847);
+            this.ClientSize = new System.Drawing.Size(1924, 847);
+            this.Controls.Add(this.staffEditWardAnimalLabel);
+            this.Controls.Add(this.textBoxStaffEditWardAnimal);
             this.Controls.Add(this.textBoxStaffDeleteId);
             this.Controls.Add(this.staffDeleteIdLabel);
             this.Controls.Add(this.staffDeleteButton);
@@ -691,7 +711,7 @@ namespace HitsZoo
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.textBoxAge);
             this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.time);
+            this.Controls.Add(this.timeShowLabel);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.addEntity);
             this.Controls.Add(this.visitorButton);
@@ -718,7 +738,7 @@ namespace HitsZoo
         private System.Windows.Forms.Label addEntity;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.Label time;
+        private System.Windows.Forms.Label timeShowLabel;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxAge;
         private System.Windows.Forms.Label nameLabel;
@@ -771,6 +791,8 @@ namespace HitsZoo
         private System.Windows.Forms.Button staffDeleteButton;
         private System.Windows.Forms.Label staffDeleteIdLabel;
         private System.Windows.Forms.TextBox textBoxStaffDeleteId;
+        private System.Windows.Forms.TextBox textBoxStaffEditWardAnimal;
+        private System.Windows.Forms.Label staffEditWardAnimalLabel;
     }
 }
 
