@@ -10,16 +10,20 @@ namespace HitsZoo
     {
         public string occupation;
         public int wardAnimalId;
-        public Staff(int id, string type, string name, int age, string occupation) : base(id, type, name, age)
+        public Staff(int id, string name, int age, string occupation) : base(id, name, age)
         {
             this.occupation = occupation;
         }
 
-        public override string print()
+        public void Edit(string name, int age, string occupation)
         {
-            Console.WriteLine($"ID: {id} Type: {type} Имя: {name} " +
-                              $" Возраст: {age} Должность: {occupation} Животное: {wardAnimalId}");
-            return $"ID: {id} Type: {type} Имя: {name} " +
+            Edit(name, age);
+            this.occupation = occupation;
+        }
+
+        public override string Print()
+        {
+            return $"ID: {id} Type: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Имя: {name} " +
                               $" Возраст: {age} Должность: {occupation} Животное: {wardAnimalId} \n";
         }
     }

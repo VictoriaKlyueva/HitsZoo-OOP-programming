@@ -5,43 +5,50 @@ namespace HitsZoo
     public class Animal
     {
         public int id;
-        public string type = "animal";
         public int criticalHunger;
         public int currentHunger = 0;
         public bool isHungry = false;
         public string voice = "meow";
 
-        public void update()
+        public void Update()
         {
             if (currentHunger > criticalHunger)
             {
                 isHungry = true;
             }
+            else
+            {
+                isHungry = false;
+            }
         }
 
-        public void feed()
+        public void Feed()
         {
             currentHunger = 0;
             isHungry = false;
         }
 
-        public void submitVote()
+        public string SubmitVote()
         {
             Console.WriteLine(voice);
+            return voice;
         }
 
-        public string print()
+        public string Print()
         {
-            Console.WriteLine($"ID: {id} Type: {type} Численный голод: {currentHunger} " +
-                              $" Голод: {isHungry}");
-            return $"ID: {id} Type: {type} Численный голод: {currentHunger} " +
+            return $"ID: {id} Type: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Численный голод: {currentHunger} " +
                               $" Голод: {isHungry}";
         }
 
-        public Animal(int id, string type, string voice, int criticalHunger=5)
+        public void Edit(int criticalHunger, string voice)
+        {
+            this.criticalHunger = criticalHunger;
+            this.voice = voice;
+        }
+
+        public Animal(int id, string voice, int criticalHunger=5)
         {   
             this.id = id;
-            this.type = type;
             this.voice = voice;
             this.criticalHunger = criticalHunger;
         }

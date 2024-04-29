@@ -5,23 +5,25 @@ namespace HitsZoo
     public class Person
     {
         public int id;
-        public string type = "Посетитель";
         public string name;
         public int age;
 
-        public Person(int id, string type, string name, int age)
+        public Person(int id, string name, int age)
         {
             this.id = id;
-            this.type = type;
             this.name = name;
             this.age = age;
         }
 
-        public virtual string print()
+        public void Edit(string name, int age)
         {
-            Console.WriteLine($"ID: {id} Type: {type} Имя: {name} " +
-                              $" Возраст: {age} \n");
-            return $"ID: {id} Type: {type} Имя: {name} " +
+            this.name = name;
+            this.age = age;
+        }
+
+        public virtual string Print()
+        {
+            return $"ID: {id} Type: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Имя: {name} " +
                               $" Возраст: {age}";
         }
     }

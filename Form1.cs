@@ -35,33 +35,33 @@ namespace HitsZoo
         {
             currentTime += 1;
             time.Text = currentTime.ToString();
-            zoo.updateAnimals();
+            zoo.UpdateAnimals();
 
-            zoo.print(textBoxZoo, textBoxAnimals, textBoxPersons);
+            zoo.PrintStatus(textBoxZoo, textBoxAnimals, textBoxPersons);
         }
 
         // Создание коня
         private void HorseButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            Horse horse = new Horse(zoo.animalsCount, "Казахский конь", voice);
-            zoo.addAnimal(horse);
+            Horse horse = new Horse(zoo.animalsCount, voice);
+            zoo.AddAnimal(horse);
         }
 
         // Создание капибары
         private void CapybaraButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            Capybara capybara = new Capybara(zoo.animalsCount, "Капибара", voice);
-            zoo.addAnimal(capybara);
+            Capybara capybara = new Capybara(zoo.animalsCount, voice);
+            zoo.AddAnimal(capybara);
         }
 
         // Создание кыргызского барса
         private void BarsButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            Bars bars = new Bars(zoo.animalsCount, "Кыргызский барс", voice);
-            zoo.addAnimal(bars);
+            Bars bars = new Bars(zoo.animalsCount, voice);
+            zoo.AddAnimal(bars);
         }
 
         // Создание работника
@@ -73,13 +73,13 @@ namespace HitsZoo
             Staff currentPerson;
             if (age != "")
             {
-                currentPerson = new Staff(zoo.personsCount, "Работник", name, Convert.ToInt32(age), occupation);
+                currentPerson = new Staff(zoo.staffCount, name, Convert.ToInt32(age), occupation);
             }
             else
             {
-                currentPerson = new Staff(zoo.personsCount, "Работник", "артем", Convert.ToInt32(18), occupation);
+                currentPerson = new Staff(zoo.staffCount, "артем", Convert.ToInt32(18), occupation);
             }
-            zoo.addPerson(currentPerson);
+            zoo.AddStaff(currentPerson);
         }
 
         // Создание посетителя
@@ -92,13 +92,68 @@ namespace HitsZoo
             if (age != "")
             {
                 // Сделать обработку ввода нечисловых значений
-                currentPerson = new Person(zoo.personsCount, "Посетитель", name, Convert.ToInt32(age));
+                currentPerson = new Person(zoo.visitorsCount, name, Convert.ToInt32(age));
             }
             else
             {
-                currentPerson = new Person(zoo.personsCount, "Посетитель", name, 18);
+                currentPerson = new Person(zoo.visitorsCount, name, 18);
             }
-            zoo.addPerson(currentPerson);
+            zoo.AddVisitor(currentPerson);
+        }
+
+        private void VoiceButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textBoxVoiceSubmit.Text);
+            textBoxVoiceResult.Text = zoo.FindAnimalById(id).SubmitVote();
+        }
+
+        private void AnimalEditButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textBoxIdAnimalEdit.Text);
+            int criticalHunger = Convert.ToInt32(textBoxCriticalHungerEdit.Text);
+            string voice = textBoxVoiceEdit.Text;
+
+            zoo.FindAnimalById(id).Edit(criticalHunger, voice);
+        }
+
+        private void StaffEditButton_Click(Object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textBoxIdStaffEdit.Text);
+            string name = textBoxStaffNameEdit.Text;
+            int age = Convert.ToInt32(textBoxStaffAgeEdit.Text);
+            string occupation = textBoxOccupationEdit.Text;
+
+            zoo.FindStaffById(id).Edit(name, age, occupation);
+        }
+
+        private void VisitorEditButton_Click(Object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textBoxPersonIdEdit.Text);
+            string name = textBoxPersonNameEdit.Text;
+            int age = Convert.ToInt32(textBoxPersonAgeEdit.Text);
+
+            zoo.FindVisitorById(id).Edit(name, age);
+        }
+
+        private void AnimalDeleteButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textBoxAnimalDeleteId.Text);
+            zoo.RemoveAnimal(zoo.FindAnimalById(id));
+            textBoxAnimalDeleteId.Text = "";
+        }
+
+        private void VisitorDeleteButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textBoxVisitorDeleteId.Text);
+            zoo.RemoveVisitor(zoo.FindVisitorById(id));
+            textBoxVisitorDeleteId.Text = "";
+        }
+
+        private void StaffDeleteButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textBoxStaffDeleteId.Text);
+            zoo.RemoveStaff(zoo.FindStaffById(id));
+            textBoxVisitorDeleteId.Text = "";
         }
     }
 }

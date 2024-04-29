@@ -9,8 +9,8 @@ namespace HitsZoo
     public class Capybara : Animal
     {
         public int criticalHunger = 15;
-        public Capybara(int receivedId, string receivedType, string receivedVoice, int receivedCriticalHunger=10) :
-               base(receivedId, receivedType, receivedVoice, receivedCriticalHunger)
+        public Capybara(int receivedId, string receivedVoice, int receivedCriticalHunger=10) :
+               base(receivedId, receivedVoice, receivedCriticalHunger)
         { }
     }
 }
