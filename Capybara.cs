@@ -10,9 +10,9 @@ namespace HitsZoo
     {
         public override string Print()
         {
-            string hungerStatus = (isHungry) ? "Голоден" : "Сыт";
-            return $"ID: {id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
-                   $"Голод: {currentHunger} {hungerStatus}";
+            string hungerStatus = (IsHungry) ? "Голоден" : "Сыт";
+            return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
+                   $"Голод: {CurrentHunger} {hungerStatus}";
         }
 
         public Capybara(int id, string voice, int criticalHunger=10) :

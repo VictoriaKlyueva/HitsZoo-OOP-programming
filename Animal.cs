@@ -4,54 +4,54 @@ namespace HitsZoo
 {
     public class Animal
     {
-        public int id;
-        public int criticalHunger;
-        public int currentHunger = 0;
-        public bool isHungry = false;
-        public string voice = "meow";
-        public bool isFree = true;
+        public int Id { get; set; }
+        public int CriticalHunger { get; set; }
+        public int CurrentHunger { get; set; } = 0;
+        public bool IsHungry { get; set; } = false;
+        public string Voice { get; set; } = "meow";
+        public bool IsFree { get; set; } = true;
 
         public void Update()
         {
-            currentHunger += 1;
-            if (currentHunger > criticalHunger)
+            CurrentHunger += 1;
+            if (CurrentHunger > CriticalHunger)
             {
-                isHungry = true;
+                IsHungry = true;
             }
             else
             {
-                isHungry = false;
+                IsHungry = false;
             }
         }
 
         public void Feed()
         {
-            currentHunger = 0;
-            isHungry = false;
+            CurrentHunger = 0;
+            IsHungry = false;
         }
 
         public string SubmitVote()
         {
-            Console.WriteLine(voice);
-            return voice;
+            Console.WriteLine(Voice);
+            return Voice;
         }
 
         public virtual string Print()
         {
-            return $"ID: {id} Class: Animal Голод: {currentHunger} {isHungry}";
+            return $"ID: {Id} Class: Animal Голод: {CurrentHunger} {IsHungry}";
         }
 
         public void Edit(int criticalHunger, string voice)
         {
-            this.criticalHunger = criticalHunger;
-            this.voice = voice;
+            this.CriticalHunger = criticalHunger;
+            this.Voice = voice;
         }
 
         public Animal(int id, string voice, int criticalHunger=5)
         {   
-            this.id = id;
-            this.voice = voice;
-            this.criticalHunger = criticalHunger;
+            this.Id = id;
+            this.Voice = voice;
+            this.CriticalHunger = criticalHunger;
         }
     }
 }

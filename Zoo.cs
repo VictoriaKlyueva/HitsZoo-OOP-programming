@@ -6,74 +6,73 @@ namespace HitsZoo
 {
     public class Zoo
     {
-        public int animalsCount = 0;
-        Animal[] animalsArray = new Animal[100];
-
-        public int visitorsCount = 0;
-        Person[] visitorsArray = new Person[100];
-
-        public int staffCount = 0;
-        Staff[] staffArray = new Staff[100];
+        private Animal[] animalsArray = new Animal[100];
+        private Person[] visitorsArray = new Person[100];
+        private Staff[] staffArray = new Staff[100];
 
         private int currentAnimalId = 0;
         private int currentStaffId = 0;
         private int currentVisitorId = 0;
 
+        public int AnimalsCount { get; set; } = 0;
+        public int VisitorsCount { get; set; } = 0;
+        public int StaffCount { get; set; } = 0;
+
         public void AddHorse(string voice)
         {
             Horse horse = new Horse(currentAnimalId, voice);
-            animalsArray[animalsCount] = horse;
+            animalsArray[AnimalsCount] = horse;
             currentAnimalId++;
-            animalsCount++;
+            AnimalsCount++;
         }
 
         public void AddCapybara(string voice)
         {
             Capybara capybara = new Capybara(currentAnimalId, voice);
-            animalsArray[animalsCount] = capybara;
+            animalsArray[AnimalsCount] = capybara;
             currentAnimalId++;
-            animalsCount++;
+            AnimalsCount++;
         }
 
         public void AddBars(string voice)
         {
             Bars bars = new Bars(currentAnimalId, voice);
-            animalsArray[animalsCount] = bars;
+            animalsArray[AnimalsCount] = bars;
             currentAnimalId++;
-            animalsCount++;
+            AnimalsCount++;
         }
 
         public void RemoveAnimal(Animal animalForRemoving)
         {
             animalsArray = animalsArray.Where(val => val != animalForRemoving).ToArray();
-            animalsCount--;
+            AnimalsCount--;
         }
 
         public void AddVisitor(string name, int age)
         {
             Person visitor = new Person(currentVisitorId, name, age);
-            visitorsArray[visitorsCount] = visitor;
+            visitorsArray[VisitorsCount] = visitor;
             currentVisitorId++;
-            visitorsCount++;
+            VisitorsCount++;
         }
         public void RemoveVisitor(Person visitorForRemoving)
         {
             visitorsArray = visitorsArray.Where(val => val != visitorForRemoving).ToArray();
-            visitorsCount--;
+            VisitorsCount--;
         }
 
         public void AddStaff(string name, int age, string occupation)
         {
             Staff staff = new Staff(currentStaffId, name, age, occupation, AssignAnimal());
-            staffArray[staffCount] = staff;
+            staffArray[StaffCount] = staff;
             currentStaffId++;
-            staffCount++;
+            StaffCount++;
         }
 
         public void RemoveStaff(Staff staffForRemoving)
         {
             staffArray = staffArray.Where(val => val != staffForRemoving).ToArray();
-            staffCount--;
+            StaffCount--;
         }
 
         private int AssignAnimal()
@@ -81,10 +80,10 @@ namespace HitsZoo
             foreach (Animal animal in animalsArray)
             {
                 if (animal == null) return -1;
-                if (animal.isFree)
+                if (animal.IsFree)
                 {
-                    animal.isFree = false;
-                    return animal.id;
+                    animal.IsFree = false;
+                    return animal.Id;
                 }
             }
             return -1;
@@ -92,30 +91,30 @@ namespace HitsZoo
 
         private void UpdateAnimals()
         {
-            for (int i = 0; i < animalsCount; i++)
+            for (int i = 0; i < AnimalsCount; i++)
             {
                 animalsArray[i].Update();
 
                 // Обновление статуса животного, если его закрепили или открепили
                 bool found = false;
-                for (int j = 0; j < staffCount; j++)
+                for (int j = 0; j < StaffCount; j++)
                 {
-                    if (staffArray[j].wardAnimalId == animalsArray[i].id)
+                    if (staffArray[j].wardAnimalId == animalsArray[i].Id)
                     {
-                        animalsArray[i].isFree = false;
+                        animalsArray[i].IsFree = false;
                         found = true;
                     }
                 }
                 if (!found)
                 {
-                    animalsArray[i].isFree = true;
+                    animalsArray[i].IsFree = true;
                 }
             }
         }
 
         private void UpdateStaff()
         {
-            for (int i = 0; i < staffCount; i++)
+            for (int i = 0; i < StaffCount; i++)
             {   
                 if (staffArray[i].wardAnimalId != -1)
                 {
@@ -132,16 +131,16 @@ namespace HitsZoo
 
         public Animal FindAnimalById(int id)
         {
-            for (int i = 0; i < animalsCount; i++)
+            for (int i = 0; i < AnimalsCount; i++)
             {
-                if (animalsArray[i].id == id) return animalsArray[i];
+                if (animalsArray[i].Id == id) return animalsArray[i];
             }
             return null;
         }
 
         public Person FindVisitorById(int id)
         {
-            for (int i = 0; i < visitorsCount; i++)
+            for (int i = 0; i < VisitorsCount; i++)
             {
                 if (visitorsArray[i].id == id) return visitorsArray[i];
             }
@@ -150,7 +149,7 @@ namespace HitsZoo
 
         public Staff FindStaffById(int id)
         {
-            for (int i = 0; i < staffCount; i++)
+            for (int i = 0; i < StaffCount; i++)
             {
                 if (staffArray[i].id == id) return staffArray[i];
             }
@@ -160,7 +159,7 @@ namespace HitsZoo
         private void PrintAnimals(System.Windows.Forms.TextBox textBox)
         {
             textBox.Text = "";
-            for (int i = 0; i < animalsCount; i++)
+            for (int i = 0; i < AnimalsCount; i++)
             {
                 textBox.Text += animalsArray[i].Print();
                 textBox.AppendText(Environment.NewLine);
@@ -170,13 +169,13 @@ namespace HitsZoo
         private void PrintPersons(System.Windows.Forms.TextBox textBox)
         {
             textBox.Text = "";
-            for (int i = 0; i < staffCount; i++)
+            for (int i = 0; i < StaffCount; i++)
             {
                 textBox.Text += staffArray[i].Print();
                 textBox.AppendText(Environment.NewLine);
             }
 
-            for (int i = 0; i < visitorsCount; i++)
+            for (int i = 0; i < VisitorsCount; i++)
             {
                 textBox.Text += visitorsArray[i].Print();
                 textBox.AppendText(Environment.NewLine);
@@ -187,7 +186,7 @@ namespace HitsZoo
                           System.Windows.Forms.TextBox textBoxAnimals,
                           System.Windows.Forms.TextBox textBoxPersons)
         {
-            textBoxZoo.Text = $"Животных: {animalsCount}   Работников: {staffCount}   Посетителей: {visitorsCount}   ";
+            textBoxZoo.Text = $"Животных: {AnimalsCount}   Работников: {StaffCount}   Посетителей: {VisitorsCount}   ";
 
             PrintAnimals(textBoxAnimals);
             PrintPersons(textBoxPersons);

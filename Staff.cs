@@ -18,7 +18,7 @@ namespace HitsZoo
 
         public void Update(Animal animal)
         {
-            if (animal.isHungry)
+            if (animal.IsHungry)
             {
                 animal.Feed();
             }
