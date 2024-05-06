@@ -94,6 +94,7 @@ namespace HitsZoo
             this.textBoxStaffDeleteId = new System.Windows.Forms.TextBox();
             this.textBoxStaffEditWardAnimal = new System.Windows.Forms.TextBox();
             this.staffEditWardAnimalLabel = new System.Windows.Forms.Label();
+            this.pauseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // horseButton
@@ -172,7 +173,7 @@ namespace HitsZoo
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.timeLabel.Location = new System.Drawing.Point(1814, 9);
+            this.timeLabel.Location = new System.Drawing.Point(1793, 9);
             this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(97, 29);
@@ -183,7 +184,7 @@ namespace HitsZoo
             // 
             this.timeShowLabel.AutoSize = true;
             this.timeShowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.timeShowLabel.Location = new System.Drawing.Point(1853, 44);
+            this.timeShowLabel.Location = new System.Drawing.Point(1793, 45);
             this.timeShowLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeShowLabel.Name = "timeShowLabel";
             this.timeShowLabel.Size = new System.Drawing.Size(27, 29);
@@ -658,11 +659,22 @@ namespace HitsZoo
             this.staffEditWardAnimalLabel.TabIndex = 68;
             this.staffEditWardAnimalLabel.Text = "Id животного:";
             // 
+            // pauseButton
+            // 
+            this.pauseButton.Location = new System.Drawing.Point(1798, 88);
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Size = new System.Drawing.Size(113, 38);
+            this.pauseButton.TabIndex = 69;
+            this.pauseButton.Text = "Пауза";
+            this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.Click += new System.EventHandler(this.PauseButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 847);
+            this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.staffEditWardAnimalLabel);
             this.Controls.Add(this.textBoxStaffEditWardAnimal);
             this.Controls.Add(this.textBoxStaffDeleteId);
@@ -798,6 +810,7 @@ namespace HitsZoo
         private System.Windows.Forms.TextBox textBoxStaffDeleteId;
         private System.Windows.Forms.TextBox textBoxStaffEditWardAnimal;
         private System.Windows.Forms.Label staffEditWardAnimalLabel;
+        private System.Windows.Forms.Button pauseButton;
     }
 }
 

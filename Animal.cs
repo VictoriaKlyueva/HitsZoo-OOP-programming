@@ -2,7 +2,7 @@
 
 namespace HitsZoo
 {
-    public class Animal
+    public abstract class Animal
     {
         public int Id { get; set; }
         public int CriticalHunger { get; set; }
@@ -43,15 +43,15 @@ namespace HitsZoo
 
         public void Edit(int criticalHunger, string voice)
         {
-            this.CriticalHunger = criticalHunger;
-            this.Voice = voice;
+            CriticalHunger = criticalHunger;
+            Voice = voice;
         }
 
         public Animal(int id, string voice, int criticalHunger=5)
         {   
-            this.Id = id;
-            this.Voice = voice;
-            this.CriticalHunger = criticalHunger;
+            Id = id;
+            Voice = voice;
+            CriticalHunger = criticalHunger;
         }
     }
 }

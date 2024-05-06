@@ -24,16 +24,30 @@ namespace HitsZoo
 
         private void Form1_Load(object sender, EventArgs e) { }
 
-        private Zoo zoo = new Zoo();
-        private int currentTime = 0;
+        private readonly Zoo zoo = new Zoo();
 
-        // Обработчик события Tick таймераы
+        private int currentTime = 0;
+        private bool pause = false;
+
+        private readonly string[] pauseButtonTexts = { "Пауза", "Продолжить" };
+
+        // Обработчик события Tick таймера
         private void Timer_Tick(object sender, EventArgs e)
         {
-            currentTime += 1;
-            timeShowLabel.Text = currentTime.ToString();
-            zoo.Update();
+            if (!pause)
+            {
+                currentTime += 1;
+                timeShowLabel.Text = currentTime.ToString();
+                zoo.Update();
+            }
+
             zoo.PrintStatus(textBoxZoo, textBoxAnimals, textBoxPersons);
+        }
+
+        private void PauseButton_Click(object sender, EventArgs e)
+        {
+            pause = !pause;
+            pauseButton.Text = pauseButtonTexts[Convert.ToInt32(pause)];
         }
 
         // Создание коня
