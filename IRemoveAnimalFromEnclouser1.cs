@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace HitsZoo
 {
-    public interface IEnclouser
+    internal interface IRemoveAnimalFromEnclouser1
     {
-        void AddAnimal(Animal animal);
-
-        void RemoveAnimal(Animal animal);
-
+        void RemoveAnimalFromEnclouser();
     }
 }

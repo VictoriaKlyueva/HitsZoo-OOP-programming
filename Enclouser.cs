@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace HitsZoo
 {
@@ -20,9 +21,16 @@ namespace HitsZoo
             return result +  $"Еды: {food} \n";
         }
 
-        public void addAnimal(Animal animal)
+        public void AddAnimal(Animal animal)
         {
             animals.Add(animal);
+        }
+
+        public void RemoveAnimal(Animal animal)
+        {
+            Console.WriteLine(animal.Id);
+            Console.WriteLine(Id);
+            animals.Remove(animal);
         }
 
         public Enclouser(int id, Animal animal) 

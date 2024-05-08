@@ -54,11 +54,12 @@ namespace HitsZoo
             return Id.ToString(); 
         }
 
-        public Animal(int id, string voice, int criticalHunger=5)
+        public Animal(int id, string voice, int enclouserId, int criticalHunger=5)
         {   
             Id = id;
             Voice = voice;
             CriticalHunger = criticalHunger;
+            EnclouserId = enclouserId;
         }
     }
 }

@@ -12,11 +12,11 @@ namespace HitsZoo
         {
             string hungerStatus = (IsHungry) ? "Голоден" : "Сыт";
             return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
-                   $"Голод: {CurrentHunger} {hungerStatus}";
+                   $"Голод: {CurrentHunger} {hungerStatus} Вольер: {EnclouserId}";
         }
 
-        public Capybara(int id, string voice, int criticalHunger=10) :
-               base(id, voice, criticalHunger)
+        public Capybara(int id, string voice, int enclouserId, int criticalHunger=10) :
+               base(id, voice, enclouserId, criticalHunger)
         { }
     }
 }

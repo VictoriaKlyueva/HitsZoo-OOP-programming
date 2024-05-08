@@ -30,18 +30,18 @@ namespace HitsZoo
 
                 if (choice == 0)
                 {
-                    AddAnimal(new Horse(currentAnimalId, "Я дефолтная лошадь"), 
-                              i < enclousersNumber, rnd.Next(0, enclousersNumber));
+                    AddAnimal(new Horse(currentAnimalId, "Я дефолтная лошадь", 
+                              rnd.Next(0, enclousersNumber)), i < enclousersNumber);
                 }
                 else if (choice == 1)
                 {
-                    AddAnimal(new Capybara(currentAnimalId, "Я дефолтная капибара"),
-                              i < enclousersNumber, rnd.Next(0, enclousersNumber));
+                    AddAnimal(new Capybara(currentAnimalId, "Я дефолтная капибара", 
+                              rnd.Next(0, enclousersNumber)), i < enclousersNumber);
                 }
                 else
                 {
-                    AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс"),
-                              i < enclousersNumber, rnd.Next(0, enclousersNumber));
+                    AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс", 
+                        rnd.Next(0, enclousersNumber)), i < enclousersNumber);
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace HitsZoo
             EnclousersCount++;
         }
 
-        public void AddAnimal(Horse horse, bool newEnclouser, int enclouserId)
+        public void AddAnimal(Horse horse, bool newEnclouser)
         {
             animalsArray[AnimalsCount] = horse;
             currentAnimalId++;
@@ -66,11 +66,11 @@ namespace HitsZoo
             }
             else
             {
-                FindEnclouserById(enclouserId).addAnimal(horse);
+                FindEnclouserById(horse.EnclouserId).AddAnimal(horse);
             }
         }
 
-        public void AddAnimal(Capybara capybara, bool newEnclouser, int enclouserId)
+        public void AddAnimal(Capybara capybara, bool newEnclouser)
         {
             animalsArray[AnimalsCount] = capybara;
             currentAnimalId++;
@@ -82,11 +82,11 @@ namespace HitsZoo
             }
             else
             {
-                FindEnclouserById(enclouserId).addAnimal(capybara);
+                FindEnclouserById(capybara.EnclouserId).AddAnimal(capybara);
             }
         }
 
-        public void AddAnimal(Bars bars, bool newEnclouser, int enclouserId)
+        public void AddAnimal(Bars bars, bool newEnclouser)
         {
             animalsArray[AnimalsCount] = bars;
             currentAnimalId++;
@@ -98,11 +98,11 @@ namespace HitsZoo
             }
             else
             {
-                FindEnclouserById(enclouserId).addAnimal(bars);
+                FindEnclouserById(bars.EnclouserId).AddAnimal(bars);
             }
         }
 
-        Enclouser FindEnclouserById(int id)
+        public Enclouser FindEnclouserById(int id)
         {
             for (int i = 0; i < EnclousersCount; i++)
             {
@@ -119,6 +119,11 @@ namespace HitsZoo
         {
             animalsArray = animalsArray.Where(val => val != animalForRemoving).ToArray();
             AnimalsCount--;
+        }
+
+        public void RemoveAnimalFromEnclouser(Animal animal, Enclouser enclouser)
+        {
+            enclouser.RemoveAnimal(animal);
         }
 
         public void AddVisitor(string name, int age)

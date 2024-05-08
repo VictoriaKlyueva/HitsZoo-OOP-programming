@@ -42,15 +42,6 @@ namespace HitsZoo
             }
 
             zoo.PrintStatus(textBoxZoo, textBoxAnimals, textBoxPersons, textBoxEnclousersStatus);
-
-            Console.WriteLine(zoo.EnclousersCount);
-
-            /*
-            for (int i = 0; i < zoo.EnclousersCount; i++)
-            {
-                Console.WriteLine(zoo.enclousersArray[i]);
-            }
-            */
         }
 
         private void PauseButton_Click(object sender, EventArgs e)
@@ -64,7 +55,7 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
-            zoo.AddAnimal(new Horse(zoo.currentAnimalId, voice), enclouserCheckBox.Checked, enclouserId);
+            zoo.AddAnimal(new Horse(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
         }
 
         // Создание капибары
@@ -72,7 +63,7 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
-            zoo.AddAnimal(new Capybara(zoo.currentAnimalId, voice), enclouserCheckBox.Checked, enclouserId);
+            zoo.AddAnimal(new Capybara(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
         }
 
         // Создание кыргызского барса
@@ -80,7 +71,7 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
-            zoo.AddAnimal(new Bars(zoo.currentAnimalId, voice), enclouserCheckBox.Checked, enclouserId);
+            zoo.AddAnimal(new Bars(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
         }
 
         // Создание работника
@@ -183,7 +174,9 @@ namespace HitsZoo
         {
             try {
                 int id = Convert.ToInt32(textBoxAnimalDeleteId.Text);
-                zoo.RemoveAnimal(zoo.FindAnimalById(id));
+                Animal currentAnimal = zoo.FindAnimalById(id);
+                zoo.RemoveAnimal(currentAnimal);
+                zoo.RemoveAnimalFromEnclouser(currentAnimal, zoo.FindEnclouserById(currentAnimal.EnclouserId));
                 textBoxAnimalDeleteId.Text = "";
             }
             catch
