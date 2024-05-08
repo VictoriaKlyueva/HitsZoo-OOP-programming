@@ -63,21 +63,24 @@ namespace HitsZoo
         private void HorseButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            zoo.AddHorse(voice, enclouserCheckBox.Checked);
+            int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
+            zoo.AddHorse(voice, enclouserCheckBox.Checked, enclouserId);
         }
 
         // Создание капибары
         private void CapybaraButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            zoo.AddCapybara(voice, enclouserCheckBox.Checked);
+            int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
+            zoo.AddCapybara(voice, enclouserCheckBox.Checked, enclouserId);
         }
 
         // Создание кыргызского барса
         private void BarsButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            zoo.AddBars(voice, enclouserCheckBox.Checked);
+            int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
+            zoo.AddBars(voice, enclouserCheckBox.Checked, enclouserId);
         }
 
         // Создание работника

@@ -98,6 +98,8 @@ namespace HitsZoo
             this.enclouserCheckBox = new System.Windows.Forms.CheckBox();
             this.EnclousersStatusLabel = new System.Windows.Forms.Label();
             this.textBoxEnclousersStatus = new System.Windows.Forms.TextBox();
+            this.textBoxEnclouserId = new System.Windows.Forms.TextBox();
+            this.EnclouserForAddingLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // horseButton
@@ -233,7 +235,7 @@ namespace HitsZoo
             this.textBoxVoice.Location = new System.Drawing.Point(76, 89);
             this.textBoxVoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxVoice.Name = "textBoxVoice";
-            this.textBoxVoice.Size = new System.Drawing.Size(393, 22);
+            this.textBoxVoice.Size = new System.Drawing.Size(239, 22);
             this.textBoxVoice.TabIndex = 13;
             // 
             // label1
@@ -735,11 +737,30 @@ namespace HitsZoo
             this.textBoxEnclousersStatus.Size = new System.Drawing.Size(1011, 390);
             this.textBoxEnclousersStatus.TabIndex = 72;
             // 
+            // textBoxEnclouserId
+            // 
+            this.textBoxEnclouserId.Location = new System.Drawing.Point(404, 89);
+            this.textBoxEnclouserId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxEnclouserId.Name = "textBoxEnclouserId";
+            this.textBoxEnclouserId.Size = new System.Drawing.Size(66, 22);
+            this.textBoxEnclouserId.TabIndex = 73;
+            // 
+            // EnclouserForAddingLabel
+            // 
+            this.EnclouserForAddingLabel.AutoSize = true;
+            this.EnclouserForAddingLabel.Location = new System.Drawing.Point(322, 92);
+            this.EnclouserForAddingLabel.Name = "EnclouserForAddingLabel";
+            this.EnclouserForAddingLabel.Size = new System.Drawing.Size(76, 16);
+            this.EnclouserForAddingLabel.TabIndex = 75;
+            this.EnclouserForAddingLabel.Text = "Id вольера";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1138);
+            this.Controls.Add(this.EnclouserForAddingLabel);
+            this.Controls.Add(this.textBoxEnclouserId);
             this.Controls.Add(this.textBoxEnclousersStatus);
             this.Controls.Add(this.EnclousersStatusLabel);
             this.Controls.Add(this.enclouserCheckBox);
@@ -883,6 +904,8 @@ namespace HitsZoo
         private System.Windows.Forms.CheckBox enclouserCheckBox;
         private System.Windows.Forms.Label EnclousersStatusLabel;
         private System.Windows.Forms.TextBox textBoxEnclousersStatus;
+        private System.Windows.Forms.TextBox textBoxEnclouserId;
+        private System.Windows.Forms.Label EnclouserForAddingLabel;
     }
 }
 

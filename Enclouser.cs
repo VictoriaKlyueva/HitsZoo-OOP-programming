@@ -19,7 +19,7 @@ namespace HitsZoo
 
         public string Print()
         {
-            string result = "Animals: ";
+            string result = $"ID: {Id} Animals: ";
             for (int i = 0; i < animals.Count; i++)
             {
                 result += animals[i].ToString() + " ";

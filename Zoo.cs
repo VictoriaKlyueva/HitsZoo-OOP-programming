@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using System.Linq;
 
 namespace HitsZoo
@@ -29,7 +28,7 @@ namespace HitsZoo
             EnclousersCount++;
         }
 
-        public void AddHorse(string voice, bool newEnclouser)
+        public void AddHorse(string voice, bool newEnclouser, int enclouserId)
         {
             Horse horse = new Horse(currentAnimalId, voice);
             animalsArray[AnimalsCount] = horse;
@@ -40,11 +39,11 @@ namespace HitsZoo
             {
                 AddEnclouser(horse);
             } else {
-                enclousersArray[EnclousersCount - 1].addAnimal(horse);
+                FindEnclouserById(enclouserId).addAnimal(horse);
             }
         }
 
-        public void AddCapybara(string voice, bool newEnclouser)
+        public void AddCapybara(string voice, bool newEnclouser, int enclouserId)
         {
             Capybara capybara = new Capybara(currentAnimalId, voice);
             animalsArray[AnimalsCount] = capybara;
@@ -55,11 +54,11 @@ namespace HitsZoo
             {
                 AddEnclouser(capybara);
             } else {
-                enclousersArray[EnclousersCount - 1].addAnimal(capybara);
+                FindEnclouserById(enclouserId).addAnimal(capybara);
             }
         }
 
-        public void AddBars(string voice, bool newEnclouser)
+        public void AddBars(string voice, bool newEnclouser, int enclouserId)
         {
             Bars bars = new Bars(currentAnimalId, voice);
             animalsArray[AnimalsCount] = bars;
@@ -70,8 +69,21 @@ namespace HitsZoo
             {
                 AddEnclouser(bars);
             } else {
-                enclousersArray[EnclousersCount - 1].addAnimal(bars);
+                FindEnclouserById(enclouserId).addAnimal(bars);
             }
+        }
+
+        Enclouser FindEnclouserById(int id)
+        {
+            for (int i = 0; i < EnclousersCount; i++)
+            {
+                if (enclousersArray[i].Id == id)
+                {
+                    return enclousersArray[i];
+                }
+            }
+
+            return null;
         }
 
         public void RemoveAnimal(Animal animalForRemoving)
