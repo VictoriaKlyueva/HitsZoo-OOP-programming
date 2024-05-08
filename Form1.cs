@@ -41,7 +41,16 @@ namespace HitsZoo
                 zoo.Update();
             }
 
-            zoo.PrintStatus(textBoxZoo, textBoxAnimals, textBoxPersons);
+            zoo.PrintStatus(textBoxZoo, textBoxAnimals, textBoxPersons, textBoxEnclousersStatus);
+
+            Console.WriteLine(zoo.EnclousersCount);
+
+            /*
+            for (int i = 0; i < zoo.EnclousersCount; i++)
+            {
+                Console.WriteLine(zoo.enclousersArray[i]);
+            }
+            */
         }
 
         private void PauseButton_Click(object sender, EventArgs e)
@@ -54,21 +63,21 @@ namespace HitsZoo
         private void HorseButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            zoo.AddHorse(voice);
+            zoo.AddHorse(voice, enclouserCheckBox.Checked);
         }
 
         // Создание капибары
         private void CapybaraButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            zoo.AddCapybara(voice);
+            zoo.AddCapybara(voice, enclouserCheckBox.Checked);
         }
 
         // Создание кыргызского барса
         private void BarsButton_Click(object sender, EventArgs e)
         {
             string voice = textBoxVoice.Text;
-            zoo.AddBars(voice);
+            zoo.AddBars(voice, enclouserCheckBox.Checked);
         }
 
         // Создание работника
@@ -211,6 +220,11 @@ namespace HitsZoo
         }
 
         private void textBoxZoo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

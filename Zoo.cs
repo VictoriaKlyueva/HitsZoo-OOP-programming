@@ -1,45 +1,77 @@
 ﻿using System;
-using System.Deployment.Application;
+using System.CodeDom;
 using System.Linq;
 
 namespace HitsZoo
 {
-    public class Zoo
+    public class Zoo : IAddEnclouser
     {
         private Animal[] animalsArray = new Animal[100];
         private Person[] visitorsArray = new Person[100];
         private Staff[] staffArray = new Staff[100];
+        private Enclouser[] enclousersArray = new Enclouser[100];
 
         private int currentAnimalId = 0;
         private int currentStaffId = 0;
         private int currentVisitorId = 0;
+        private int currentEnclouserId = 0;
 
         public int AnimalsCount { get; set; } = 0;
         public int VisitorsCount { get; set; } = 0;
         public int StaffCount { get; set; } = 0;
+        public int EnclousersCount { get; set; } = 0;
 
-        public void AddHorse(string voice)
+        public void AddEnclouser(Animal animal)
+        {
+            Enclouser enclouser = new Enclouser(currentEnclouserId, animal);
+            enclousersArray[EnclousersCount] = enclouser;
+            currentEnclouserId++;
+            EnclousersCount++;
+        }
+
+        public void AddHorse(string voice, bool newEnclouser)
         {
             Horse horse = new Horse(currentAnimalId, voice);
             animalsArray[AnimalsCount] = horse;
             currentAnimalId++;
             AnimalsCount++;
+
+            if (newEnclouser)
+            {
+                AddEnclouser(horse);
+            } else {
+                enclousersArray[EnclousersCount - 1].addAnimal(horse);
+            }
         }
 
-        public void AddCapybara(string voice)
+        public void AddCapybara(string voice, bool newEnclouser)
         {
             Capybara capybara = new Capybara(currentAnimalId, voice);
             animalsArray[AnimalsCount] = capybara;
             currentAnimalId++;
             AnimalsCount++;
+
+            if (newEnclouser)
+            {
+                AddEnclouser(capybara);
+            } else {
+                enclousersArray[EnclousersCount - 1].addAnimal(capybara);
+            }
         }
 
-        public void AddBars(string voice)
+        public void AddBars(string voice, bool newEnclouser)
         {
             Bars bars = new Bars(currentAnimalId, voice);
             animalsArray[AnimalsCount] = bars;
             currentAnimalId++;
             AnimalsCount++;
+
+            if (newEnclouser)
+            {
+                AddEnclouser(bars);
+            } else {
+                enclousersArray[EnclousersCount - 1].addAnimal(bars);
+            }
         }
 
         public void RemoveAnimal(Animal animalForRemoving)
@@ -50,7 +82,7 @@ namespace HitsZoo
 
         public void AddVisitor(string name, int age)
         {
-            Person visitor = new Person(currentVisitorId, name, age);
+            Visitor visitor = new Visitor(currentVisitorId, name, age);
             visitorsArray[VisitorsCount] = visitor;
             currentVisitorId++;
             VisitorsCount++;
@@ -142,7 +174,7 @@ namespace HitsZoo
         {
             for (int i = 0; i < VisitorsCount; i++)
             {
-                if (visitorsArray[i].id == id) return visitorsArray[i];
+                if (visitorsArray[i].Id == id) return visitorsArray[i];
             }
             return null;
         }
@@ -151,7 +183,7 @@ namespace HitsZoo
         {
             for (int i = 0; i < StaffCount; i++)
             {
-                if (staffArray[i].id == id) return staffArray[i];
+                if (staffArray[i].Id == id) return staffArray[i];
             }
             return null;
         }
@@ -182,14 +214,26 @@ namespace HitsZoo
             }
         }
 
+        private void PrintEnclousers(System.Windows.Forms.TextBox textBox)
+        {
+            textBox.Text = "";
+            for (int i = 0; i < EnclousersCount; i++)
+            {
+                textBox.Text += enclousersArray[i].Print();
+                textBox.AppendText(Environment.NewLine);
+            }
+        }
+
         public void PrintStatus(System.Windows.Forms.TextBox textBoxZoo,
                           System.Windows.Forms.TextBox textBoxAnimals,
-                          System.Windows.Forms.TextBox textBoxPersons)
+                          System.Windows.Forms.TextBox textBoxPersons,
+                          System.Windows.Forms.TextBox textBoxEnclousers)
         {
             textBoxZoo.Text = $"Животных: {AnimalsCount}   Работников: {StaffCount}   Посетителей: {VisitorsCount}   ";
 
             PrintAnimals(textBoxAnimals);
             PrintPersons(textBoxPersons);
+            PrintEnclousers(textBoxEnclousers);
         }
     }
 }

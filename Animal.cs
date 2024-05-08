@@ -11,6 +11,8 @@ namespace HitsZoo
         public string Voice { get; set; } = "meow";
         public bool IsFree { get; set; } = true;
 
+        public int EnclouserId { get; set; } = -1;
+
         public void Update()
         {
             CurrentHunger += 1;
@@ -45,6 +47,11 @@ namespace HitsZoo
         {
             CriticalHunger = criticalHunger;
             Voice = voice;
+        }
+
+        public override string ToString()
+        {
+            return Id.ToString(); 
         }
 
         public Animal(int id, string voice, int criticalHunger=5)

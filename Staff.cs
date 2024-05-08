@@ -33,8 +33,8 @@ namespace HitsZoo
 
         public override string Print()
         {
-            return $"ID: {id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Имя: {name} " +
-                              $" Возраст: {age} Должность: {occupation} Животное: {wardAnimalId} \n";
+            return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Имя: {Name} " +
+                              $" Возраст: {Age} Должность: {occupation} Животное: {wardAnimalId} \n";
         }
     }
 }
