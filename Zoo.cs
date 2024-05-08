@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HitsZoo
@@ -10,7 +11,7 @@ namespace HitsZoo
         private Staff[] staffArray = new Staff[100];
         private Enclouser[] enclousersArray = new Enclouser[100];
 
-        private int currentAnimalId = 0;
+        public int currentAnimalId = 0;
         private int currentStaffId = 0;
         private int currentVisitorId = 0;
         private int currentEnclouserId = 0;
@@ -19,6 +20,31 @@ namespace HitsZoo
         public int VisitorsCount { get; set; } = 0;
         public int StaffCount { get; set; } = 0;
         public int EnclousersCount { get; set; } = 0;
+             
+        private void GenerateAnimals(int enclousersNumber, int animalsNumber)
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < animalsNumber; i++)
+            {
+                int choice = rnd.Next(0, 2);
+
+                if (choice == 0)
+                {
+                    AddAnimal(new Horse(currentAnimalId, "Я дефолтная лошадь"), 
+                              i < enclousersNumber, rnd.Next(0, enclousersNumber));
+                }
+                else if (choice == 1)
+                {
+                    AddAnimal(new Capybara(currentAnimalId, "Я дефолтная капибара"),
+                              i < enclousersNumber, rnd.Next(0, enclousersNumber));
+                }
+                else
+                {
+                    AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс"),
+                              i < enclousersNumber, rnd.Next(0, enclousersNumber));
+                }
+            }
+        }
 
         public void AddEnclouser(Animal animal)
         {
@@ -28,9 +54,8 @@ namespace HitsZoo
             EnclousersCount++;
         }
 
-        public void AddHorse(string voice, bool newEnclouser, int enclouserId)
+        public void AddAnimal(Horse horse, bool newEnclouser, int enclouserId)
         {
-            Horse horse = new Horse(currentAnimalId, voice);
             animalsArray[AnimalsCount] = horse;
             currentAnimalId++;
             AnimalsCount++;
@@ -38,14 +63,15 @@ namespace HitsZoo
             if (newEnclouser)
             {
                 AddEnclouser(horse);
-            } else {
+            }
+            else
+            {
                 FindEnclouserById(enclouserId).addAnimal(horse);
             }
         }
 
-        public void AddCapybara(string voice, bool newEnclouser, int enclouserId)
+        public void AddAnimal(Capybara capybara, bool newEnclouser, int enclouserId)
         {
-            Capybara capybara = new Capybara(currentAnimalId, voice);
             animalsArray[AnimalsCount] = capybara;
             currentAnimalId++;
             AnimalsCount++;
@@ -53,14 +79,15 @@ namespace HitsZoo
             if (newEnclouser)
             {
                 AddEnclouser(capybara);
-            } else {
+            }
+            else
+            {
                 FindEnclouserById(enclouserId).addAnimal(capybara);
             }
         }
 
-        public void AddBars(string voice, bool newEnclouser, int enclouserId)
+        public void AddAnimal(Bars bars, bool newEnclouser, int enclouserId)
         {
-            Bars bars = new Bars(currentAnimalId, voice);
             animalsArray[AnimalsCount] = bars;
             currentAnimalId++;
             AnimalsCount++;
@@ -68,7 +95,9 @@ namespace HitsZoo
             if (newEnclouser)
             {
                 AddEnclouser(bars);
-            } else {
+            }
+            else
+            {
                 FindEnclouserById(enclouserId).addAnimal(bars);
             }
         }
@@ -246,6 +275,11 @@ namespace HitsZoo
             PrintAnimals(textBoxAnimals);
             PrintPersons(textBoxPersons);
             PrintEnclousers(textBoxEnclousers);
+        }
+
+        public Zoo ()
+        {
+            GenerateAnimals(3, 15);
         }
     }
 }

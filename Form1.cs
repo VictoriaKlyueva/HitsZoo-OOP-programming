@@ -64,7 +64,7 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
-            zoo.AddHorse(voice, enclouserCheckBox.Checked, enclouserId);
+            zoo.AddAnimal(new Horse(zoo.currentAnimalId, voice), enclouserCheckBox.Checked, enclouserId);
         }
 
         // Создание капибары
@@ -72,7 +72,7 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
-            zoo.AddCapybara(voice, enclouserCheckBox.Checked, enclouserId);
+            zoo.AddAnimal(new Capybara(zoo.currentAnimalId, voice), enclouserCheckBox.Checked, enclouserId);
         }
 
         // Создание кыргызского барса
@@ -80,7 +80,7 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
-            zoo.AddBars(voice, enclouserCheckBox.Checked, enclouserId);
+            zoo.AddAnimal(new Bars(zoo.currentAnimalId, voice), enclouserCheckBox.Checked, enclouserId);
         }
 
         // Создание работника

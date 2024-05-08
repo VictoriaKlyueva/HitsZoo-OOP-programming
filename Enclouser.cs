@@ -1,11 +1,4 @@
-﻿using HitsZoo;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace HitsZoo
 {
@@ -13,7 +6,6 @@ namespace HitsZoo
     {
         public int Id { get; set; }
         private List<Animal> animals = new List<Animal>();
-        private int animalsCount = 0;
         private int size;
         private int food = 0;
 
