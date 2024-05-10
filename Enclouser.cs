@@ -3,12 +3,27 @@ using System.Collections.Generic;
 
 namespace HitsZoo
 {
-    public class Enclouser: IEnclouser
+    public class Enclouser: IEnclouser, IFood
     {
         public int Id { get; set; }
         private List<Animal> animals = new List<Animal>();
         private int size;
         private int food = 0;
+
+        public void Feed()
+        {
+            food -= 1;
+        }
+
+        public bool IsFoodEmpty()
+        {
+            return food == 0;
+        }
+
+        public void UpdateFood(int food)
+        {
+            this.food = food;
+        }
 
         public string Print()
         {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace HitsZoo
 {
@@ -11,6 +7,5 @@ namespace HitsZoo
         void AddAnimal(Animal animal);
 
         void RemoveAnimal(Animal animal);
-
     }
 }

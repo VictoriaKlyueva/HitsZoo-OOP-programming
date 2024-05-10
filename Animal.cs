@@ -26,7 +26,7 @@ namespace HitsZoo
             }
         }
 
-        public void Feed()
+        public void Eat()
         {
             CurrentHunger = 0;
             IsHungry = false;

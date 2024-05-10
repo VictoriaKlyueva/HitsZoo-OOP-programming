@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Numerics;
-using System.Windows;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Xml.Linq;
 
 namespace HitsZoo
 {
@@ -143,7 +131,7 @@ namespace HitsZoo
                 string name = textBoxStaffNameEdit.Text;
                 int age = Convert.ToInt32(textBoxStaffAgeEdit.Text);
                 string occupation = textBoxOccupationEdit.Text;
-                int wardAnimalId = Convert.ToInt32(textBoxStaffEditWardAnimal.Text);
+                int wardAnimalId = Convert.ToInt32(textBoxStaffEditWardEnclouser.Text);
 
                 zoo.FindStaffById(id).Edit(name, age, occupation, wardAnimalId);
             }
@@ -221,6 +209,11 @@ namespace HitsZoo
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void staffEditWardAnimalLabel_Click(object sender, EventArgs e)
         {
 
         }

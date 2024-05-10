@@ -79,6 +79,7 @@
     <Compile Include="Horse.cs" />
     <Compile Include="IAddEnclouser.cs" />
     <Compile Include="IEnclouser.cs" />
+    <Compile Include="IFood.cs" />
     <Compile Include="IRemoveAnimalFromEnclouser1.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />

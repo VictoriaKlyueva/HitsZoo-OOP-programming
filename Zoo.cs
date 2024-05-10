@@ -172,13 +172,22 @@ namespace HitsZoo
         {
             for (int i = 0; i < AnimalsCount; i++)
             {
+                Enclouser currentEnclouser = FindEnclouserById(animalsArray[i].EnclouserId);
+
+                // Обновление количества еды
+                if (animalsArray[i].IsHungry && !currentEnclouser.IsFoodEmpty())
+                {
+                    animalsArray[i].Eat();
+                    currentEnclouser.Feed();
+                }
+
                 animalsArray[i].Update();
 
-                // Обновление статуса животного, если его закрепили или открепили
+                // Обновление статуса вольера, если его закрепили или открепили
                 bool found = false;
                 for (int j = 0; j < StaffCount; j++)
                 {
-                    if (staffArray[j].wardAnimalId == animalsArray[i].Id)
+                    if (staffArray[j].wardEnclouserId == animalsArray[i].Id)
                     {
                         animalsArray[i].IsFree = false;
                         found = true;
@@ -195,9 +204,9 @@ namespace HitsZoo
         {
             for (int i = 0; i < StaffCount; i++)
             {   
-                if (staffArray[i].wardAnimalId != -1)
+                if (staffArray[i].wardEnclouserId != -1)
                 {
-                    staffArray[i].Update(FindAnimalById(staffArray[i].wardAnimalId));
+                    staffArray[i].Update(FindEnclouserById(staffArray[i].wardEnclouserId));
                 }
             }
         }

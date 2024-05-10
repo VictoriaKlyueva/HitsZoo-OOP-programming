@@ -92,8 +92,8 @@ namespace HitsZoo
             this.staffDeleteButton = new System.Windows.Forms.Button();
             this.staffDeleteIdLabel = new System.Windows.Forms.Label();
             this.textBoxStaffDeleteId = new System.Windows.Forms.TextBox();
-            this.textBoxStaffEditWardAnimal = new System.Windows.Forms.TextBox();
-            this.staffEditWardAnimalLabel = new System.Windows.Forms.Label();
+            this.textBoxStaffEditWardEnclouser = new System.Windows.Forms.TextBox();
+            this.staffEditWardEnclouserLabel = new System.Windows.Forms.Label();
             this.pauseButton = new System.Windows.Forms.Button();
             this.enclouserCheckBox = new System.Windows.Forms.CheckBox();
             this.EnclousersStatusLabel = new System.Windows.Forms.Label();
@@ -105,7 +105,7 @@ namespace HitsZoo
             // horseButton
             // 
             this.horseButton.Location = new System.Drawing.Point(13, 46);
-            this.horseButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.horseButton.Margin = new System.Windows.Forms.Padding(4);
             this.horseButton.Name = "horseButton";
             this.horseButton.Size = new System.Drawing.Size(147, 36);
             this.horseButton.TabIndex = 0;
@@ -116,7 +116,7 @@ namespace HitsZoo
             // capybaraButton
             // 
             this.capybaraButton.Location = new System.Drawing.Point(323, 46);
-            this.capybaraButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.capybaraButton.Margin = new System.Windows.Forms.Padding(4);
             this.capybaraButton.Name = "capybaraButton";
             this.capybaraButton.Size = new System.Drawing.Size(147, 36);
             this.capybaraButton.TabIndex = 1;
@@ -127,7 +127,7 @@ namespace HitsZoo
             // barsButton
             // 
             this.barsButton.Location = new System.Drawing.Point(168, 46);
-            this.barsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barsButton.Margin = new System.Windows.Forms.Padding(4);
             this.barsButton.Name = "barsButton";
             this.barsButton.Size = new System.Drawing.Size(147, 36);
             this.barsButton.TabIndex = 2;
@@ -138,7 +138,7 @@ namespace HitsZoo
             // staffButton
             // 
             this.staffButton.Location = new System.Drawing.Point(13, 122);
-            this.staffButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.staffButton.Margin = new System.Windows.Forms.Padding(4);
             this.staffButton.Name = "staffButton";
             this.staffButton.Size = new System.Drawing.Size(203, 36);
             this.staffButton.TabIndex = 3;
@@ -149,7 +149,7 @@ namespace HitsZoo
             // visitorButton
             // 
             this.visitorButton.Location = new System.Drawing.Point(224, 120);
-            this.visitorButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.visitorButton.Margin = new System.Windows.Forms.Padding(4);
             this.visitorButton.Name = "visitorButton";
             this.visitorButton.Size = new System.Drawing.Size(147, 36);
             this.visitorButton.TabIndex = 4;
@@ -677,22 +677,23 @@ namespace HitsZoo
             this.textBoxStaffDeleteId.Size = new System.Drawing.Size(64, 22);
             this.textBoxStaffDeleteId.TabIndex = 66;
             // 
-            // textBoxStaffEditWardAnimal
+            // textBoxStaffEditWardEnclouser
             // 
-            this.textBoxStaffEditWardAnimal.Location = new System.Drawing.Point(570, 476);
-            this.textBoxStaffEditWardAnimal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxStaffEditWardAnimal.Name = "textBoxStaffEditWardAnimal";
-            this.textBoxStaffEditWardAnimal.Size = new System.Drawing.Size(100, 22);
-            this.textBoxStaffEditWardAnimal.TabIndex = 67;
+            this.textBoxStaffEditWardEnclouser.Location = new System.Drawing.Point(570, 476);
+            this.textBoxStaffEditWardEnclouser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxStaffEditWardEnclouser.Name = "textBoxStaffEditWardEnclouser";
+            this.textBoxStaffEditWardEnclouser.Size = new System.Drawing.Size(100, 22);
+            this.textBoxStaffEditWardEnclouser.TabIndex = 67;
             // 
-            // staffEditWardAnimalLabel
+            // staffEditWardEnclouserLabel
             // 
-            this.staffEditWardAnimalLabel.AutoSize = true;
-            this.staffEditWardAnimalLabel.Location = new System.Drawing.Point(470, 479);
-            this.staffEditWardAnimalLabel.Name = "staffEditWardAnimalLabel";
-            this.staffEditWardAnimalLabel.Size = new System.Drawing.Size(94, 16);
-            this.staffEditWardAnimalLabel.TabIndex = 68;
-            this.staffEditWardAnimalLabel.Text = "Id животного:";
+            this.staffEditWardEnclouserLabel.AutoSize = true;
+            this.staffEditWardEnclouserLabel.Location = new System.Drawing.Point(470, 479);
+            this.staffEditWardEnclouserLabel.Name = "staffEditWardEnclouserLabel";
+            this.staffEditWardEnclouserLabel.Size = new System.Drawing.Size(79, 16);
+            this.staffEditWardEnclouserLabel.TabIndex = 68;
+            this.staffEditWardEnclouserLabel.Text = "Id вольера:";
+            this.staffEditWardEnclouserLabel.Click += new System.EventHandler(this.staffEditWardAnimalLabel_Click);
             // 
             // pauseButton
             // 
@@ -765,8 +766,8 @@ namespace HitsZoo
             this.Controls.Add(this.EnclousersStatusLabel);
             this.Controls.Add(this.enclouserCheckBox);
             this.Controls.Add(this.pauseButton);
-            this.Controls.Add(this.staffEditWardAnimalLabel);
-            this.Controls.Add(this.textBoxStaffEditWardAnimal);
+            this.Controls.Add(this.staffEditWardEnclouserLabel);
+            this.Controls.Add(this.textBoxStaffEditWardEnclouser);
             this.Controls.Add(this.textBoxStaffDeleteId);
             this.Controls.Add(this.staffDeleteIdLabel);
             this.Controls.Add(this.staffDeleteButton);
@@ -898,8 +899,8 @@ namespace HitsZoo
         private System.Windows.Forms.Button staffDeleteButton;
         private System.Windows.Forms.Label staffDeleteIdLabel;
         private System.Windows.Forms.TextBox textBoxStaffDeleteId;
-        private System.Windows.Forms.TextBox textBoxStaffEditWardAnimal;
-        private System.Windows.Forms.Label staffEditWardAnimalLabel;
+        private System.Windows.Forms.TextBox textBoxStaffEditWardEnclouser;
+        private System.Windows.Forms.Label staffEditWardEnclouserLabel;
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.CheckBox enclouserCheckBox;
         private System.Windows.Forms.Label EnclousersStatusLabel;

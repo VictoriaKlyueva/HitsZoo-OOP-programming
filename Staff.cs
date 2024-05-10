@@ -9,32 +9,32 @@ namespace HitsZoo
     public class Staff : Person
     {
         public string occupation;
-        public int wardAnimalId = -1;
-        public Staff(int id, string name, int age, string occupation, int wardAnimalId) : base(id, name, age)
+        public int wardEnclouserId = -1;
+        public Staff(int id, string name, int age, string occupation, int wardEnclouserId) : base(id, name, age)
         {
             this.occupation = occupation;
-            this.wardAnimalId = wardAnimalId;
+            this.wardEnclouserId = wardEnclouserId;
         }
 
-        public void Update(Animal animal)
+        public void Update(Enclouser enclouser)
         {
-            if (animal.IsHungry)
+            if (enclouser.IsFoodEmpty())
             {
-                animal.Feed();
+                enclouser.UpdateFood(10);
             }
         }
 
-        public void Edit(string name, int age, string occupation, int wardAnimalId)
+        public void Edit(string name, int age, string occupation, int wardEnclouserId)
         {
             Edit(name, age);
             this.occupation = occupation;
-            this.wardAnimalId = wardAnimalId;
+            this.wardEnclouserId = wardEnclouserId;
         }
 
         public override string Print()
         {
             return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Имя: {Name} " +
-                              $" Возраст: {Age} Должность: {occupation} Животное: {wardAnimalId} \n";
+                              $" Возраст: {Age} Должность: {occupation} Вольер: {wardEnclouserId} \n";
         }
     }
 }
