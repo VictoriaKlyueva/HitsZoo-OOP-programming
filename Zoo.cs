@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace HitsZoo
@@ -7,7 +6,7 @@ namespace HitsZoo
     public class Zoo : IAddEnclouser
     {
         private Animal[] animalsArray = new Animal[100];
-        private Person[] visitorsArray = new Person[100];
+        private Visitor[] visitorsArray = new Visitor[100];
         private Staff[] staffArray = new Staff[100];
         private Enclouser[] enclousersArray = new Enclouser[100];
 
@@ -20,6 +19,8 @@ namespace HitsZoo
         public int VisitorsCount { get; set; } = 0;
         public int StaffCount { get; set; } = 0;
         public int EnclousersCount { get; set; } = 0;
+
+        private Random doubleRandom = new Random();
              
         private void GenerateAnimals(int enclousersNumber, int animalsNumber)
         {
@@ -168,6 +169,25 @@ namespace HitsZoo
             return -1;
         }
 
+        public void ChangeSection(
+            Animal animal,
+            Enclouser enclouser
+            )
+        {
+            // Животное в открытой части
+            if (enclouser.OpenAnimals.Contains(animal))
+            {
+                enclouser.OpenAnimals.Remove(animal);
+                enclouser.ClosedAnimals.Add(animal);
+            }
+            // Животное в закрытой части
+            else
+            {
+                enclouser.ClosedAnimals.Remove(animal);
+                enclouser.OpenAnimals.Add(animal);
+            }
+        }
+
         private void UpdateAnimals()
         {
             for (int i = 0; i < AnimalsCount; i++)
@@ -197,6 +217,27 @@ namespace HitsZoo
                 {
                     animalsArray[i].IsFree = true;
                 }
+
+                // Перемещение животного в другую часть вольера
+                if (doubleRandom.NextDouble() < 0.05)
+                {
+                    ChangeSection(
+                        animalsArray[i],
+                        FindEnclouserById(animalsArray[i].EnclouserId)
+                    );
+                }
+            }
+        }
+
+        private void UpdateVisitors(double probaility)
+        {
+            for (int i = 0; i < VisitorsCount; i++)
+            {
+
+                if (doubleRandom.NextDouble() < probaility)
+                {
+                    visitorsArray[i].BuyFood();
+                }
             }
         }
 
@@ -215,6 +256,7 @@ namespace HitsZoo
         {
             UpdateAnimals();
             UpdateStaff();
+            UpdateVisitors(0.01);
         }
 
         public Animal FindAnimalById(int id)
