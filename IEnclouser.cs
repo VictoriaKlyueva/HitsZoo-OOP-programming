@@ -2,12 +2,12 @@
 
 namespace HitsZoo
 {
-    public interface IEnclouser: IClosedSection, IOpenSection
+    public interface IEnclouser<T>: IClosedSection<T>, IOpenSection<T> where T : Animal
     {
-        List<Animal> Animals { get; set; }
+        List<T> Animals { get; set; }
 
-        void AddAnimal(Animal animal);
+        void AddAnimal(T animal);
 
-        void RemoveAnimal(Animal animal);
+        void RemoveAnimal(T animal);
     }
 }

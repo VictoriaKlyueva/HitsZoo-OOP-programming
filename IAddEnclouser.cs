@@ -2,6 +2,9 @@
 {
     public interface IAddEnclouser
     {
-        void AddEnclouser(Animal animal);
+        void AddEnclouser(Horse animal);
+        void AddEnclouser(Capybara animal);
+        void AddEnclouser(Bars animal);
+
     }
 }

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace HitsZoo
 {
-    public class Enclouser: IEnclouser, IFood
+    public class Enclouser<T> : IEnclouser<T>, IFood where T : Animal
     {
         public int Id { get; set; }
         public int Food { get; set; }
 
-        private List<Animal> closedAnimals = new List<Animal>();
-        public List<Animal> ClosedAnimals { get => closedAnimals; set => closedAnimals = value; }
+        private List<T> closedAnimals = new List<T>();
+        public List<T> ClosedAnimals { get => closedAnimals; set => closedAnimals = value; }
 
-        private List<Animal> openAnimals = new List<Animal>();
-        public List<Animal> OpenAnimals { get => openAnimals; set => openAnimals = value; }
+        private List<T> openAnimals = new List<T>();
+        public List<T> OpenAnimals { get => openAnimals; set => openAnimals = value; }
 
-        private List<Animal> animals = new List<Animal>();
-        public List<Animal> Animals { get => animals; set => animals = value; }
+        private List<T> animals = new List<T>();
+        public List<T> Animals { get => animals; set => animals = value; }
 
         private int size;
 
@@ -34,15 +34,30 @@ namespace HitsZoo
             Food = food;
         }
 
-        public void AddAnimal(Animal animal)
-        {
-            animals.Add(animal);
-            ClosedAnimals.Add(animal);
+        public void AddAnimal(T animal)
+        {   
+            try
+            {
+                Animals.Add(animal);
+                ClosedAnimals.Add(animal);
+            }
+            catch
+            {
+                Console.WriteLine("Неверный тип животного!");
+            }
         }
 
-        public void RemoveAnimal(Animal animal)
+        public void RemoveAnimal(T animal)
         {
-            animals.Remove(animal);
+            Animals.Remove(animal);
+            if (ClosedAnimals.Contains(animal))
+            {
+                ClosedAnimals.Remove(animal);
+            }
+            else
+            {
+                OpenAnimals.Remove(animal);
+            }
         }
 
         public string Print()
@@ -67,14 +82,47 @@ namespace HitsZoo
                 result += ClosedAnimals[i].Id.ToString() + " ";
             }
 
-            return result + $"Еды: {Food} \n";
+            return result + $"Еды: {Food} Тип: {typeof(T)} \n";
         }
 
-        public Enclouser(int id, Animal animal) 
+        public Enclouser(int id, T animal) 
         {
             Id = id;
-            animals.Add(animal);
+            Animals.Add(animal);
             Food = 0;
+
+            if(typeof(T) == typeof(Horse))
+            {
+                size = 5;
+            }
+            else if (typeof(T) == typeof(Bars))
+            {
+                size = 10;
+            }
+            else
+            {
+                size = 15;
+            }
         }
+
+        // Неявные операторы преобразования из любого дочернего класса Animal
+        // к классу Animal для испоьзования в generic
+        
+        /*
+        public static implicit operator Enclouser<T>(Enclouser<Horse> v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static implicit operator Enclouser<T>(Enclouser<Capybara> v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static implicit operator Enclouser<T>(Enclouser<Bars> v)
+        {
+            throw new NotImplementedException();
+        }
+        */
     }
 }

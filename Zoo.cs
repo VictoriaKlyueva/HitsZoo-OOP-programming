@@ -8,7 +8,7 @@ namespace HitsZoo
         private Animal[] animalsArray = new Animal[100];
         private Visitor[] visitorsArray = new Visitor[100];
         private Staff[] staffArray = new Staff[100];
-        private Enclouser[] enclousersArray = new Enclouser[100];
+        private Enclouser<Animal>[] enclousersArray = new Enclouser<Animal>[100];
 
         public int currentAnimalId = 0;
         private int currentStaffId = 0;
@@ -48,12 +48,41 @@ namespace HitsZoo
             }
         }
 
-        public void AddEnclouser(Animal animal)
+        public void AddEnclouser(Horse animal)
         {
-            Enclouser enclouser = new Enclouser(currentEnclouserId, animal);
+            Enclouser<Horse> enclouser = new Enclouser<Horse>(currentEnclouserId, animal);
             enclousersArray[EnclousersCount] = enclouser;
             currentEnclouserId++;
             EnclousersCount++;
+        }
+
+        public void AddEnclouser(Capybara animal)
+        {
+            Enclouser<Capybara> enclouser = new Enclouser<Capybara>(currentEnclouserId, animal);
+            enclousersArray[EnclousersCount] = enclouser;
+            currentEnclouserId++;
+            EnclousersCount++;
+        }
+
+        public void AddEnclouser(Bars animal)
+        {
+            Enclouser<Bars> enclouser = new Enclouser<Bars>(currentEnclouserId, animal);
+            enclousersArray[EnclousersCount] = enclouser;
+            currentEnclouserId++;
+            EnclousersCount++;
+        }
+
+        public Enclouser<Animal> FindEnclouserById(int id)
+        {
+            for (int i = 0; i < EnclousersCount; i++)
+            {
+                if (enclousersArray[i].Id == id)
+                {
+                    return enclousersArray[i];
+                }
+            }
+
+            return null;
         }
 
         public void AddAnimal(Horse horse, bool newEnclouser)
@@ -104,26 +133,13 @@ namespace HitsZoo
             }
         }
 
-        public Enclouser FindEnclouserById(int id)
-        {
-            for (int i = 0; i < EnclousersCount; i++)
-            {
-                if (enclousersArray[i].Id == id)
-                {
-                    return enclousersArray[i];
-                }
-            }
-
-            return null;
-        }
-
         public void RemoveAnimal(Animal animalForRemoving)
         {
             animalsArray = animalsArray.Where(val => val != animalForRemoving).ToArray();
             AnimalsCount--;
         }
 
-        public void RemoveAnimalFromEnclouser(Animal animal, Enclouser enclouser)
+        public void RemoveAnimalFromEnclouser(Animal animal, IEnclouser<Animal> enclouser)
         {
             enclouser.RemoveAnimal(animal);
         }
@@ -170,9 +186,9 @@ namespace HitsZoo
         }
 
         public void ChangeSection(
-            Animal animal,
-            IOpenSection openEnclouser,
-            IClosedSection closedEnclouser
+                Animal animal,
+                IOpenSection<Animal> openEnclouser,
+                IClosedSection<Animal> closedEnclouser
             )
         {
             // Животное в открытой части
@@ -193,7 +209,7 @@ namespace HitsZoo
         {
             for (int i = 0; i < AnimalsCount; i++)
             {
-                Enclouser currentEnclouser = FindEnclouserById(animalsArray[i].EnclouserId);
+                Enclouser<Animal> currentEnclouser = FindEnclouserById(animalsArray[i].EnclouserId);
 
                 // Обновление количества еды
                 if (animalsArray[i].IsHungry && !currentEnclouser.IsFoodEmpty())
@@ -342,7 +358,7 @@ namespace HitsZoo
             PrintEnclousers(textBoxEnclousers);
         }
 
-        private Enclouser GetRandomEnclouser()
+        private Enclouser<Animal> GetRandomEnclouser()
         {
             int choice = random.Next(0, EnclousersCount - 1);
             return enclousersArray[choice];

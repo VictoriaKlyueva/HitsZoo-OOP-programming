@@ -15,7 +15,7 @@ namespace HitsZoo
             wallet = random.Next(10, 20);
         }
 
-        public void FeedAnimal(IEnclouser enclouser)
+        public void FeedAnimal(IEnclouser<Animal> enclouser)
         {
             List<Animal> visibleAnimals = SeeAnimals(enclouser);
 
@@ -29,7 +29,7 @@ namespace HitsZoo
             }
         }
 
-        public List<Animal> SeeAnimals(IEnclouser enclouser)
+        public List<Animal> SeeAnimals(IEnclouser<Animal> enclouser)
         {
             return enclouser.OpenAnimals;
         }

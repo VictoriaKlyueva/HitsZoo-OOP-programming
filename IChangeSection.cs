@@ -4,8 +4,8 @@
     {
         void ChangeSection(
                 Animal animal, 
-                IOpenSection openEnclouser, 
-                IClosedSection closedEnclouser
+                IOpenSection<Animal> openEnclouser, 
+                IClosedSection<Animal> closedEnclouser
             );
     }
 }

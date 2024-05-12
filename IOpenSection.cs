@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace HitsZoo
 {
-    public interface IOpenSection
+    public interface IOpenSection<T> where T : Animal
     {
-        List<Animal> OpenAnimals { get; set; }
+        List<T> OpenAnimals { get; set; }
     }
 }
