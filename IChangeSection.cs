@@ -1,11 +1,11 @@
 ﻿namespace HitsZoo
 {
-    internal interface IChangeSection
+    public interface IChangeSection
     {
         void ChangeSection(
-            Animal animal, 
-            IOpenEnclouser openEnclouser, 
-            IClosedEnclouser closedEnclouser
+                Animal animal, 
+                IOpenSection openEnclouser, 
+                IClosedSection closedEnclouser
             );
     }
 }

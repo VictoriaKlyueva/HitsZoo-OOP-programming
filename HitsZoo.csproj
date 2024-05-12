@@ -79,10 +79,10 @@
     <Compile Include="Horse.cs" />
     <Compile Include="IAddEnclouser.cs" />
     <Compile Include="IChangeSection.cs" />
-    <Compile Include="IClosedEnclouser.cs" />
+    <Compile Include="IClosedSection.cs" />
     <Compile Include="IEnclouser.cs" />
     <Compile Include="IFood.cs" />
-    <Compile Include="IOpenEnclouser.cs" />
+    <Compile Include="IOpenSection.cs" />
     <Compile Include="IRemoveAnimalFromEnclouser1.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />

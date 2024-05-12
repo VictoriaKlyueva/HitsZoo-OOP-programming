@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace HitsZoo
 {
-    public class Zoo : IAddEnclouser
+    public class Zoo : IAddEnclouser, IChangeSection
     {
         private Animal[] animalsArray = new Animal[100];
         private Visitor[] visitorsArray = new Visitor[100];
@@ -20,7 +20,7 @@ namespace HitsZoo
         public int StaffCount { get; set; } = 0;
         public int EnclousersCount { get; set; } = 0;
 
-        private Random doubleRandom = new Random();
+        private Random random = new Random();
              
         private void GenerateAnimals(int enclousersNumber, int animalsNumber)
         {
@@ -171,20 +171,21 @@ namespace HitsZoo
 
         public void ChangeSection(
             Animal animal,
-            Enclouser enclouser
+            IOpenSection openEnclouser,
+            IClosedSection closedEnclouser
             )
         {
             // Животное в открытой части
-            if (enclouser.OpenAnimals.Contains(animal))
+            if (openEnclouser.OpenAnimals.Contains(animal))
             {
-                enclouser.OpenAnimals.Remove(animal);
-                enclouser.ClosedAnimals.Add(animal);
+                openEnclouser.OpenAnimals.Remove(animal);
+                closedEnclouser.ClosedAnimals.Add(animal);
             }
             // Животное в закрытой части
             else
             {
-                enclouser.ClosedAnimals.Remove(animal);
-                enclouser.OpenAnimals.Add(animal);
+                closedEnclouser.ClosedAnimals.Remove(animal);
+                openEnclouser.OpenAnimals.Add(animal);
             }
         }
 
@@ -219,10 +220,11 @@ namespace HitsZoo
                 }
 
                 // Перемещение животного в другую часть вольера
-                if (doubleRandom.NextDouble() < 0.05)
+                if (random.NextDouble() < 0.01)
                 {
                     ChangeSection(
                         animalsArray[i],
+                        FindEnclouserById(animalsArray[i].EnclouserId),
                         FindEnclouserById(animalsArray[i].EnclouserId)
                     );
                 }
@@ -233,10 +235,16 @@ namespace HitsZoo
         {
             for (int i = 0; i < VisitorsCount; i++)
             {
-
-                if (doubleRandom.NextDouble() < probaility)
+                // Покупка еды
+                if (random.NextDouble() < probaility)
                 {
                     visitorsArray[i].BuyFood();
+                }
+
+                // Кормление животного
+                if (random.NextDouble() < probaility)
+                {
+                    visitorsArray[i].FeedAnimal(GetRandomEnclouser());
                 }
             }
         }
@@ -256,7 +264,7 @@ namespace HitsZoo
         {
             UpdateAnimals();
             UpdateStaff();
-            UpdateVisitors(0.01);
+            UpdateVisitors(0.1);
         }
 
         public Animal FindAnimalById(int id)
@@ -332,6 +340,12 @@ namespace HitsZoo
             PrintAnimals(textBoxAnimals);
             PrintPersons(textBoxPersons);
             PrintEnclousers(textBoxEnclousers);
+        }
+
+        private Enclouser GetRandomEnclouser()
+        {
+            int choice = random.Next(0, EnclousersCount - 1);
+            return enclousersArray[choice];
         }
 
         public Zoo ()

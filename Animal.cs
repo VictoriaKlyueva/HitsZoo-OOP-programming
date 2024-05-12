@@ -28,8 +28,11 @@ namespace HitsZoo
 
         public void Eat()
         {
-            CurrentHunger = 0;
-            IsHungry = false;
+            if (IsHungry)
+            {
+                CurrentHunger = 0;
+                IsHungry = false;
+            }
         }
 
         public string SubmitVote()

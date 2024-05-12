@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HitsZoo
 {
@@ -6,9 +7,31 @@ namespace HitsZoo
     {
         private int wallet;
         private int foodCount;
+
+        private Random random = new Random();
+
         public Visitor(int id, string name, int age) : base(id, name, age) 
         {
-            wallet = new Random().Next(10, 20);
+            wallet = random.Next(10, 20);
+        }
+
+        public void FeedAnimal(IEnclouser enclouser)
+        {
+            List<Animal> visibleAnimals = SeeAnimals(enclouser);
+
+            if (foodCount > 0 && visibleAnimals.Count > 0)
+            {
+                int choice = random.Next(0, visibleAnimals.Count - 1);
+
+                Animal choicedAnimal = visibleAnimals[choice];
+                foodCount--;
+                choicedAnimal.Eat();
+            }
+        }
+
+        public List<Animal> SeeAnimals(IEnclouser enclouser)
+        {
+            return enclouser.OpenAnimals;
         }
 
         public void BuyFood()

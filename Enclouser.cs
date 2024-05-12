@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HitsZoo
 {
-    public class Enclouser: IEnclouser, IFood, IOpenEnclouser, IClosedEnclouser
+    public class Enclouser: IEnclouser, IFood
     {
         public int Id { get; set; }
         public int Food { get; set; }
