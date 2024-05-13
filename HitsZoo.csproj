@@ -80,13 +80,10 @@
     <Compile Include="IAddEnclouser.cs" />
     <Compile Include="IChangeSection.cs" />
     <Compile Include="IClosedSection.cs" />
-    <Compile Include="ICovariant.cs" />
     <Compile Include="IEnclouser.cs" />
-    <Compile Include="IExtCovariant.cs" />
     <Compile Include="IFood.cs" />
     <Compile Include="IOpenSection.cs" />
     <Compile Include="IRemoveAnimalFromEnclouser1.cs" />
-    <Compile Include="Enclouser_1.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,10 @@
-﻿namespace HitsZoo
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HitsZoo
 {
     public class Staff : Person
     {
@@ -10,7 +16,7 @@
             this.wardEnclouserId = wardEnclouserId;
         }
 
-        public void Update(Enclouser<Animal> enclouser)
+        public void Update(Enclouser enclouser)
         {
             if (enclouser.IsFoodEmpty())
             {
