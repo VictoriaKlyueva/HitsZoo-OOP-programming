@@ -6,7 +6,11 @@ namespace HitsZoo
     {
         List<Animal> Animals { get; set; }
 
-        void AddAnimal(Animal animal);
+        void AddAnimal(Horse animal);
+        void AddAnimal(Capybara animal);
+
+        void AddAnimal(Bars animal);
+
 
         void RemoveAnimal(Animal animal);
     }

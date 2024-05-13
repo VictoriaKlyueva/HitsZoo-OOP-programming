@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace HitsZoo
 {
@@ -17,7 +18,25 @@ namespace HitsZoo
         private List<Animal> animals = new List<Animal>();
         public List<Animal> Animals { get => animals; set => animals = value; }
 
-        private int size;
+        private int size = -1;
+
+        public Type GetAnimalsType()
+        {
+            if (animals.Count == 0)
+                return null;
+            else if (animals[0].GetType() == typeof(Horse))
+            {
+                return typeof(Horse);
+            }
+            else if (animals[0].GetType() == typeof(Capybara))
+            {
+                return typeof(Capybara);
+            }
+            else
+            {
+                return typeof(Bars);
+            }
+        }
 
         public void Feed()
         {
@@ -34,15 +53,78 @@ namespace HitsZoo
             Food = food;
         }
 
-        public void AddAnimal(Animal animal)
+        public void AddAnimal(Horse animal)
         {
-            animals.Add(animal);
-            ClosedAnimals.Add(animal);
+            if (animals.Count == size)
+            {
+                MessageBox.Show("Вольер переполнен");
+                return;
+            }
+            if (GetAnimalsType() == typeof(Horse) || GetAnimalsType() == null)
+            {
+                animals.Add(animal);
+                ClosedAnimals.Add(animal);
+                SetSize();
+            }
+            else
+            {
+                MessageBox.Show("Неверный тип животного");
+            }
+        }
+
+        public void AddAnimal(Capybara animal)
+        {
+            if (animals.Count == size)
+            {
+                MessageBox.Show("Вольер переполнен");
+                return;
+            }
+            if (GetAnimalsType() == typeof(Capybara) || GetAnimalsType() == null)
+            {
+                animals.Add(animal);
+                ClosedAnimals.Add(animal);
+                SetSize();
+            }
+            else
+            {
+                MessageBox.Show("Неверный тип животного");
+            }
+        }
+
+        public void AddAnimal(Bars animal)
+        {
+            if (animals.Count == size)
+            {
+                MessageBox.Show("Вольер переполнен");
+                return;
+            }
+            if (GetAnimalsType() == typeof(Bars) || GetAnimalsType() == null)
+            {
+                animals.Add(animal);
+                ClosedAnimals.Add(animal);
+                SetSize();
+            }
+            else
+            {
+                MessageBox.Show("Неверный тип животного");
+            }
         }
 
         public void RemoveAnimal(Animal animal)
         {
             animals.Remove(animal);
+            if (animals.Count == 0)
+            {
+                size = -1;
+            }
+            if (openAnimals.Contains(animal))
+            {
+                openAnimals.Remove(animal);
+            }
+            if (closedAnimals.Contains(animal))
+            {
+                closedAnimals.Remove(animal);
+            }
         }
 
         public string Print()
@@ -67,7 +149,27 @@ namespace HitsZoo
                 result += ClosedAnimals[i].Id.ToString() + " ";
             }
 
-            return result + $"Еды: {Food} \n";
+            return result + $"Еды: {Food} Размер: {size} Тип: {GetAnimalsType()}\n";
+        }
+
+        private void SetSize()
+        {
+            if (animals[0].GetType() == typeof(Horse))
+            {
+                size = 5;
+            }
+            else if (animals[0].GetType() == typeof(Capybara))
+            {
+                size = 10;
+            }
+            else if (animals[0].GetType() == typeof(Bars))
+            {
+                size = 15;
+            }
+            else
+            {
+                size = 0;
+            }
         }
 
         public Enclouser(int id, Animal animal) 
@@ -75,6 +177,8 @@ namespace HitsZoo
             Id = id;
             animals.Add(animal);
             Food = 0;
+
+            SetSize();
         }
     }
 }

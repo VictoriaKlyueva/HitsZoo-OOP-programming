@@ -21,29 +21,30 @@ namespace HitsZoo
         public int EnclousersCount { get; set; } = 0;
 
         private Random random = new Random();
-             
+
         private void GenerateAnimals(int enclousersNumber, int animalsNumber)
         {
             Random rnd = new Random();
-            for (int i = 0; i < animalsNumber; i++)
+            AddAnimal(new Horse(currentAnimalId, "Я дефолтная лошадь", 0), true);
+            AddAnimal(new Capybara(currentAnimalId, "Я дефолтная капибара", 1), true);
+            AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс", 2), true);
+
+
+            for (int i = 3; i < animalsNumber - 3; i++)
             {
                 int animalChoice = rnd.Next(0, 3);
-                int enclouserId = i < enclousersNumber ? i : rnd.Next(0, enclousersNumber);
 
                 if (animalChoice == 0)
                 {
-                    AddAnimal(new Horse(currentAnimalId, "Я дефолтная лошадь",
-                              enclouserId), i < enclousersNumber);
+                    AddAnimal(new Horse(currentAnimalId, "Я дефолтная лошадь", 0), false);
                 }
                 else if (animalChoice == 1)
                 {
-                    AddAnimal(new Capybara(currentAnimalId, "Я дефолтная капибара",
-                              enclouserId), i < enclousersNumber);
+                    AddAnimal(new Capybara(currentAnimalId, "Я дефолтная капибара", 1), false);
                 }
                 else
                 {
-                    AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс",
-                              enclouserId), i < enclousersNumber);
+                    AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс", 2), false);
                 }
             }
         }
