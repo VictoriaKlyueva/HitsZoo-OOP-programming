@@ -30,7 +30,7 @@ namespace HitsZoo
             AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс", 2), true);
 
 
-            for (int i = 3; i < animalsNumber - 3; i++)
+            for (int i = 3; i < animalsNumber; i++)
             {
                 int animalChoice = rnd.Next(0, 3);
 
@@ -336,7 +336,7 @@ namespace HitsZoo
                           System.Windows.Forms.TextBox textBoxPersons,
                           System.Windows.Forms.TextBox textBoxEnclousers)
         {
-            textBoxZoo.Text = $"Животных: {AnimalsCount}   Работников: {StaffCount}   Посетителей: {VisitorsCount}   ";
+            textBoxZoo.Text = $"Животных: {AnimalsCount}   Работников: {StaffCount}   Посетителей: {VisitorsCount}   Вольеров: {EnclousersCount}";
 
             PrintAnimals(textBoxAnimals);
             PrintPersons(textBoxPersons);

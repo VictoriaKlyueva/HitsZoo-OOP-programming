@@ -508,7 +508,7 @@ namespace HitsZoo
             // 
             this.personsLabel.AutoSize = true;
             this.personsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.personsLabel.Location = new System.Drawing.Point(1317, 111);
+            this.personsLabel.Location = new System.Drawing.Point(1353, 111);
             this.personsLabel.Name = "personsLabel";
             this.personsLabel.Size = new System.Drawing.Size(79, 29);
             this.personsLabel.TabIndex = 51;
@@ -541,9 +541,8 @@ namespace HitsZoo
             this.textBoxZoo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxZoo.Name = "textBoxZoo";
             this.textBoxZoo.ReadOnly = true;
-            this.textBoxZoo.Size = new System.Drawing.Size(388, 24);
+            this.textBoxZoo.Size = new System.Drawing.Size(453, 24);
             this.textBoxZoo.TabIndex = 54;
-            this.textBoxZoo.TextChanged += new System.EventHandler(this.textBoxZoo_TextChanged);
             // 
             // animalEditButton
             // 
@@ -693,7 +692,6 @@ namespace HitsZoo
             this.staffEditWardEnclouserLabel.Size = new System.Drawing.Size(79, 16);
             this.staffEditWardEnclouserLabel.TabIndex = 68;
             this.staffEditWardEnclouserLabel.Text = "Id вольера:";
-            this.staffEditWardEnclouserLabel.Click += new System.EventHandler(this.staffEditWardAnimalLabel_Click);
             // 
             // pauseButton
             // 
@@ -715,7 +713,6 @@ namespace HitsZoo
             this.enclouserCheckBox.TabIndex = 70;
             this.enclouserCheckBox.Text = "Создать вольер";
             this.enclouserCheckBox.UseVisualStyleBackColor = true;
-            this.enclouserCheckBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // EnclousersStatusLabel
             // 

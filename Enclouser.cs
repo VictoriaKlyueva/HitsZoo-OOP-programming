@@ -20,6 +20,11 @@ namespace HitsZoo
 
         private int size = -1;
 
+        public bool IsFull()
+        {
+            return animals.Count == size;
+        }
+
         public Type GetAnimalsType()
         {
             if (animals.Count == 0)

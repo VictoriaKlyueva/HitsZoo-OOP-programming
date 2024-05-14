@@ -43,6 +43,11 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
+            if (zoo.FindEnclouserById(enclouserId).IsFull())
+            {
+                MessageBox.Show("Вольер переполнен");
+                return;
+            }
             zoo.AddAnimal(new Horse(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
         }
 
@@ -51,6 +56,11 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
+            if (zoo.FindEnclouserById(enclouserId).IsFull())
+            {
+                MessageBox.Show("Вольер переполнен");
+                return;
+            }
             zoo.AddAnimal(new Capybara(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
         }
 
@@ -59,6 +69,11 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
+            if (zoo.FindEnclouserById(enclouserId).IsFull())
+            {
+                MessageBox.Show("Вольер переполнен");
+                return;
+            }
             zoo.AddAnimal(new Bars(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
         }
 
@@ -201,21 +216,6 @@ namespace HitsZoo
             {
                 MessageBox.Show("Введите корректные значения");
             }
-        }
-
-        private void textBoxZoo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void staffEditWardAnimalLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
