@@ -26,6 +26,11 @@ namespace HitsZoo
             this.Age = age;
         }
 
+        public void Update(IEntity entity)
+        {
+            return;
+        }
+
         public virtual string Print()
         {
             return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name}" +

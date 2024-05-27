@@ -12,9 +12,12 @@
 
         public void Update(IEnclouser enclouser)
         {
-            if (enclouser.IsFoodEmpty())
+            if (wardEnclouserId != -1)
             {
-                enclouser.UpdateFood(10);
+                if (enclouser.IsFoodEmpty())
+                {
+                    enclouser.UpdateFood(10);
+                }
             }
         }
 
