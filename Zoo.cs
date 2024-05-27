@@ -23,8 +23,8 @@ namespace HitsZoo
         private Random random = new Random();
 
 
-
         private List<IEntity> entities = new List<IEntity>();
+
 
         public void AddEntity(IEntity entity)
         {
@@ -53,12 +53,20 @@ namespace HitsZoo
         private void GenerateAnimals(int animalsNumber)
         {
             Random rnd = new Random();
-            AddAnimal(new Horse(currentAnimalId, "Я дефолтная лошадь", 0), true);
-            AddEntity(new Horse(currentAnimalId, "Я дефолтная лошадь", 0));
-            AddAnimal(new Capybara(currentAnimalId, "Я дефолтная капибара", 1), true);
-            AddEntity(new Capybara(currentAnimalId, "Я дефолтная капибара", 1));
-            AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс", 2), true);
-            AddEntity(new Bars(currentAnimalId, "Я дефолтный барс", 2));
+            Horse horse = new Horse(currentAnimalId, "Я дефолтная лошадь", 0);
+            AddAnimal(horse, true);
+            AddEntity(new Enclouser(currentEnclouserId, horse));
+            AddEntity(horse);
+
+            Capybara capybara = new Capybara(currentAnimalId, "Я дефолтная капибара", 1);
+            AddAnimal(capybara, true);
+            AddEntity(new Enclouser(currentEnclouserId, capybara));
+            AddEntity(capybara);
+
+            Bars bars = new Bars(currentAnimalId, "Я дефолтный барс", 2);
+            AddAnimal(bars, true);
+            AddEntity(new Enclouser(currentEnclouserId, bars));
+            AddEntity(bars);
 
             for (int i = 3; i < animalsNumber; i++)
             {
@@ -66,18 +74,21 @@ namespace HitsZoo
 
                 if (animalChoice == 0)
                 {
-                    AddAnimal(new Horse(currentAnimalId, "Я дефолтная лошадь", 0), false);
-                    AddEntity(new Horse(currentAnimalId, "Я дефолтная лошадь", 0));
+                    Horse newHorse = new Horse(currentAnimalId, "Я дефолтная лошадь", 0);
+                    AddAnimal(newHorse, false);
+                    AddEntity(newHorse);
                 }
                 else if (animalChoice == 1)
                 {
-                    AddAnimal(new Capybara(currentAnimalId, "Я дефолтная капибара", 1), false);
-                    AddEntity(new Capybara(currentAnimalId, "Я дефолтная капибара", 1));
+                    Capybara newCapybara = new Capybara(currentAnimalId, "Я дефолтная капибара", 1);
+                    AddAnimal(newCapybara, false);
+                    AddEntity(newCapybara);
                 }
                 else
                 {
-                    AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс", 2), false);
-                    AddEntity(new Bars(currentAnimalId, "Я дефолтный барс", 2));
+                    Bars newBars = new Bars(currentAnimalId, "Я дефолтный барс", 2);
+                    AddAnimal(newBars, false);
+                    AddEntity(newBars);
                 }
             }
         }
@@ -123,7 +134,7 @@ namespace HitsZoo
         }
 
         public void AddAnimal(Bars bars, bool newEnclouser)
-        {
+        { 
             animalsArray[AnimalsCount] = bars;
             currentAnimalId++;
             AnimalsCount++;
@@ -165,6 +176,7 @@ namespace HitsZoo
         public void AddVisitor(string name, int age)
         {
             Visitor visitor = new Visitor(currentVisitorId, name, age);
+            entities.Add(visitor);
             visitorsArray[VisitorsCount] = visitor;
             currentVisitorId++;
             VisitorsCount++;
@@ -176,8 +188,9 @@ namespace HitsZoo
         }
 
         public void AddStaff(string name, int age, string occupation)
-        {
+        {   
             Staff staff = new Staff(currentStaffId, name, age, occupation, AssignAnimal());
+            entities.Add(staff);
             staffArray[StaffCount] = staff;
             currentStaffId++;
             StaffCount++;
@@ -330,41 +343,56 @@ namespace HitsZoo
 
         private void PrintAnimals(System.Windows.Forms.TextBox textBox)
         {
-            textBox.Text = "Казахские кони:";
+            textBox.Text = "";
+            textBox.Text += "Казахские кони:";
             textBox.AppendText(Environment.NewLine);
             List<IEntity> horses = GetEntitiesByType<Horse> ();
-            textBox.AppendText(Environment.NewLine + Environment.NewLine);
-
-            textBox.Text = "Кыргызские барсы:";
-            textBox.AppendText(Environment.NewLine);
-            List<IEntity> barses = GetEntitiesByType<Horse>();
-            textBox.AppendText(Environment.NewLine + Environment.NewLine);
-
-            textBox.Text = "Балдёжные капибары";
-            textBox.AppendText(Environment.NewLine);
-            List<IEntity> capybaras = GetEntitiesByType<Horse>();
-            textBox.AppendText(Environment.NewLine + Environment.NewLine);
-
-
             for (int i = 0; i < horses.Count; i++)
             {
                 textBox.Text += horses[i].Print();
                 textBox.AppendText(Environment.NewLine);
             }
+            textBox.AppendText(Environment.NewLine);
+
+            textBox.Text += "Балдёжные капибары:";
+            textBox.AppendText(Environment.NewLine);
+            List<IEntity> capybaras = GetEntitiesByType<Capybara>();
+            for (int i = 0; i < capybaras.Count; i++)
+            {
+                textBox.Text += capybaras[i].Print();
+                textBox.AppendText(Environment.NewLine);
+            }
+            textBox.AppendText(Environment.NewLine);
+
+            textBox.Text += "Кыргызские барсы:";
+            textBox.AppendText(Environment.NewLine);
+            List<IEntity> barses = GetEntitiesByType<Bars>();
+            for (int i = 0; i < barses.Count; i++)
+            {
+                textBox.Text += barses[i].Print();
+                textBox.AppendText(Environment.NewLine);
+            }
+            textBox.AppendText(Environment.NewLine);
         }
 
         private void PrintPersons(System.Windows.Forms.TextBox textBox)
         {
             textBox.Text = "";
-            for (int i = 0; i < StaffCount; i++)
+            textBox.Text += "Сотрудники: ";
+            textBox.AppendText(Environment.NewLine);
+            List<IEntity> staffs = GetEntitiesByType<Staff>();
+            for (int i = 0; i < staffs.Count; i++)
             {
-                textBox.Text += staffArray[i].Print();
+                textBox.Text += staffs[i].Print();
                 textBox.AppendText(Environment.NewLine);
             }
 
-            for (int i = 0; i < VisitorsCount; i++)
+            textBox.Text += "Посетители: ";
+            textBox.AppendText(Environment.NewLine);
+            List<IEntity> visitors = GetEntitiesByType<Visitor>();
+            for (int i = 0; i < visitors.Count; i++)
             {
-                textBox.Text += visitorsArray[i].Print();
+                textBox.Text += visitors[i].Print();
                 textBox.AppendText(Environment.NewLine);
             }
         }
@@ -372,9 +400,10 @@ namespace HitsZoo
         private void PrintEnclousers(System.Windows.Forms.TextBox textBox)
         {
             textBox.Text = "";
-            for (int i = 0; i < EnclousersCount; i++)
+            List<IEntity> enclousers = GetEntitiesByType<Enclouser>();
+            for (int i = 0; i < enclousers.Count; i++)
             {
-                textBox.Text += enclousersArray[i].Print();
+                textBox.Text += enclousers[i].Print();
                 textBox.AppendText(Environment.NewLine);
             }
         }
