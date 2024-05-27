@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HitsZoo
+﻿namespace HitsZoo
 {
     public class Staff : Person
     {
@@ -16,7 +10,7 @@ namespace HitsZoo
             this.wardEnclouserId = wardEnclouserId;
         }
 
-        public void Update(Enclouser enclouser)
+        public void Update(IEnclouser enclouser)
         {
             if (enclouser.IsFoodEmpty())
             {

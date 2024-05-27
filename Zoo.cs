@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HitsZoo
@@ -19,16 +20,45 @@ namespace HitsZoo
         public int VisitorsCount { get; set; } = 0;
         public int StaffCount { get; set; } = 0;
         public int EnclousersCount { get; set; } = 0;
-
         private Random random = new Random();
 
-        private void GenerateAnimals(int enclousersNumber, int animalsNumber)
+
+
+        private List<IEntity> entities = new List<IEntity>();
+
+        public void AddEntity(IEntity entity)
+        {
+            entities.Add(entity);
+        }
+
+        public List<IEntity> GetEntitiesByType<T>()
+        {
+            return entities.Where(e => e.GetType() == typeof(T)).ToList();
+        }
+
+        public IEntity GetEntityById(Guid entityId)
+        {
+            return entities.FirstOrDefault(e => e.Id2 == entityId);
+        }
+
+        public void RemoveEntity(Guid entityId)
+        {
+            IEntity entity = entities.FirstOrDefault(e => e.Id2 == entityId);
+            if (entity != null)
+            {
+                entities.Remove(entity);
+            }
+        }
+
+        private void GenerateAnimals(int animalsNumber)
         {
             Random rnd = new Random();
             AddAnimal(new Horse(currentAnimalId, "Я дефолтная лошадь", 0), true);
+            AddEntity(new Horse(currentAnimalId, "Я дефолтная лошадь", 0));
             AddAnimal(new Capybara(currentAnimalId, "Я дефолтная капибара", 1), true);
+            AddEntity(new Capybara(currentAnimalId, "Я дефолтная капибара", 1));
             AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс", 2), true);
-
+            AddEntity(new Bars(currentAnimalId, "Я дефолтный барс", 2));
 
             for (int i = 3; i < animalsNumber; i++)
             {
@@ -37,14 +67,17 @@ namespace HitsZoo
                 if (animalChoice == 0)
                 {
                     AddAnimal(new Horse(currentAnimalId, "Я дефолтная лошадь", 0), false);
+                    AddEntity(new Horse(currentAnimalId, "Я дефолтная лошадь", 0));
                 }
                 else if (animalChoice == 1)
                 {
                     AddAnimal(new Capybara(currentAnimalId, "Я дефолтная капибара", 1), false);
+                    AddEntity(new Capybara(currentAnimalId, "Я дефолтная капибара", 1));
                 }
                 else
                 {
                     AddAnimal(new Bars(currentAnimalId, "Я дефолтный барс", 2), false);
+                    AddEntity(new Bars(currentAnimalId, "Я дефолтный барс", 2));
                 }
             }
         }
@@ -297,10 +330,25 @@ namespace HitsZoo
 
         private void PrintAnimals(System.Windows.Forms.TextBox textBox)
         {
-            textBox.Text = "";
-            for (int i = 0; i < AnimalsCount; i++)
+            textBox.Text = "Казахские кони:";
+            textBox.AppendText(Environment.NewLine);
+            List<IEntity> horses = GetEntitiesByType<Horse> ();
+            textBox.AppendText(Environment.NewLine + Environment.NewLine);
+
+            textBox.Text = "Кыргызские барсы:";
+            textBox.AppendText(Environment.NewLine);
+            List<IEntity> barses = GetEntitiesByType<Horse>();
+            textBox.AppendText(Environment.NewLine + Environment.NewLine);
+
+            textBox.Text = "Балдёжные капибары";
+            textBox.AppendText(Environment.NewLine);
+            List<IEntity> capybaras = GetEntitiesByType<Horse>();
+            textBox.AppendText(Environment.NewLine + Environment.NewLine);
+
+
+            for (int i = 0; i < horses.Count; i++)
             {
-                textBox.Text += animalsArray[i].Print();
+                textBox.Text += horses[i].Print();
                 textBox.AppendText(Environment.NewLine);
             }
         }
@@ -351,7 +399,7 @@ namespace HitsZoo
 
         public Zoo ()
         {
-            GenerateAnimals(3, 15);
+            GenerateAnimals(15);
         }
     }
 }

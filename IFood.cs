@@ -1,7 +1,7 @@
 ﻿
 namespace HitsZoo
 {
-    internal interface IFood
+    public interface IFood
     {
         int Food { get; set; }
 

@@ -2,8 +2,9 @@
 
 namespace HitsZoo
 {
-    public abstract class Animal
+    public abstract class Animal: IEntity
     {
+        public Guid Id2 { get; } = Guid.NewGuid();
         public int Id { get; set; }
         public int CriticalHunger { get; set; }
         public int CurrentHunger { get; set; } = 0;

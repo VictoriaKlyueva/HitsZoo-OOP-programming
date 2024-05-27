@@ -49,6 +49,7 @@ namespace HitsZoo
                 return;
             }
             zoo.AddAnimal(new Horse(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
+            zoo.AddEntity(new Horse(zoo.currentAnimalId, voice, enclouserId));
         }
 
         // Создание капибары
@@ -62,6 +63,7 @@ namespace HitsZoo
                 return;
             }
             zoo.AddAnimal(new Capybara(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
+            zoo.AddEntity(new Capybara(zoo.currentAnimalId, voice, enclouserId));
         }
 
         // Создание кыргызского барса
@@ -75,6 +77,7 @@ namespace HitsZoo
                 return;
             }
             zoo.AddAnimal(new Bars(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
+            zoo.AddEntity(new Bars(zoo.currentAnimalId, voice, enclouserId));
         }
 
         // Создание работника

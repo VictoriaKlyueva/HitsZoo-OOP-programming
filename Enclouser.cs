@@ -4,8 +4,9 @@ using System.Windows.Forms;
 
 namespace HitsZoo
 {
-    public class Enclouser: IEnclouser, IFood
+    public class Enclouser: IEntity, IEnclouser
     {
+        public Guid Id2 { get; } = Guid.NewGuid();
         public int Id { get; set; }
         public int Food { get; set; }
 
@@ -161,7 +162,7 @@ namespace HitsZoo
         {
             if (animals[0].GetType() == typeof(Horse))
             {
-                size = 5;
+                size = 7;
             }
             else if (animals[0].GetType() == typeof(Capybara))
             {
@@ -169,7 +170,7 @@ namespace HitsZoo
             }
             else if (animals[0].GetType() == typeof(Bars))
             {
-                size = 15;
+                size = 12;
             }
             else
             {

@@ -2,8 +2,9 @@
 
 namespace HitsZoo
 {
-    public abstract class Person
+    public abstract class Person : IEntity
     {
+        public Guid Id2 { get; } = Guid.NewGuid();
         private int id;
         private string name;
         private int age;
