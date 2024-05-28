@@ -178,6 +178,11 @@ namespace HitsZoo
             }
         }
 
+        public void Update(IEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public Enclouser(int id, Animal animal) 
         {
             Id = id;

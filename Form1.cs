@@ -19,6 +19,11 @@ namespace HitsZoo
 
         private readonly string[] pauseButtonTexts = { "Пауза", "Продолжить" };
 
+        public int currentAnimalId = 0;
+        private int currentStaffId = 0;
+        private int currentVisitorId = 0;
+        private int currentEnclouserId = 0;
+
         // Обработчик события Tick таймера
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -48,8 +53,14 @@ namespace HitsZoo
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
-            zoo.AddAnimal(new Horse(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
-            zoo.AddEntity(new Horse(zoo.currentAnimalId, voice, enclouserId));
+            Horse horse = new Horse(zoo.currentAnimalId, voice, enclouserId);
+            if (enclouserCheckBox.Checked)
+            {
+                zoo.AddEntity(new Enclouser(currentEnclouserId, horse));
+                currentEnclouserId++;
+            }
+            zoo.AddEntity(horse);
+            currentAnimalId++;
         }
 
         // Создание капибары
@@ -62,8 +73,14 @@ namespace HitsZoo
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
-            zoo.AddAnimal(new Capybara(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
-            zoo.AddEntity(new Capybara(zoo.currentAnimalId, voice, enclouserId));
+            Capybara capybara = new Capybara(zoo.currentAnimalId, voice, enclouserId);
+            zoo.AddEntity(capybara);
+            if (enclouserCheckBox.Checked)
+            {
+                zoo.AddEntity(new Enclouser(currentEnclouserId, capybara));
+                currentEnclouserId++;
+            }
+            currentAnimalId++;
         }
 
         // Создание кыргызского барса
@@ -76,8 +93,15 @@ namespace HitsZoo
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
-            zoo.AddAnimal(new Bars(zoo.currentAnimalId, voice, enclouserId), enclouserCheckBox.Checked);
-            zoo.AddEntity(new Bars(zoo.currentAnimalId, voice, enclouserId));
+            Bars bars = new Bars(zoo.currentAnimalId, voice, enclouserId);
+            zoo.AddEntity(bars);
+            if (enclouserCheckBox.Checked)
+            {
+                zoo.AddEnclouser(bars);
+                currentEnclouserId++;
+            }
+            zoo.AddEntity(bars);
+            currentAnimalId++;
         }
 
         // Создание работника
@@ -88,7 +112,8 @@ namespace HitsZoo
                 string name = textBoxName.Text;
                 int age = Convert.ToInt32(textBoxAge.Text);
                 string occupation = textBoxOccupation.Text;
-                zoo.AddStaff(name, age, occupation);
+                zoo.AddEntity(new Staff(currentStaffId, name, age, occupation));
+                currentStaffId++;
             }
             catch
             {
@@ -103,7 +128,7 @@ namespace HitsZoo
             {
                 string name = textBoxName.Text;
                 int age = Convert.ToInt32(textBoxAge.Text);
-                zoo.AddVisitor(name, age);
+                zoo.AddEntity(new Visitor(currentVisitorId, name, age));
             }
             catch
             {
@@ -181,7 +206,7 @@ namespace HitsZoo
             try {
                 int id = Convert.ToInt32(textBoxAnimalDeleteId.Text);
                 Animal currentAnimal = zoo.FindAnimalById(id);
-                zoo.RemoveAnimal(currentAnimal);
+                zoo.RemoveEntity(currentAnimal.Id2);
                 zoo.RemoveAnimalFromEnclouser(currentAnimal, zoo.FindEnclouserById(currentAnimal.EnclouserId));
                 textBoxAnimalDeleteId.Text = "";
             }
@@ -197,7 +222,7 @@ namespace HitsZoo
             try
             {
                 int id = Convert.ToInt32(textBoxVisitorDeleteId.Text);
-                zoo.RemoveVisitor(zoo.FindVisitorById(id));
+                zoo.RemoveEntity(zoo.FindVisitorById(id).Id2);
                 textBoxVisitorDeleteId.Text = "";
             }
             catch
@@ -212,7 +237,7 @@ namespace HitsZoo
             try
             {
                 int id = Convert.ToInt32(textBoxStaffDeleteId.Text);
-                zoo.RemoveStaff(zoo.FindStaffById(id));
+                zoo.RemoveEntity(zoo.FindStaffById(id).Id2);
                 textBoxStaffDeleteId.Text = "";
             }
             catch

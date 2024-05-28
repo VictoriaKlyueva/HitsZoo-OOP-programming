@@ -49,17 +49,14 @@ namespace HitsZoo
         {
             Random rnd = new Random();
             Horse horse = new Horse(currentAnimalId, "Я дефолтная лошадь", 0);
-            AddAnimal(horse, true);
             AddEntity(new Enclouser(currentEnclouserId, horse));
             AddEntity(horse);
 
             Capybara capybara = new Capybara(currentAnimalId, "Я дефолтная капибара", 1);
-            AddAnimal(capybara, true);
             AddEntity(new Enclouser(currentEnclouserId, capybara));
             AddEntity(capybara);
 
             Bars bars = new Bars(currentAnimalId, "Я дефолтный барс", 2);
-            AddAnimal(bars, true);
             AddEntity(new Enclouser(currentEnclouserId, bars));
             AddEntity(bars);
 
@@ -70,19 +67,16 @@ namespace HitsZoo
                 if (animalChoice == 0)
                 {
                     Horse newHorse = new Horse(currentAnimalId, "Я дефолтная лошадь", 0);
-                    AddAnimal(newHorse, false);
                     AddEntity(newHorse);
                 }
                 else if (animalChoice == 1)
                 {
                     Capybara newCapybara = new Capybara(currentAnimalId, "Я дефолтная капибара", 1);
-                    AddAnimal(newCapybara, false);
                     AddEntity(newCapybara);
                 }
                 else
                 {
                     Bars newBars = new Bars(currentAnimalId, "Я дефолтный барс", 2);
-                    AddAnimal(newBars, false);
                     AddEntity(newBars);
                 }
             }
@@ -93,51 +87,6 @@ namespace HitsZoo
             Enclouser enclouser = new Enclouser(currentEnclouserId, animal);
             currentEnclouserId++;
             EnclousersCount++;
-        }
-
-        public void AddAnimal(Horse horse, bool newEnclouser)
-        {
-            currentAnimalId++;
-            AnimalsCount++;
-
-            if (newEnclouser)
-            {
-                AddEnclouser(horse);
-            }
-            else
-            {
-                FindEnclouserById(horse.EnclouserId).AddAnimal(horse);
-            }
-        }
-
-        public void AddAnimal(Capybara capybara, bool newEnclouser)
-        {
-            currentAnimalId++;
-            AnimalsCount++;
-
-            if (newEnclouser)
-            {
-                AddEnclouser(capybara);
-            }
-            else
-            {
-                FindEnclouserById(capybara.EnclouserId).AddAnimal(capybara);
-            }
-        }
-
-        public void AddAnimal(Bars bars, bool newEnclouser)
-        {
-            currentAnimalId++;
-            AnimalsCount++;
-
-            if (newEnclouser)
-            {
-                AddEnclouser(bars);
-            }
-            else
-            {
-                FindEnclouserById(bars.EnclouserId).AddAnimal(bars);
-            }
         }
 
         public Enclouser FindEnclouserById(int id)

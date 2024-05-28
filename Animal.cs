@@ -58,6 +58,11 @@ namespace HitsZoo
             return Id.ToString(); 
         }
 
+        public void Update(IEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public Animal(int id, string voice, int enclouserId, int criticalHunger=5)
         {   
             Id = id;

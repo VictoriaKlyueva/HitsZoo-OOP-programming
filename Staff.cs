@@ -4,7 +4,7 @@
     {
         public string occupation;
         public int wardEnclouserId = -1;
-        public Staff(int id, string name, int age, string occupation, int wardEnclouserId) : base(id, name, age)
+        public Staff(int id, string name, int age, string occupation, int wardEnclouserId=-1) : base(id, name, age)
         {
             this.occupation = occupation;
             this.wardEnclouserId = wardEnclouserId;
