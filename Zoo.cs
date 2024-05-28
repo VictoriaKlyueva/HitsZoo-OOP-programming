@@ -4,20 +4,9 @@ using System.Linq;
 
 namespace HitsZoo
 {
-    public class Zoo : IAddEnclouser, IChangeSection
+    public class Zoo : IChangeSection
     {
-        public int currentAnimalId = 0;
-        private int currentStaffId = 0;
-        private int currentVisitorId = 0;
-        private int currentEnclouserId = 0;
-
-        public int AnimalsCount { get; set; } = 0;
-        public int VisitorsCount { get; set; } = 0;
-        public int StaffCount { get; set; } = 0;
-        public int EnclousersCount { get; set; } = 0;
         private Random random = new Random();
-
-
         private List<IEntity> entities = new List<IEntity>();
 
 
@@ -47,18 +36,27 @@ namespace HitsZoo
 
         private void GenerateAnimals(int animalsNumber)
         {
+            int currentAnimalId = 0;
+            int currentEnclouserId = 0;
             Random rnd = new Random();
+
+            // Первые 3 типа животных в первых трех вольерах
             Horse horse = new Horse(currentAnimalId, "Я дефолтная лошадь", 0);
             AddEntity(new Enclouser(currentEnclouserId, horse));
             AddEntity(horse);
+            currentAnimalId++;
+            currentEnclouserId++;
 
             Capybara capybara = new Capybara(currentAnimalId, "Я дефолтная капибара", 1);
             AddEntity(new Enclouser(currentEnclouserId, capybara));
             AddEntity(capybara);
+            currentAnimalId++;
+            currentEnclouserId++;
 
             Bars bars = new Bars(currentAnimalId, "Я дефолтный барс", 2);
             AddEntity(new Enclouser(currentEnclouserId, bars));
             AddEntity(bars);
+            currentAnimalId++;
 
             for (int i = 3; i < animalsNumber; i++)
             {
@@ -68,33 +66,21 @@ namespace HitsZoo
                 {
                     Horse newHorse = new Horse(currentAnimalId, "Я дефолтная лошадь", 0);
                     AddEntity(newHorse);
+                    currentAnimalId++;
                 }
                 else if (animalChoice == 1)
                 {
                     Capybara newCapybara = new Capybara(currentAnimalId, "Я дефолтная капибара", 1);
                     AddEntity(newCapybara);
+                    currentAnimalId++;
                 }
                 else
                 {
                     Bars newBars = new Bars(currentAnimalId, "Я дефолтный барс", 2);
                     AddEntity(newBars);
+                    currentAnimalId++;
                 }
             }
-        }
-
-        public void AddEnclouser(Animal animal)
-        {
-            Enclouser enclouser = new Enclouser(currentEnclouserId, animal);
-            currentEnclouserId++;
-            EnclousersCount++;
-        }
-
-        public Enclouser FindEnclouserById(int id)
-        {
-            List<IEntity> enclousers = GetEntitiesByType<Enclouser>();
-            enclousers.FirstOrDefault(enclouser => enclouser.Id == id);
-
-            return null;
         }
 
         public void RemoveAnimalFromEnclouser(Animal animal, Enclouser enclouser)
@@ -139,7 +125,7 @@ namespace HitsZoo
         private void UpdateAnimals()
         {
             List<IEntity> animals = GetEntitiesByType<Animal>();
-            for (int i = 0; i < AnimalsCount; i++)
+            for (int i = 0; i < animals.Count; i++)
             {
                 Animal animal = (Animal)animals[i];
                 Enclouser currentEnclouser = FindEnclouserById(animal.EnclouserId);
@@ -156,7 +142,7 @@ namespace HitsZoo
                 // Обновление статуса вольера, если его закрепили или открепили
                 bool found = false;
                 List<IEntity> staffs = GetEntitiesByType<Staff>();
-                for (int j = 0; j < StaffCount; j++)
+                for (int j = 0; j < staffs.Count; j++)
                 {
                     Staff staff = (Staff)staffs[i];
                     if (staff.wardEnclouserId == animals[i].Id)
@@ -185,7 +171,7 @@ namespace HitsZoo
         private void UpdateVisitors(double probaility)
         {
             List<IEntity> visitors = GetEntitiesByType<Visitor>();   
-            for (int i = 0; i < VisitorsCount; i++)
+            for (int i = 0; i < visitors.Count; i++)
             {
                 Visitor visitor = (Visitor)visitors[i];
                 // Покупка еды
@@ -219,10 +205,18 @@ namespace HitsZoo
             UpdateVisitors(0.1);
         }
 
+        private List<IEntity> getAnimals()
+        {
+            List<IEntity> horse = GetEntitiesByType<Horse>();
+            List<IEntity> capybara = GetEntitiesByType<Capybara>();
+            List<IEntity> bars = GetEntitiesByType<Bars>();
+
+            return (horse.Concat(capybara)).Concat(bars).ToList();
+        }
+
         public Animal FindAnimalById(int id)
         {
-            List<IEntity> animals = GetEntitiesByType<Animal>();
-            return (Animal)animals.FirstOrDefault(animal => animal.Id == id);
+            return (Animal)getAnimals().FirstOrDefault(animal => animal.Id == id);
         }
 
         public Visitor FindVisitorById(int id)
@@ -235,6 +229,12 @@ namespace HitsZoo
         {
             List<IEntity> staffs = GetEntitiesByType<Staff>();
             return (Staff)staffs.FirstOrDefault(staff => staff.Id == id);
+        }
+
+        public Enclouser FindEnclouserById(int id)
+        {
+            List<IEntity> enclousers = GetEntitiesByType<Enclouser>();
+            return (Enclouser)enclousers.FirstOrDefault(enclouser => enclouser.Id == id);
         }
 
         private void PrintAnimals(System.Windows.Forms.TextBox textBox)
@@ -309,7 +309,11 @@ namespace HitsZoo
                           System.Windows.Forms.TextBox textBoxPersons,
                           System.Windows.Forms.TextBox textBoxEnclousers)
         {
-            textBoxZoo.Text = $"Животных: {AnimalsCount}   Работников: {StaffCount}   Посетителей: {VisitorsCount}   Вольеров: {EnclousersCount}";
+
+            textBoxZoo.Text = $"Животных: { GetEntitiesByType<Horse>().Count + GetEntitiesByType<Capybara>().Count + GetEntitiesByType<Bars>().Count }   " +
+                $"Работников: { GetEntitiesByType<Staff>().Count }   " +
+                $"Посетителей: {GetEntitiesByType<Visitor>().Count }   " +
+                $"Вольеров: {GetEntitiesByType<Enclouser>().Count }";
 
             PrintAnimals(textBoxAnimals);
             PrintPersons(textBoxPersons);
@@ -318,8 +322,9 @@ namespace HitsZoo
 
         private Enclouser GetRandomEnclouser()
         {
-            int choice = random.Next(0, EnclousersCount - 1);
-            return (Enclouser)GetEntitiesByType<Enclouser>()[choice];
+            List<IEntity> enclousers = GetEntitiesByType<Enclouser>();
+            int choice = random.Next(0, enclousers.Count - 1);
+            return (Enclouser)enclousers[choice];
         }
 
         public Zoo ()

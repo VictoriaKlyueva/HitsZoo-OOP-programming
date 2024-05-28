@@ -541,7 +541,7 @@ namespace HitsZoo
             this.textBoxZoo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxZoo.Name = "textBoxZoo";
             this.textBoxZoo.ReadOnly = true;
-            this.textBoxZoo.Size = new System.Drawing.Size(453, 24);
+            this.textBoxZoo.Size = new System.Drawing.Size(533, 24);
             this.textBoxZoo.TabIndex = 54;
             // 
             // animalEditButton

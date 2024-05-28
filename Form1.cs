@@ -19,10 +19,10 @@ namespace HitsZoo
 
         private readonly string[] pauseButtonTexts = { "Пауза", "Продолжить" };
 
-        public int currentAnimalId = 0;
+        public int currentAnimalId = 15;
         private int currentStaffId = 0;
         private int currentVisitorId = 0;
-        private int currentEnclouserId = 0;
+        private int currentEnclouserId = 2;
 
         // Обработчик события Tick таймера
         private void Timer_Tick(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace HitsZoo
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
-            Horse horse = new Horse(zoo.currentAnimalId, voice, enclouserId);
+            Horse horse = new Horse(currentAnimalId, voice, enclouserId);
             if (enclouserCheckBox.Checked)
             {
                 zoo.AddEntity(new Enclouser(currentEnclouserId, horse));
@@ -73,7 +73,7 @@ namespace HitsZoo
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
-            Capybara capybara = new Capybara(zoo.currentAnimalId, voice, enclouserId);
+            Capybara capybara = new Capybara(currentAnimalId, voice, enclouserId);
             zoo.AddEntity(capybara);
             if (enclouserCheckBox.Checked)
             {
@@ -93,11 +93,11 @@ namespace HitsZoo
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
-            Bars bars = new Bars(zoo.currentAnimalId, voice, enclouserId);
+            Bars bars = new Bars(currentAnimalId, voice, enclouserId);
             zoo.AddEntity(bars);
             if (enclouserCheckBox.Checked)
             {
-                zoo.AddEnclouser(bars);
+                zoo.AddEntity(bars);
                 currentEnclouserId++;
             }
             zoo.AddEntity(bars);
