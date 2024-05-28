@@ -124,7 +124,7 @@ namespace HitsZoo
 
         private void UpdateAnimals()
         {
-            List<IEntity> animals = GetEntitiesByType<Animal>();
+            List<IEntity> animals = getAnimals();
             for (int i = 0; i < animals.Count; i++)
             {
                 Animal animal = (Animal)animals[i];
@@ -144,7 +144,7 @@ namespace HitsZoo
                 List<IEntity> staffs = GetEntitiesByType<Staff>();
                 for (int j = 0; j < staffs.Count; j++)
                 {
-                    Staff staff = (Staff)staffs[i];
+                    Staff staff = (Staff)staffs[j];
                     if (staff.wardEnclouserId == animals[i].Id)
                     {
                         animal.IsFree = false;
