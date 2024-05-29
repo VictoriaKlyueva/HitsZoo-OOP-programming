@@ -497,13 +497,13 @@ namespace HitsZoo
             // textBoxPersons
             // 
             this.textBoxPersons.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxPersons.Location = new System.Drawing.Point(1358, 120);
+            this.textBoxPersons.Location = new System.Drawing.Point(1358, 126);
             this.textBoxPersons.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPersons.Multiline = true;
             this.textBoxPersons.Name = "textBoxPersons";
             this.textBoxPersons.ReadOnly = true;
             this.textBoxPersons.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxPersons.Size = new System.Drawing.Size(594, 803);
+            this.textBoxPersons.Size = new System.Drawing.Size(669, 803);
             this.textBoxPersons.TabIndex = 50;
             // 
             // personsLabel
@@ -735,7 +735,7 @@ namespace HitsZoo
             this.textBoxEnclousersStatus.Name = "textBoxEnclousersStatus";
             this.textBoxEnclousersStatus.ReadOnly = true;
             this.textBoxEnclousersStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxEnclousersStatus.Size = new System.Drawing.Size(1194, 158);
+            this.textBoxEnclousersStatus.Size = new System.Drawing.Size(1316, 158);
             this.textBoxEnclousersStatus.TabIndex = 72;
             // 
             // textBoxEnclouserId

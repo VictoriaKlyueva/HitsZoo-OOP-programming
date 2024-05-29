@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HitsZoo
 {
@@ -12,6 +13,8 @@ namespace HitsZoo
         public bool IsFree { get; set; } = true;
 
         public Guid EnclouserId { get; set; } = default;
+
+        public virtual List<Type> EdibleFood { get; set; }
 
         public void Update()
         {

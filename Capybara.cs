@@ -8,6 +8,8 @@ namespace HitsZoo
 {
     public class Capybara : Animal
     {
+        public override List<Type> EdibleFood { get; set; }
+
         public override string Print()
         {
             string hungerStatus = (IsHungry) ? "Голоден" : "Сыт";
@@ -17,6 +19,8 @@ namespace HitsZoo
 
         public Capybara(string voice, Guid enclouserId, int criticalHunger=10) :
                base(voice, enclouserId, criticalHunger)
-        { }
+        {
+            EdibleFood = new List<Type> { typeof(Whiskas), typeof(Pedigree) };
+        }
     }
 }
