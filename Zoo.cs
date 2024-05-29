@@ -88,20 +88,6 @@ namespace HitsZoo
             enclouser.RemoveAnimal(animal);
         }
 
-        private int AssignAnimal()
-        {
-            List<IEntity> animals = GetEntitiesByType<Animal>();
-            foreach (Animal animal in animals)
-            {
-                if (animal.IsFree)
-                {
-                    animal.IsFree = false;
-                    return animal.Id;
-                }
-            }
-            return -1;
-        }
-
         public void ChangeSection(
             Animal animal,
             IOpenSection openEnclouser,

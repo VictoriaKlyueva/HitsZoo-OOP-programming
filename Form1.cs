@@ -48,17 +48,26 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
+
             if (zoo.FindEnclouserById(enclouserId).IsFull())
             {
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
             Horse horse = new Horse(currentAnimalId, voice, enclouserId);
+
+            // Новый вольер
             if (enclouserCheckBox.Checked)
             {
                 zoo.AddEntity(new Enclouser(currentEnclouserId, horse));
                 currentEnclouserId++;
             }
+            // Существующий вольер
+            else
+            {
+                zoo.FindEnclouserById(enclouserId).AddAnimal(horse);
+            }
+
             zoo.AddEntity(horse);
             currentAnimalId++;
         }
@@ -74,12 +83,20 @@ namespace HitsZoo
                 return;
             }
             Capybara capybara = new Capybara(currentAnimalId, voice, enclouserId);
-            zoo.AddEntity(capybara);
+
+            // Новый вольер
             if (enclouserCheckBox.Checked)
             {
                 zoo.AddEntity(new Enclouser(currentEnclouserId, capybara));
                 currentEnclouserId++;
             }
+            // Существующий вольер
+            else
+            {
+                zoo.FindEnclouserById(enclouserId).AddAnimal(capybara);
+            }
+
+            zoo.AddEntity(capybara);
             currentAnimalId++;
         }
 
@@ -88,18 +105,27 @@ namespace HitsZoo
         {
             string voice = textBoxVoice.Text;
             int enclouserId = textBoxEnclouserId.Text is null ? 0 : Convert.ToInt32(textBoxEnclouserId.Text);
+
             if (zoo.FindEnclouserById(enclouserId).IsFull())
             {
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
+
             Bars bars = new Bars(currentAnimalId, voice, enclouserId);
-            zoo.AddEntity(bars);
+
+            // Новый вольер
             if (enclouserCheckBox.Checked)
             {
-                zoo.AddEntity(bars);
+                zoo.AddEntity(new Enclouser(currentEnclouserId, bars));
                 currentEnclouserId++;
             }
+            // Существующий
+            else
+            {
+                zoo.FindEnclouserById(enclouserId).AddAnimal(bars);
+            }
+
             zoo.AddEntity(bars);
             currentAnimalId++;
         }
