@@ -4,7 +4,7 @@
     {
         public override int CriticalWeight { get; set; }
 
-        Pedigree()
+        public Pedigree()
         {
             CriticalWeight = 20;
         }

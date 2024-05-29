@@ -7,7 +7,6 @@ namespace HitsZoo
     public class Enclouser: IEntity, IEnclouser
     {
         public Guid Id { get; } = Guid.NewGuid();
-        public int Food { get; set; }
 
         private List<Animal> closedAnimals = new List<Animal>();
         public List<Animal> ClosedAnimals { get => closedAnimals; set => closedAnimals = value; }
@@ -17,6 +16,7 @@ namespace HitsZoo
 
         private List<Animal> animals = new List<Animal>();
         public List<Animal> Animals { get => animals; set => animals = value; }
+        public FoodMark Food { get; set; }
 
         private int size = -1;
 
@@ -45,17 +45,30 @@ namespace HitsZoo
 
         public void Feed()
         {
-            Food -= 1;
+            Food.RemoveFood(1);
         }
 
         public bool IsFoodEmpty()
         {
-            return Food == 0;
+            return Food.IsEmpty();
         }
 
-        public void UpdateFood(int food)
+        private Type GetFoodMark()
         {
-            Food = food;
+            return typeof(FoodMark);
+        }
+
+        public void UpdateFood<Mark>(int food) where Mark : FoodMark, new()
+        {
+            if (typeof(Mark) == GetFoodMark())  // Марка добавляемого корма совпадает с маркой текущего
+            {
+                Food.AddFood(food);
+            }
+            else if (Food == default) // Марка текущего корма неизвестна
+            {
+                Food = new Mark(); 
+                Food.AddFood(food);
+            }
         }
 
         public void AddAnimal(Horse animal)
@@ -165,13 +178,16 @@ namespace HitsZoo
 
         public void Update(IEntity entity)
         {
-            throw new NotImplementedException();
+            if (IsFull())
+            {
+                Food = default;
+            }
         }
 
         public Enclouser(Animal animal) 
         {
             animals.Add(animal);
-            Food = 0;
+            Food = default;
 
             SetSize();
         }
@@ -180,7 +196,7 @@ namespace HitsZoo
         {
             Id = id;
             animals.Add(animal);
-            Food = 0;
+            Food = default;
 
             SetSize();
         }

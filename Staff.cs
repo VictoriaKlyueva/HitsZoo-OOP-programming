@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HitsZoo
 {
@@ -19,7 +20,10 @@ namespace HitsZoo
             {
                 if (((Enclouser)entity).IsFoodEmpty())
                 {
-                    ((Enclouser)entity).UpdateFood(10);
+                    List<Type> marks = new List<Type>() {typeof(Whiskas), typeof(Kitekat), typeof(Pedigree)};
+                    int index = new Random().Next(marks.Count);
+                    ((Enclouser)entity).UpdateFood<Whiskas> (new Random().Next(5, 15));
+                    ((Enclouser)entity).GetType().GetMethod("UpdateFood<>").MakeGenericMethod(marks[index]).Invoke(this, new object[] { new Random().Next(5, 15) });
                 }
             }
         }

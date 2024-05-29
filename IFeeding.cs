@@ -3,9 +3,9 @@ namespace HitsZoo
 {
     public interface IFeeding
     {
-        int Food { get; set; }
+        FoodMark Food { get; set; }
 
-        void UpdateFood(int food);
+        void UpdateFood<Mark>(int food) where Mark : FoodMark, new();
 
         void Feed();
 

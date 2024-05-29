@@ -181,11 +181,22 @@ namespace HitsZoo
             }
         }
 
+        private void UpdateEnclousers()
+        {
+            List<IEntity> enclousers = FindEntitiesByType<Enclouser>();
+            for (int i = 0; i < enclousers.Count; i++)
+            {
+                Enclouser enclouser = (Enclouser)enclousers[i];
+                enclousers[i].Update(enclouser);
+            }
+        }
+
         public void Update()
         {
             UpdateAnimals();
             UpdateStaff();
             UpdateVisitors(0.1);
+            UpdateEnclousers();
         }
 
         private List<IEntity> getAnimals()

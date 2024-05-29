@@ -4,7 +4,7 @@
     {
         public override int CriticalWeight { get; set; }
 
-        Whiskas() 
+        public Whiskas() 
         {
             CriticalWeight = 10;
         }

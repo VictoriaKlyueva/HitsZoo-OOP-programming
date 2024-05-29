@@ -1,14 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HitsZoo
+﻿namespace HitsZoo
 {
     abstract public class FoodMark
     {
         public virtual int CriticalWeight { get; set; }
-        private int weight = 0;
+        private int food = 0;
+
+        public void AddFood(int food)
+        {
+            this.food = this.food + food < CriticalWeight ? this.food + food : CriticalWeight;
+        }
+
+        public void RemoveFood(int food)
+        {
+            this.food = this.food - food > 0 ? this.food - food : 0;
+        }
+
+        public bool IsEmpty()
+        {
+            return food == 0;
+        }
     }
 }
