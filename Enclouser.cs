@@ -50,6 +50,7 @@ namespace HitsZoo
 
         public bool IsFoodEmpty()
         {
+            if (Food == default) return true;
             return Food.IsEmpty();
         }
 
