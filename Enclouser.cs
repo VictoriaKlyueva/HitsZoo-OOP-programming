@@ -7,7 +7,6 @@ namespace HitsZoo
     public class Enclouser: IEntity, IEnclouser
     {
         public Guid Id2 { get; } = Guid.NewGuid();
-        public int Id { get; set; }
         public int Food { get; set; }
 
         private List<Animal> closedAnimals = new List<Animal>();
@@ -135,24 +134,10 @@ namespace HitsZoo
 
         public string Print()
         {
-            string result = $"ID: {Id} Animals: ";
+            string result = $"ID: {Id2} Animals: ";
             for (int i = 0; i < animals.Count; i++)
             {
-                result += animals[i].Id.ToString() + " ";
-            }
-
-            result += "Открытая часть: ";
-
-            for (int i = 0; i < OpenAnimals.Count; i++)
-            {
-                result += OpenAnimals[i].Id.ToString() + " ";
-            }
-
-            result += "Закрытая часть: ";
-
-            for (int i = 0; i < ClosedAnimals.Count; i++)
-            {
-                result += ClosedAnimals[i].Id.ToString() + " ";
+                result += animals[i].Id2.ToString() + " ";
             }
 
             return result + $"Еды: {Food} Размер: {size} Тип: {GetAnimalsType()}\n";
@@ -183,9 +168,17 @@ namespace HitsZoo
             throw new NotImplementedException();
         }
 
-        public Enclouser(int id, Animal animal) 
+        public Enclouser(Animal animal) 
         {
-            Id = id;
+            animals.Add(animal);
+            Food = 0;
+
+            SetSize();
+        }
+
+        public Enclouser(Animal animal, Guid id)
+        {
+            Id2 = id;
             animals.Add(animal);
             Food = 0;
 

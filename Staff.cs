@@ -1,10 +1,13 @@
-﻿namespace HitsZoo
+﻿using System;
+
+namespace HitsZoo
 {
     public class Staff : Person
     {
         public string occupation;
-        public int wardEnclouserId = -1;
-        public Staff(int id, string name, int age, string occupation, int wardEnclouserId=-1) : base(id, name, age)
+        public Guid wardEnclouserId = default;
+
+        public Staff(string name, int age, string occupation, Guid wardEnclouserId=default) : base(name, age)
         {
             this.occupation = occupation;
             this.wardEnclouserId = wardEnclouserId;
@@ -12,7 +15,7 @@
 
         public void Update(IEnclouser enclouser)
         {
-            if (wardEnclouserId != -1)
+            if (wardEnclouserId != default)
             {
                 if (enclouser.IsFoodEmpty())
                 {
@@ -21,16 +24,16 @@
             }
         }
 
-        public void Edit(string name, int age, string occupation, int wardEnclouserId)
+        public void Edit(string name, int age, string occupation, Guid wardEnclouserId)
         {
             Edit(name, age);
             this.occupation = occupation;
-            this.wardEnclouserId = wardEnclouserId;
+            this.wardEnclouserId = default;
         }
 
         public override string Print()
         {
-            return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Имя: {Name} " +
+            return $"ID: {Id2} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} Имя: {Name} " +
                               $" Возраст: {Age} Должность: {occupation} Вольер: {wardEnclouserId} \n";
         }
     }

@@ -11,12 +11,12 @@ namespace HitsZoo
         public override string Print()
         {
             string hungerStatus = (IsHungry) ? "Голоден" : "Сыт";
-            return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
+            return $"ID: {Id2} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
                    $"Голод: {CurrentHunger} {hungerStatus} Вольер: {EnclouserId}";
         }
 
-        public Capybara(int id, string voice, int enclouserId, int criticalHunger=10) :
-               base(id, voice, enclouserId, criticalHunger)
+        public Capybara(string voice, Guid enclouserId, int criticalHunger=10) :
+               base(voice, enclouserId, criticalHunger)
         { }
     }
 }

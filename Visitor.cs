@@ -10,7 +10,7 @@ namespace HitsZoo
 
         private Random random = new Random();
 
-        public Visitor(int id, string name, int age) : base(id, name, age) 
+        public Visitor(string name, int age) : base(name, age) 
         {
             wallet = random.Next(10, 20);
         }
@@ -45,7 +45,7 @@ namespace HitsZoo
 
         public override string Print()
         {
-            return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name}" +
+            return $"ID: {Id2} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name}" +
                    $" Имя: {Name}  Возраст: {Age}  Кошелек: {wallet} Еды: {foodCount}";
         }
     }

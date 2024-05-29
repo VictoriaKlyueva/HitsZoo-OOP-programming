@@ -178,7 +178,7 @@ namespace HitsZoo
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.timeLabel.Location = new System.Drawing.Point(1793, 9);
+            this.timeLabel.Location = new System.Drawing.Point(1723, 9);
             this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(97, 29);
@@ -189,7 +189,7 @@ namespace HitsZoo
             // 
             this.timeShowLabel.AutoSize = true;
             this.timeShowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.timeShowLabel.Location = new System.Drawing.Point(1793, 46);
+            this.timeShowLabel.Location = new System.Drawing.Point(1814, 9);
             this.timeShowLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeShowLabel.Name = "timeShowLabel";
             this.timeShowLabel.Size = new System.Drawing.Size(27, 29);
@@ -462,7 +462,7 @@ namespace HitsZoo
             this.textBoxAnimalDeleteId.Location = new System.Drawing.Point(41, 704);
             this.textBoxAnimalDeleteId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxAnimalDeleteId.Name = "textBoxAnimalDeleteId";
-            this.textBoxAnimalDeleteId.Size = new System.Drawing.Size(64, 22);
+            this.textBoxAnimalDeleteId.Size = new System.Drawing.Size(189, 22);
             this.textBoxAnimalDeleteId.TabIndex = 45;
             // 
             // deletePersonIdLabel
@@ -479,36 +479,36 @@ namespace HitsZoo
             this.textBoxVisitorDeleteId.Location = new System.Drawing.Point(263, 704);
             this.textBoxVisitorDeleteId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxVisitorDeleteId.Name = "textBoxVisitorDeleteId";
-            this.textBoxVisitorDeleteId.Size = new System.Drawing.Size(64, 22);
+            this.textBoxVisitorDeleteId.Size = new System.Drawing.Size(190, 22);
             this.textBoxVisitorDeleteId.TabIndex = 48;
             // 
             // textBoxAnimals
             // 
             this.textBoxAnimals.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxAnimals.Location = new System.Drawing.Point(901, 144);
+            this.textBoxAnimals.Location = new System.Drawing.Point(716, 122);
             this.textBoxAnimals.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxAnimals.Multiline = true;
             this.textBoxAnimals.Name = "textBoxAnimals";
             this.textBoxAnimals.ReadOnly = true;
-            this.textBoxAnimals.Size = new System.Drawing.Size(451, 570);
+            this.textBoxAnimals.Size = new System.Drawing.Size(632, 732);
             this.textBoxAnimals.TabIndex = 49;
             // 
             // textBoxPersons
             // 
             this.textBoxPersons.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxPersons.Location = new System.Drawing.Point(1358, 144);
+            this.textBoxPersons.Location = new System.Drawing.Point(1358, 120);
             this.textBoxPersons.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPersons.Multiline = true;
             this.textBoxPersons.Name = "textBoxPersons";
             this.textBoxPersons.ReadOnly = true;
-            this.textBoxPersons.Size = new System.Drawing.Size(552, 697);
+            this.textBoxPersons.Size = new System.Drawing.Size(594, 803);
             this.textBoxPersons.TabIndex = 50;
             // 
             // personsLabel
             // 
             this.personsLabel.AutoSize = true;
             this.personsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.personsLabel.Location = new System.Drawing.Point(1353, 111);
+            this.personsLabel.Location = new System.Drawing.Point(1353, 81);
             this.personsLabel.Name = "personsLabel";
             this.personsLabel.Size = new System.Drawing.Size(79, 29);
             this.personsLabel.TabIndex = 51;
@@ -518,7 +518,7 @@ namespace HitsZoo
             // 
             this.animalsLabel.AutoSize = true;
             this.animalsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.animalsLabel.Location = new System.Drawing.Point(898, 111);
+            this.animalsLabel.Location = new System.Drawing.Point(715, 80);
             this.animalsLabel.Name = "animalsLabel";
             this.animalsLabel.Size = new System.Drawing.Size(134, 29);
             this.animalsLabel.TabIndex = 52;
@@ -528,7 +528,7 @@ namespace HitsZoo
             // 
             this.zooLabel.AutoSize = true;
             this.zooLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.zooLabel.Location = new System.Drawing.Point(896, 9);
+            this.zooLabel.Location = new System.Drawing.Point(711, 15);
             this.zooLabel.Name = "zooLabel";
             this.zooLabel.Size = new System.Drawing.Size(112, 29);
             this.zooLabel.TabIndex = 53;
@@ -537,11 +537,11 @@ namespace HitsZoo
             // textBoxZoo
             // 
             this.textBoxZoo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.textBoxZoo.Location = new System.Drawing.Point(899, 46);
+            this.textBoxZoo.Location = new System.Drawing.Point(716, 46);
             this.textBoxZoo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxZoo.Name = "textBoxZoo";
             this.textBoxZoo.ReadOnly = true;
-            this.textBoxZoo.Size = new System.Drawing.Size(533, 24);
+            this.textBoxZoo.Size = new System.Drawing.Size(632, 24);
             this.textBoxZoo.TabIndex = 54;
             // 
             // animalEditButton
@@ -611,10 +611,10 @@ namespace HitsZoo
             // 
             this.voiceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.voiceButton.ForeColor = System.Drawing.Color.Black;
-            this.voiceButton.Location = new System.Drawing.Point(899, 718);
+            this.voiceButton.Location = new System.Drawing.Point(716, 858);
             this.voiceButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.voiceButton.Name = "voiceButton";
-            this.voiceButton.Size = new System.Drawing.Size(449, 39);
+            this.voiceButton.Size = new System.Drawing.Size(636, 39);
             this.voiceButton.TabIndex = 60;
             this.voiceButton.Text = "Голос";
             this.voiceButton.UseVisualStyleBackColor = true;
@@ -623,7 +623,7 @@ namespace HitsZoo
             // voiceSubmitLabel
             // 
             this.voiceSubmitLabel.AutoSize = true;
-            this.voiceSubmitLabel.Location = new System.Drawing.Point(900, 764);
+            this.voiceSubmitLabel.Location = new System.Drawing.Point(717, 904);
             this.voiceSubmitLabel.Name = "voiceSubmitLabel";
             this.voiceSubmitLabel.Size = new System.Drawing.Size(21, 16);
             this.voiceSubmitLabel.TabIndex = 61;
@@ -631,7 +631,7 @@ namespace HitsZoo
             // 
             // textBoxVoiceSubmit
             // 
-            this.textBoxVoiceSubmit.Location = new System.Drawing.Point(927, 761);
+            this.textBoxVoiceSubmit.Location = new System.Drawing.Point(744, 901);
             this.textBoxVoiceSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxVoiceSubmit.Name = "textBoxVoiceSubmit";
             this.textBoxVoiceSubmit.Size = new System.Drawing.Size(64, 22);
@@ -639,11 +639,11 @@ namespace HitsZoo
             // 
             // textBoxVoiceResult
             // 
-            this.textBoxVoiceResult.Location = new System.Drawing.Point(997, 761);
+            this.textBoxVoiceResult.Location = new System.Drawing.Point(814, 901);
             this.textBoxVoiceResult.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxVoiceResult.Name = "textBoxVoiceResult";
             this.textBoxVoiceResult.ReadOnly = true;
-            this.textBoxVoiceResult.Size = new System.Drawing.Size(351, 22);
+            this.textBoxVoiceResult.Size = new System.Drawing.Size(538, 22);
             this.textBoxVoiceResult.TabIndex = 63;
             // 
             // staffDeleteButton
@@ -673,7 +673,7 @@ namespace HitsZoo
             this.textBoxStaffDeleteId.Location = new System.Drawing.Point(485, 704);
             this.textBoxStaffDeleteId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxStaffDeleteId.Name = "textBoxStaffDeleteId";
-            this.textBoxStaffDeleteId.Size = new System.Drawing.Size(64, 22);
+            this.textBoxStaffDeleteId.Size = new System.Drawing.Size(189, 22);
             this.textBoxStaffDeleteId.TabIndex = 66;
             // 
             // textBoxStaffEditWardEnclouser
@@ -695,7 +695,7 @@ namespace HitsZoo
             // 
             // pauseButton
             // 
-            this.pauseButton.Location = new System.Drawing.Point(1797, 89);
+            this.pauseButton.Location = new System.Drawing.Point(1728, 46);
             this.pauseButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(113, 38);
@@ -718,7 +718,7 @@ namespace HitsZoo
             // 
             this.EnclousersStatusLabel.AutoSize = true;
             this.EnclousersStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.EnclousersStatusLabel.Location = new System.Drawing.Point(898, 814);
+            this.EnclousersStatusLabel.Location = new System.Drawing.Point(711, 938);
             this.EnclousersStatusLabel.Name = "EnclousersStatusLabel";
             this.EnclousersStatusLabel.Size = new System.Drawing.Size(117, 29);
             this.EnclousersStatusLabel.TabIndex = 71;
@@ -727,12 +727,12 @@ namespace HitsZoo
             // textBoxEnclousersStatus
             // 
             this.textBoxEnclousersStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxEnclousersStatus.Location = new System.Drawing.Point(899, 845);
+            this.textBoxEnclousersStatus.Location = new System.Drawing.Point(716, 969);
             this.textBoxEnclousersStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxEnclousersStatus.Multiline = true;
             this.textBoxEnclousersStatus.Name = "textBoxEnclousersStatus";
             this.textBoxEnclousersStatus.ReadOnly = true;
-            this.textBoxEnclousersStatus.Size = new System.Drawing.Size(1011, 209);
+            this.textBoxEnclousersStatus.Size = new System.Drawing.Size(1194, 158);
             this.textBoxEnclousersStatus.TabIndex = 72;
             // 
             // textBoxEnclouserId
