@@ -4,7 +4,7 @@ namespace HitsZoo
 {
     public interface IEntity
     {
-        Guid Id2 { get; }
+        Guid Id { get; }
 
         string Print();
         void Update(IEntity entity);

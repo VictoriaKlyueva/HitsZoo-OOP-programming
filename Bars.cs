@@ -11,7 +11,7 @@ namespace HitsZoo
         public override string Print()
         {
             string hungerStatus = (IsHungry) ? "Голоден" : "Сыт";
-            return $"ID: {Id2} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
+            return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name} " +
                    $"Голод: {CurrentHunger} {hungerStatus} Вольер: {EnclouserId}";
         }
 

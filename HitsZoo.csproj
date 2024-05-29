@@ -82,7 +82,7 @@
     <Compile Include="IClosedSection.cs" />
     <Compile Include="IEnclouser.cs" />
     <Compile Include="IEntity.cs" />
-    <Compile Include="IFood.cs" />
+    <Compile Include="IFeeding.cs" />
     <Compile Include="IOpenSection.cs" />
     <Compile Include="IRemoveAnimalFromEnclouser1.cs" />
     <Compile Include="Person.cs" />

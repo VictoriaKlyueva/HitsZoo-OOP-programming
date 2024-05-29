@@ -2,7 +2,7 @@
 
 namespace HitsZoo
 {
-    public interface IEnclouser: IClosedSection, IOpenSection, IFood
+    public interface IEnclouser: IClosedSection, IOpenSection, IFeeding
     {
         List<Animal> Animals { get; set; }
 

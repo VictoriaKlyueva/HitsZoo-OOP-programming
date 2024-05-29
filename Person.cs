@@ -4,7 +4,7 @@ namespace HitsZoo
 {
     public abstract class Person : IEntity
     {
-        public Guid Id2 { get; } = Guid.NewGuid();
+        public Guid Id { get; } = Guid.NewGuid();
         private string name;
         private int age;
 
@@ -30,7 +30,7 @@ namespace HitsZoo
 
         public virtual string Print()
         {
-            return $"ID: {Id2} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name}" +
+            return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name}" +
                    $" Имя: {Name}  Возраст: {Age}";
         }
     }

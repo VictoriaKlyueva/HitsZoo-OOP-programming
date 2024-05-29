@@ -49,7 +49,7 @@ namespace HitsZoo
             string voice = textBoxVoice.Text;
             Guid enclouserId = new Guid(textBoxEnclouserId.Text);
 
-            if (((Enclouser)zoo.GetEntityById(enclouserId)).IsFull())
+            if (((Enclouser)zoo.FindEntityById(enclouserId)).IsFull())
             {
                 MessageBox.Show("Вольер переполнен");
                 return;
@@ -64,7 +64,7 @@ namespace HitsZoo
             // Существующий вольер
             else
             {
-                ((Enclouser)zoo.GetEntityById(enclouserId)).AddAnimal(horse);
+                ((Enclouser)zoo.FindEntityById(enclouserId)).AddAnimal(horse);
             }
 
             zoo.AddEntity(horse);
@@ -76,7 +76,7 @@ namespace HitsZoo
             string voice = textBoxVoice.Text;
             Guid enclouserId = new Guid(textBoxEnclouserId.Text);
 
-            if (((Enclouser)zoo.GetEntityById(enclouserId)).IsFull())
+            if (((Enclouser)zoo.FindEntityById(enclouserId)).IsFull())
             {
                 MessageBox.Show("Вольер переполнен");
                 return;
@@ -91,7 +91,7 @@ namespace HitsZoo
             // Существующий вольер
             else
             {
-                ((Enclouser)zoo.GetEntityById(enclouserId)).AddAnimal(capybara);
+                ((Enclouser)zoo.FindEntityById(enclouserId)).AddAnimal(capybara);
             }
 
             zoo.AddEntity(capybara);
@@ -103,7 +103,7 @@ namespace HitsZoo
             string voice = textBoxVoice.Text;
             Guid enclouserId = new Guid(textBoxEnclouserId.Text);
 
-            if (((Enclouser)zoo.GetEntityById(enclouserId)).IsFull())
+            if (((Enclouser)zoo.FindEntityById(enclouserId)).IsFull())
             {
                 MessageBox.Show("Вольер переполнен");
                 return;
@@ -118,7 +118,7 @@ namespace HitsZoo
             // Существующий вольер
             else
             {
-                ((Enclouser)zoo.GetEntityById(enclouserId)).AddAnimal(bars);
+                ((Enclouser)zoo.FindEntityById(enclouserId)).AddAnimal(bars);
             }
 
             zoo.AddEntity(bars);
@@ -162,7 +162,7 @@ namespace HitsZoo
             try
             {
                 Guid id = new Guid(textBoxVoiceSubmit.Text);
-                textBoxVoiceResult.Text = ((Animal)zoo.GetEntityById(id)).SubmitVote();
+                textBoxVoiceResult.Text = ((Animal)zoo.FindEntityById(id)).SubmitVote();
             }
             catch
             {
@@ -178,7 +178,7 @@ namespace HitsZoo
                 int criticalHunger = Convert.ToInt32(textBoxCriticalHungerEdit.Text);
                 string voice = textBoxVoiceEdit.Text;
 
-                ((Animal)zoo.GetEntityById(id)).Edit(criticalHunger, voice);
+                ((Animal)zoo.FindEntityById(id)).Edit(criticalHunger, voice);
             }
             catch
             {
@@ -196,7 +196,7 @@ namespace HitsZoo
                 string occupation = textBoxOccupationEdit.Text;
                 Guid wardAnimalId = new Guid(textBoxStaffEditWardEnclouser.Text);
 
-                ((Staff)zoo.GetEntityById(id)).Edit(name, age, occupation, wardAnimalId);
+                ((Staff)zoo.FindEntityById(id)).Edit(name, age, occupation, wardAnimalId);
             }
             catch
             {
@@ -212,7 +212,7 @@ namespace HitsZoo
                 string name = textBoxPersonNameEdit.Text;
                 int age = Convert.ToInt32(textBoxPersonAgeEdit.Text);
 
-                ((Visitor)zoo.GetEntityById(id)).Edit(name, age);
+                ((Visitor)zoo.FindEntityById(id)).Edit(name, age);
             }
             catch
             {
@@ -225,9 +225,9 @@ namespace HitsZoo
         {
             try {
                 Guid id = new Guid(textBoxAnimalDeleteId.Text);
-                Animal currentAnimal = ((Animal)zoo.GetEntityById(id));
-                zoo.RemoveEntity(currentAnimal.Id2);
-                zoo.RemoveAnimalFromEnclouser(currentAnimal, (Enclouser)zoo.GetEntityById(currentAnimal.EnclouserId));
+                Animal currentAnimal = ((Animal)zoo.FindEntityById(id));
+                zoo.RemoveEntity(currentAnimal.Id);
+                zoo.RemoveAnimalFromEnclouser(currentAnimal, (Enclouser)zoo.FindEntityById(currentAnimal.EnclouserId));
                 textBoxAnimalDeleteId.Text = "";
             }
             catch
@@ -242,7 +242,7 @@ namespace HitsZoo
             try
             {
                 Guid id = new Guid(textBoxVisitorDeleteId.Text);
-                zoo.RemoveEntity(zoo.GetEntityById(id).Id2);
+                zoo.RemoveEntity(zoo.FindEntityById(id).Id);
                 textBoxVisitorDeleteId.Text = "";
             }
             catch
@@ -257,7 +257,7 @@ namespace HitsZoo
             try
             {
                 Guid id = new Guid(textBoxStaffDeleteId.Text);
-                zoo.RemoveEntity(zoo.GetEntityById(id).Id2);
+                zoo.RemoveEntity(zoo.FindEntityById(id).Id);
                 textBoxStaffDeleteId.Text = "";
             }
             catch

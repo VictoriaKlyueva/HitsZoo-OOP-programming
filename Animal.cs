@@ -4,7 +4,7 @@ namespace HitsZoo
 {
     public abstract class Animal: IEntity
     {
-        public Guid Id2 { get; } = Guid.NewGuid();
+        public Guid Id { get; } = Guid.NewGuid();
         public int CriticalHunger { get; set; }
         public int CurrentHunger { get; set; } = 0;
         public bool IsHungry { get; set; } = false;
@@ -43,7 +43,7 @@ namespace HitsZoo
 
         public virtual string Print()
         {
-            return $"ID: {Id2} Class: Animal Голод: {CurrentHunger} {IsHungry}";
+            return $"ID: {Id} Class: Animal Голод: {CurrentHunger} {IsHungry}";
         }
 
         public void Edit(int criticalHunger, string voice)
@@ -54,7 +54,7 @@ namespace HitsZoo
 
         public override string ToString()
         {
-            return Id2.ToString(); 
+            return Id.ToString(); 
         }
 
         public void Update(IEntity entity)

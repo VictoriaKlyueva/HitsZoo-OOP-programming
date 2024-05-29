@@ -6,7 +6,7 @@ namespace HitsZoo
 {
     public class Enclouser: IEntity, IEnclouser
     {
-        public Guid Id2 { get; } = Guid.NewGuid();
+        public Guid Id { get; } = Guid.NewGuid();
         public int Food { get; set; }
 
         private List<Animal> closedAnimals = new List<Animal>();
@@ -134,10 +134,10 @@ namespace HitsZoo
 
         public string Print()
         {
-            string result = $"ID: {Id2} Animals: ";
+            string result = $"ID: {Id} Animals: ";
             for (int i = 0; i < animals.Count; i++)
             {
-                result += animals[i].Id2.ToString() + " ";
+                result += animals[i].Id.ToString() + " ";
             }
 
             return result + $"Еды: {Food} Размер: {size} Тип: {GetAnimalsType()}\n";
@@ -178,7 +178,7 @@ namespace HitsZoo
 
         public Enclouser(Animal animal, Guid id)
         {
-            Id2 = id;
+            Id = id;
             animals.Add(animal);
             Food = 0;
 
