@@ -490,6 +490,7 @@ namespace HitsZoo
             this.textBoxAnimals.Multiline = true;
             this.textBoxAnimals.Name = "textBoxAnimals";
             this.textBoxAnimals.ReadOnly = true;
+            this.textBoxAnimals.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxAnimals.Size = new System.Drawing.Size(632, 732);
             this.textBoxAnimals.TabIndex = 49;
             // 
@@ -501,6 +502,7 @@ namespace HitsZoo
             this.textBoxPersons.Multiline = true;
             this.textBoxPersons.Name = "textBoxPersons";
             this.textBoxPersons.ReadOnly = true;
+            this.textBoxPersons.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxPersons.Size = new System.Drawing.Size(594, 803);
             this.textBoxPersons.TabIndex = 50;
             // 
@@ -732,6 +734,7 @@ namespace HitsZoo
             this.textBoxEnclousersStatus.Multiline = true;
             this.textBoxEnclousersStatus.Name = "textBoxEnclousersStatus";
             this.textBoxEnclousersStatus.ReadOnly = true;
+            this.textBoxEnclousersStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxEnclousersStatus.Size = new System.Drawing.Size(1194, 158);
             this.textBoxEnclousersStatus.TabIndex = 72;
             // 

@@ -13,22 +13,22 @@ namespace HitsZoo
             this.wardEnclouserId = wardEnclouserId;
         }
 
-        public void Update(IEnclouser enclouser)
+        public override void Update(IEntity entity)
         {
             if (wardEnclouserId != default)
             {
-                if (enclouser.IsFoodEmpty())
+                if (((Enclouser)entity).IsFoodEmpty())
                 {
-                    enclouser.UpdateFood(10);
+                    ((Enclouser)entity).UpdateFood(10);
                 }
             }
         }
 
-        public void Edit(string name, int age, string occupation, Guid wardEnclouserId)
+        public void Edit(string name, int age, string occupation, Guid id=default)
         {
             Edit(name, age);
             this.occupation = occupation;
-            this.wardEnclouserId = default;
+            this.wardEnclouserId = id;
         }
 
         public override string Print()

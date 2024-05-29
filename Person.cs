@@ -23,7 +23,7 @@ namespace HitsZoo
             this.Age = age;
         }
 
-        public void Update(IEntity entity)
+        public virtual void Update(IEntity entity)
         {
             return;
         }

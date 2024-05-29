@@ -132,7 +132,7 @@ namespace HitsZoo
                 string name = textBoxName.Text;
                 int age = Convert.ToInt32(textBoxAge.Text);
                 string occupation = textBoxOccupation.Text;
-                zoo.AddEntity(new Staff(name, age, occupation));
+                zoo.AddEntity(new Staff(name, age, occupation, zoo.GetEmptyEnclouserId()));
                 currentStaffId++;
             }
             catch

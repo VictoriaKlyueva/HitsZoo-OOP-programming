@@ -33,6 +33,11 @@ namespace HitsZoo
             }
         }
 
+        public Guid GetEmptyEnclouserId()
+        {
+            return GetEntitiesByType<Enclouser>().FirstOrDefault(e => !((Enclouser)e).IsFull()).Id2;
+        }
+
         private void GenerateAnimals(int animalsNumber)
         {
             Random rnd = new Random();
