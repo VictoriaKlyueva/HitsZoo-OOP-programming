@@ -18,6 +18,8 @@ namespace HitsZoo
         public List<Animal> Animals { get => animals; set => animals = value; }
         public FoodMark Food { get; set; } = new Whiskas();
 
+        public bool IsLinked { get; set; } = false;
+
         private int size = -1;
 
         // Остальной код
@@ -55,7 +57,7 @@ namespace HitsZoo
 
         public bool IsFoodEmpty()
         {
-            return (Food == default) || Food.IsEmpty();
+            return ((Food == default) || Food.IsEmpty());
         }
 
         public Type GetFoodMark()
@@ -183,10 +185,15 @@ namespace HitsZoo
 
         public void Update(IEntity entity)
         {
-            if (IsFull())
+            if (IsFoodEmpty())
             {
                 Food = default;
             }
+        }
+
+        public void ChangeLinkStatus()
+        {
+            this.IsLinked = !this.IsLinked;
         }
 
         public Enclouser(Animal animal) 

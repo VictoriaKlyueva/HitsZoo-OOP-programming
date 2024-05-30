@@ -35,7 +35,9 @@ namespace HitsZoo
 
         public Guid GetEmptyEnclouserId()
         {
-            return FindEntitiesByType<Enclouser>().FirstOrDefault(e => !((Enclouser)e).IsFull()).Id;
+            Enclouser enclouser = (Enclouser)FindEntitiesByType<Enclouser>().FirstOrDefault(e => !((Enclouser)e).IsLinked);
+            enclouser.ChangeLinkStatus();
+            return enclouser.Id;
         }
 
         private void GenerateAnimals(int animalsNumber)
@@ -114,7 +116,7 @@ namespace HitsZoo
                 Enclouser currentEnclouser = (Enclouser)FindEntityById(animal.EnclouserId);
 
                 // Обновление количества еды
-                if (animal.IsHungry && !currentEnclouser.IsFoodEmpty() && animal.EdibleFood.Contains(currentEnclouser.GetFoodMark()))
+                if (animal.IsHungry && !currentEnclouser.IsFoodEmpty())
                 {
                     animal.Eat();
                     currentEnclouser.Feed();
