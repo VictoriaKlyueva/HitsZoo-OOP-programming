@@ -114,7 +114,7 @@ namespace HitsZoo
                 Enclouser currentEnclouser = (Enclouser)FindEntityById(animal.EnclouserId);
 
                 // Обновление количества еды
-                if (animal.IsHungry && !currentEnclouser.IsFoodEmpty())
+                if (animal.IsHungry && !currentEnclouser.IsFoodEmpty() && animal.EdibleFood.Contains(currentEnclouser.GetFoodMark()));
                 {
                     animal.Eat();
                     currentEnclouser.Feed();

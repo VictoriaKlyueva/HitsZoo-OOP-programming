@@ -20,9 +20,20 @@ namespace HitsZoo
             {
                 if (((Enclouser)entity).IsFoodEmpty())
                 {
-                    List<Type> marks = new List<Type>() {typeof(Whiskas), typeof(Kitekat), typeof(Pedigree)};
-                    int index = new Random().Next(marks.Count);
-                    ((Enclouser)entity).GetType().GetMethod("UpdateFood<>").MakeGenericMethod(marks[index]).Invoke(this, new object[] { new Random().Next(5, 15) });
+                    int index = new Random().Next(0, 2);
+
+                    if (index == 0)
+                    {
+                        ((Enclouser)entity).UpdateFood<Whiskas>(new Random().Next(5, 15));
+                    }
+                    else if (index == 1) 
+                    {
+                        ((Enclouser)entity).UpdateFood<Kitekat>(new Random().Next(5, 15));
+                    }
+                    else
+                    {
+                        ((Enclouser)entity).UpdateFood<Pedigree>(new Random().Next(5, 15));
+                    }
                 }
             }
         }

@@ -54,7 +54,7 @@ namespace HitsZoo
             return Food.IsEmpty();
         }
 
-        private Type GetFoodMark()
+        public Type GetFoodMark()
         {
             return typeof(FoodMark);
         }
