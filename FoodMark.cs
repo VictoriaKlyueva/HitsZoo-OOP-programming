@@ -19,5 +19,10 @@
         {
             return food == 0;
         }
+
+        public int PrintFood()
+        {
+            return this.food;
+        }
     }
 }

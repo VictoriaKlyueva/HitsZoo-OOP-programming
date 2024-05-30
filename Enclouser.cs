@@ -16,9 +16,11 @@ namespace HitsZoo
 
         private List<Animal> animals = new List<Animal>();
         public List<Animal> Animals { get => animals; set => animals = value; }
-        public FoodMark Food { get; set; }
+        public FoodMark Food { get; set; } = new Whiskas();
 
         private int size = -1;
+
+        // Остальной код
 
         public bool IsFull()
         {
@@ -45,13 +47,15 @@ namespace HitsZoo
 
         public void Feed()
         {
-            Food.RemoveFood(1);
+            if (Food != null)
+            {
+                Food.RemoveFood(1);
+            }
         }
 
         public bool IsFoodEmpty()
         {
-            if (Food == default) return true;
-            return Food.IsEmpty();
+            return (Food == default) || Food.IsEmpty();
         }
 
         public Type GetFoodMark()
@@ -154,7 +158,7 @@ namespace HitsZoo
                 result += animals[i].Id.ToString() + " ";
             }
 
-            return result + $"Еды: {Food} Размер: {size} Тип: {GetAnimalsType()}\n";
+            return result + $"Еды: {Food} Размер: {size} Тип: {GetAnimalsType()} " + (Food != null ? $"Тип еды: {Food.GetType()} Еда: {Food.PrintFood()}\n" : "Еды нет...");
         }
 
         private void SetSize()
