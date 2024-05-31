@@ -109,7 +109,7 @@ namespace HitsZoo
 
         private void UpdateAnimals()
         {
-            List<IEntity> animals = getAnimals();
+            List<IEntity> animals = GetAnimals();
             for (int i = 0; i < animals.Count; i++)
             {
                 Animal animal = (Animal)animals[i];
@@ -201,13 +201,16 @@ namespace HitsZoo
             UpdateEnclousers();
         }
 
-        private List<IEntity> getAnimals()
+        private List<IEntity> GetAnimals()
         {
             List<IEntity> horse = FindEntitiesByType<Horse>();
             List<IEntity> capybara = FindEntitiesByType<Capybara>();
             List<IEntity> bars = FindEntitiesByType<Bars>();
 
-            return (horse.Concat(capybara)).Concat(bars).ToList();
+            List<IEntity> animals = horse.Concat(capybara).Concat(bars).ToList();
+            animals.Sort((a, b) => string.Compare(a.Id.ToString(), b.Id.ToString()));
+
+            return animals;
         }
 
         private void PrintAnimals(System.Windows.Forms.TextBox textBox)
@@ -215,7 +218,8 @@ namespace HitsZoo
             textBox.Text = "";
             textBox.Text += "Казахские кони:";
             textBox.AppendText(Environment.NewLine);
-            List<IEntity> horses = FindEntitiesByType<Horse> ();
+            List<IEntity> horses = FindEntitiesByType<Horse>();
+            horses.Sort((a, b) => string.Compare(a.Id.ToString(), b.Id.ToString()));
             for (int i = 0; i < horses.Count; i++)
             {
                 textBox.Text += horses[i].Print();
@@ -226,6 +230,7 @@ namespace HitsZoo
             textBox.Text += "Балдёжные капибары:";
             textBox.AppendText(Environment.NewLine);
             List<IEntity> capybaras = FindEntitiesByType<Capybara>();
+            capybaras.Sort((a, b) => string.Compare(a.Id.ToString(), b.Id.ToString()));
             for (int i = 0; i < capybaras.Count; i++)
             {
                 textBox.Text += capybaras[i].Print();
@@ -236,6 +241,7 @@ namespace HitsZoo
             textBox.Text += "Кыргызские барсы:";
             textBox.AppendText(Environment.NewLine);
             List<IEntity> barses = FindEntitiesByType<Bars>();
+            barses.Sort((a, b) => string.Compare(a.Id.ToString(), b.Id.ToString()));
             for (int i = 0; i < barses.Count; i++)
             {
                 textBox.Text += barses[i].Print();

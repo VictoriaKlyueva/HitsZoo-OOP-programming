@@ -28,6 +28,12 @@ namespace HitsZoo
             return;
         }
 
+        public int CompareTo(IEntity other)
+        {
+            if (other is null) throw new NotImplementedException();
+            return Id.ToString().CompareTo(other.Id.ToString());
+        }
+
         public virtual string Print()
         {
             return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name}" +

@@ -196,6 +196,12 @@ namespace HitsZoo
             this.IsLinked = !this.IsLinked;
         }
 
+        public int CompareTo(IEntity other)
+        {
+            if (other is null) throw new NotImplementedException();
+            return Id.ToString().CompareTo(other.Id.ToString());
+        }
+
         public Enclouser(Animal animal) 
         {
             animals.Add(animal);

@@ -55,14 +55,15 @@ namespace HitsZoo
             Voice = voice;
         }
 
-        public override string ToString()
-        {
-            return Id.ToString(); 
-        }
-
         public void Update(IEntity entity)
         {
             throw new NotImplementedException();
+        }
+
+        public int CompareTo(IEntity other)
+        {
+            if (other is null) throw new NotImplementedException();
+            return Id.ToString().CompareTo(other.Id.ToString());
         }
 
         public Animal(string voice, Guid enclouserId, int criticalHunger=5)
