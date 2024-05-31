@@ -11,7 +11,6 @@ namespace HitsZoo
 
         void AddAnimal(Bars animal);
 
-
         void RemoveAnimal(Animal animal);
     }
 }

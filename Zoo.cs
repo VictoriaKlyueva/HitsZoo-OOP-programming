@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace HitsZoo
 {
@@ -30,6 +31,16 @@ namespace HitsZoo
             if (entity != null)
             {
                 entities.Remove(entity);
+            }
+
+            try
+            {
+                Horse testHorse = (Horse)entity;
+                MessageBox.Show("Ксюша съела коня!!!!!!");
+            }
+            catch 
+            {
+                
             }
         }
 

@@ -154,13 +154,8 @@ namespace HitsZoo
 
         public string Print()
         {
-            string result = $"ID: {Id} Animals: ";
-            for (int i = 0; i < animals.Count; i++)
-            {
-                result += animals[i].Id.ToString() + " ";
-            }
-
-            return result + $"Еды: {Food} Размер: {size} Тип: {GetAnimalsType()} " + (Food != null ? $"Тип еды: {Food.GetType()} Еда: {Food.PrintFood()}\n" : "Еды нет...");
+            string result = $"ID: {Id} ";
+            return result + $"Размер: {size} Тип: {GetAnimalsType()} " + (Food != null ? $"Тип еды: {Food.GetType()} Еда: {Food.PrintFood()}\n" : "Еды нет...");
         }
 
         private void SetSize()
