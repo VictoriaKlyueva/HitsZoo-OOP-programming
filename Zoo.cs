@@ -118,8 +118,23 @@ namespace HitsZoo
                 // Обновление количества еды
                 if (animal.IsHungry && !currentEnclouser.IsFoodEmpty())
                 {
-                    animal.Eat();
-                    currentEnclouser.Feed();
+                    // Выбор марки корма
+                    int index = random.Next(0, 2);
+                    if (index == 0)
+                    {
+                        animal.Eat<Whiskas>();
+                        currentEnclouser.Feed();
+                    }
+                    else if (index == 1)
+                    {
+                        animal.Eat<Kitekat>();
+                        currentEnclouser.Feed();
+                    }
+                    else
+                    {
+                        animal.Eat<Pedigree>();
+                        currentEnclouser.Feed();
+                    }
                 }
 
                 animal.Update();

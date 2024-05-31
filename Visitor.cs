@@ -25,7 +25,21 @@ namespace HitsZoo
 
                 Animal choicedAnimal = visibleAnimals[choice];
                 foodCount--;
-                choicedAnimal.Eat();
+
+                // Выбор марки корма
+                int index = random.Next(0, 2);
+                if (index == 0)
+                {
+                    choicedAnimal.Eat<Whiskas>();
+                }
+                else if (index == 1)
+                {
+                    choicedAnimal.Eat<Kitekat>();
+                }
+                else
+                {
+                    choicedAnimal.Eat<Pedigree>();
+                }
             }
         }
 

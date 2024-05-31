@@ -29,9 +29,9 @@ namespace HitsZoo
             }
         }
 
-        public void Eat()
+        public void Eat<Mark>()
         {
-            if (IsHungry)
+            if (IsHungry && EdibleFood.Contains(typeof(Mark)))
             {
                 CurrentHunger = 0;
                 IsHungry = false;
