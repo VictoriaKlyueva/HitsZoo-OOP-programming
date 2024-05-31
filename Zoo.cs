@@ -38,10 +38,7 @@ namespace HitsZoo
                 Horse testHorse = (Horse)entity;
                 MessageBox.Show("Ксюша съела коня!!!!!!");
             }
-            catch 
-            {
-                
-            }
+            catch {}
         }
 
         public Guid GetEmptyEnclouserId()
