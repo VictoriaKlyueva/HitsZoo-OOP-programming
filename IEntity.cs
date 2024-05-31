@@ -7,6 +7,7 @@ namespace HitsZoo
         Guid Id { get; }
 
         string Print();
+
         void Update(IEntity entity);
 
         int CompareTo(IEntity other);
