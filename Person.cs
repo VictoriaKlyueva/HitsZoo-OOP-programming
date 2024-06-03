@@ -5,27 +5,19 @@ namespace HitsZoo
     public abstract class Person : IEntity
     {
         public Guid Id { get; } = Guid.NewGuid();
-        private string name;
-        private int age;
 
-        public string Name { get => name; set => name = value; }
-        public int Age { get => age; set => age = value; }
+        public string Name { get; set; }
+        public int Age { get; set; }
 
-        public Person(string name, int age)
+        public virtual void Update(IEntity entity)
         {
-            this.Name = name;
-            this.Age = age;
+            return;
         }
 
         public void Edit(string name, int age)
         {
             this.Name = name;
             this.Age = age;
-        }
-
-        public virtual void Update(IEntity entity)
-        {
-            return;
         }
 
         public int CompareTo(IEntity other)
@@ -38,6 +30,12 @@ namespace HitsZoo
         {
             return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name}" +
                    $" Имя: {Name}  Возраст: {Age}";
+        }
+
+        public Person(string name, int age)
+        {
+            this.Name = name;
+            this.Age = age;
         }
     }
 }

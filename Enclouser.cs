@@ -7,16 +7,11 @@ namespace HitsZoo
     public class Enclouser: IEntity, IEnclouser
     {
         public Guid Id { get; } = Guid.NewGuid();
+        public List<Animal> ClosedAnimals { get; set; } = new List<Animal>();
+        public List<Animal> OpenAnimals { get; set; } = new List<Animal>();
 
-        private List<Animal> closedAnimals = new List<Animal>();
-        public List<Animal> ClosedAnimals { get => closedAnimals; set => closedAnimals = value; }
-
-        private List<Animal> openAnimals = new List<Animal>();
-        public List<Animal> OpenAnimals { get => openAnimals; set => openAnimals = value; }
-
-        private List<Animal> animals = new List<Animal>();
-        public List<Animal> Animals { get => animals; set => animals = value; }
-        public FoodMark Food { get; set; } = new Whiskas();
+        public List<Animal> Animals { get; set; } = new List<Animal>();
+        public FoodMark Food { get; set; }
 
         public bool IsLinked { get; set; } = false;
 
@@ -26,18 +21,18 @@ namespace HitsZoo
 
         public bool IsFull()
         {
-            return animals.Count == size;
+            return Animals.Count == size;
         }
 
         public Type GetAnimalsType()
         {
-            if (animals.Count == 0)
+            if (Animals.Count == 0)
                 return null;
-            else if (animals[0].GetType() == typeof(Horse))
+            else if (Animals[0].GetType() == typeof(Horse))
             {
                 return typeof(Horse);
             }
-            else if (animals[0].GetType() == typeof(Capybara))
+            else if (Animals[0].GetType() == typeof(Capybara))
             {
                 return typeof(Capybara);
             }
@@ -80,14 +75,14 @@ namespace HitsZoo
 
         public void AddAnimal(Horse animal)
         {
-            if (animals.Count == size)
+            if (Animals.Count == size)
             {
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
             if (GetAnimalsType() == typeof(Horse) || GetAnimalsType() == null)
             {
-                animals.Add(animal);
+                Animals.Add(animal);
                 ClosedAnimals.Add(animal);
                 SetSize();
             }
@@ -99,14 +94,14 @@ namespace HitsZoo
 
         public void AddAnimal(Capybara animal)
         {
-            if (animals.Count == size)
+            if (Animals.Count == size)
             {
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
             if (GetAnimalsType() == typeof(Capybara) || GetAnimalsType() == null)
             {
-                animals.Add(animal);
+                Animals.Add(animal);
                 ClosedAnimals.Add(animal);
                 SetSize();
             }
@@ -118,14 +113,14 @@ namespace HitsZoo
 
         public void AddAnimal(Bars animal)
         {
-            if (animals.Count == size)
+            if (Animals.Count == size)
             {
                 MessageBox.Show("Вольер переполнен");
                 return;
             }
             if (GetAnimalsType() == typeof(Bars) || GetAnimalsType() == null)
             {
-                animals.Add(animal);
+                Animals.Add(animal);
                 ClosedAnimals.Add(animal);
                 SetSize();
             }
@@ -137,18 +132,18 @@ namespace HitsZoo
 
         public void RemoveAnimal(Animal animal)
         {
-            animals.Remove(animal);
-            if (animals.Count == 0)
+            Animals.Remove(animal);
+            if (Animals.Count == 0)
             {
                 size = -1;
             }
-            if (openAnimals.Contains(animal))
+            if (OpenAnimals.Contains(animal))
             {
-                openAnimals.Remove(animal);
+                OpenAnimals.Remove(animal);
             }
-            if (closedAnimals.Contains(animal))
+            if (ClosedAnimals.Contains(animal))
             {
-                closedAnimals.Remove(animal);
+                ClosedAnimals.Remove(animal);
             }
         }
 
@@ -160,15 +155,15 @@ namespace HitsZoo
 
         private void SetSize()
         {
-            if (animals[0].GetType() == typeof(Horse))
+            if (Animals[0].GetType() == typeof(Horse))
             {
                 size = 7;
             }
-            else if (animals[0].GetType() == typeof(Capybara))
+            else if (Animals[0].GetType() == typeof(Capybara))
             {
                 size = 10;
             }
-            else if (animals[0].GetType() == typeof(Bars))
+            else if (Animals[0].GetType() == typeof(Bars))
             {
                 size = 12;
             }
@@ -199,7 +194,7 @@ namespace HitsZoo
 
         public Enclouser(Animal animal) 
         {
-            animals.Add(animal);
+            Animals.Add(animal);
             Food = default;
 
             SetSize();
@@ -208,7 +203,7 @@ namespace HitsZoo
         public Enclouser(Animal animal, Guid id)
         {
             Id = id;
-            animals.Add(animal);
+            Animals.Add(animal);
             Food = default;
 
             SetSize();
