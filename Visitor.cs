@@ -10,11 +10,6 @@ namespace HitsZoo
 
         private Random random = new Random();
 
-        public Visitor(string name, int age) : base(name, age) 
-        {
-            wallet = random.Next(10, 20);
-        }
-
         public void FeedAnimal(IEnclouser enclouser)
         {
             List<Animal> visibleAnimals = SeeAnimals(enclouser);
@@ -61,6 +56,11 @@ namespace HitsZoo
         {
             return $"ID: {Id} Class: {System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name}" +
                    $" Имя: {Name}  Возраст: {Age}  Кошелек: {wallet} Еды: {foodCount}";
+        }
+
+        public Visitor(string name, int age) : base(name, age)
+        {
+            wallet = random.Next(10, 20);
         }
     }
 }

@@ -7,6 +7,8 @@ namespace HitsZoo
     public class Enclouser: IEntity, IEnclouser
     {
         public Guid Id { get; } = Guid.NewGuid();
+
+        private int size = -1;
         public List<Animal> ClosedAnimals { get; set; } = new List<Animal>();
         public List<Animal> OpenAnimals { get; set; } = new List<Animal>();
 
@@ -14,10 +16,6 @@ namespace HitsZoo
         public FoodMark Food { get; set; }
 
         public bool IsLinked { get; set; } = false;
-
-        private int size = -1;
-
-        // Остальной код
 
         public bool IsFull()
         {
@@ -150,7 +148,7 @@ namespace HitsZoo
         public string Print()
         {
             string result = $"ID: {Id} ";
-            return result + $"Размер: {size} Тип: {GetAnimalsType()} " + (Food != null ? $"Тип еды: {Food.GetType()} Еда: {Food.PrintFood()}\n" : "Еды нет...");
+            return result + $"Размер: {size} Тип: {GetAnimalsType()} " + (Food != null ? $"Тип еды: {Food.GetType()} Еда: {Food.Print()}\n" : "Еды нет...");
         }
 
         private void SetSize()

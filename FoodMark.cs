@@ -20,7 +20,7 @@
             return food == 0;
         }
 
-        public int PrintFood()
+        public int Print()
         {
             return this.food;
         }

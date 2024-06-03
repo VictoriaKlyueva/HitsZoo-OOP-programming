@@ -10,44 +10,6 @@ namespace HitsZoo
         private Random random = new Random();
         private List<IEntity> entities = new List<IEntity>();
 
-        public void AddEntity(IEntity entity)
-        {
-            entities.Add(entity);
-        }
-
-        public List<IEntity> FindEntitiesByType<T>()
-        {
-            return entities.Where(e => e.GetType() == typeof(T)).ToList();
-        }
-
-        public IEntity FindEntityById(Guid entityId)
-        {
-            return entities.FirstOrDefault(e => e.Id == entityId);
-        }
-
-        public void RemoveEntity(Guid entityId)
-        {
-            IEntity entity = entities.FirstOrDefault(e => e.Id == entityId);
-            if (entity != null)
-            {
-                entities.Remove(entity);
-            }
-
-            try
-            {
-                Horse testHorse = (Horse)entity;
-                MessageBox.Show("Ксюша съела коня!!!!!!");
-            }
-            catch {}
-        }
-
-        public Guid GetEmptyEnclouserId()
-        {
-            Enclouser enclouser = (Enclouser)FindEntitiesByType<Enclouser>().FirstOrDefault(e => !((Enclouser)e).IsLinked);
-            enclouser.ChangeLinkStatus();
-            return enclouser.Id;
-        }
-
         private void GenerateAnimals(int animalsNumber)
         {
             // Генерация Guid для трех новых вольеров
@@ -90,31 +52,6 @@ namespace HitsZoo
             }
         }
 
-        public void RemoveAnimalFromEnclouser(Animal animal, Enclouser enclouser)
-        {
-            enclouser.RemoveAnimal(animal);
-        }
-
-        public void ChangeSection(
-            Animal animal,
-            IOpenSection openEnclouser,
-            IClosedSection closedEnclouser
-        )
-        {
-            // Животное в открытой части
-            if (openEnclouser.OpenAnimals.Contains(animal))
-            {
-                openEnclouser.OpenAnimals.Remove(animal);
-                closedEnclouser.ClosedAnimals.Add(animal);
-            }
-            // Животное в закрытой части
-            else
-            {
-                closedEnclouser.ClosedAnimals.Remove(animal);
-                openEnclouser.OpenAnimals.Add(animal);
-            }
-        }
-
         private void UpdateAnimals()
         {
             List<IEntity> animals = GetAnimals();
@@ -153,7 +90,7 @@ namespace HitsZoo
                 for (int j = 0; j < staffs.Count; j++)
                 {
                     Staff staff = (Staff)staffs[j];
-                    if (staff.wardEnclouserId == animals[i].Id)
+                    if (staff.WardEnclouserId == animals[i].Id)
                     {
                         animal.IsFree = false;
                         found = true;
@@ -178,7 +115,7 @@ namespace HitsZoo
 
         private void UpdateVisitors(double probaility)
         {
-            List<IEntity> visitors = FindEntitiesByType<Visitor>();   
+            List<IEntity> visitors = FindEntitiesByType<Visitor>();
             for (int i = 0; i < visitors.Count; i++)
             {
                 Visitor visitor = (Visitor)visitors[i];
@@ -202,7 +139,7 @@ namespace HitsZoo
             for (int i = 0; i < staffs.Count; i++)
             {
                 Staff staff = (Staff)staffs[i];
-                staffs[i].Update(FindEntityById(staff.wardEnclouserId));
+                staffs[i].Update(FindEntityById(staff.WardEnclouserId));
             }
         }
 
@@ -214,26 +151,6 @@ namespace HitsZoo
                 Enclouser enclouser = (Enclouser)enclousers[i];
                 enclousers[i].Update(enclouser);
             }
-        }
-
-        public void Update()
-        {
-            UpdateAnimals();
-            UpdateStaff();
-            UpdateVisitors(0.1);
-            UpdateEnclousers();
-        }
-
-        private List<IEntity> GetAnimals()
-        {
-            List<IEntity> horse = FindEntitiesByType<Horse>();
-            List<IEntity> capybara = FindEntitiesByType<Capybara>();
-            List<IEntity> bars = FindEntitiesByType<Bars>();
-
-            List<IEntity> animals = horse.Concat(capybara).Concat(bars).ToList();
-            animals.Sort((a, b) => string.Compare(a.Id.ToString(), b.Id.ToString()));
-
-            return animals;
         }
 
         private void PrintAnimals(System.Windows.Forms.TextBox textBox)
@@ -306,6 +223,96 @@ namespace HitsZoo
             }
         }
 
+        private List<IEntity> GetAnimals()
+        {
+            List<IEntity> horse = FindEntitiesByType<Horse>();
+            List<IEntity> capybara = FindEntitiesByType<Capybara>();
+            List<IEntity> bars = FindEntitiesByType<Bars>();
+
+            List<IEntity> animals = horse.Concat(capybara).Concat(bars).ToList();
+            animals.Sort((a, b) => string.Compare(a.Id.ToString(), b.Id.ToString()));
+
+            return animals;
+        }
+
+        private Enclouser GetRandomEnclouser()
+        {
+            List<IEntity> enclousers = FindEntitiesByType<Enclouser>();
+            int choice = random.Next(0, enclousers.Count - 1);
+            return (Enclouser)enclousers[choice];
+        }
+
+        public void AddEntity(IEntity entity)
+        {
+            entities.Add(entity);
+        }
+
+        public List<IEntity> FindEntitiesByType<T>()
+        {
+            return entities.Where(e => e.GetType() == typeof(T)).ToList();
+        }
+
+        public IEntity FindEntityById(Guid entityId)
+        {
+            return entities.FirstOrDefault(e => e.Id == entityId);
+        }
+
+        public void RemoveEntity(Guid entityId)
+        {
+            IEntity entity = entities.FirstOrDefault(e => e.Id == entityId);
+            if (entity != null)
+            {
+                entities.Remove(entity);
+            }
+
+            try
+            {
+                Horse testHorse = (Horse)entity;
+                MessageBox.Show("Ксюша съела коня!!!!!!");
+            }
+            catch {}
+        }
+
+        public Guid GetEmptyEnclouserId()
+        {
+            Enclouser enclouser = (Enclouser)FindEntitiesByType<Enclouser>().FirstOrDefault(e => !((Enclouser)e).IsLinked);
+            enclouser.ChangeLinkStatus();
+            return enclouser.Id;
+        }
+
+        public void RemoveAnimalFromEnclouser(Animal animal, Enclouser enclouser)
+        {
+            enclouser.RemoveAnimal(animal);
+        }
+
+        public void ChangeSection(
+            Animal animal,
+            IOpenSection openEnclouser,
+            IClosedSection closedEnclouser
+        )
+        {
+            // Животное в открытой части
+            if (openEnclouser.OpenAnimals.Contains(animal))
+            {
+                openEnclouser.OpenAnimals.Remove(animal);
+                closedEnclouser.ClosedAnimals.Add(animal);
+            }
+            // Животное в закрытой части
+            else
+            {
+                closedEnclouser.ClosedAnimals.Remove(animal);
+                openEnclouser.OpenAnimals.Add(animal);
+            }
+        }
+
+        public void Update()
+        {
+            UpdateAnimals();
+            UpdateStaff();
+            UpdateVisitors(0.1);
+            UpdateEnclousers();
+        }
+
         public void PrintStatus(System.Windows.Forms.TextBox textBoxZoo,
                           System.Windows.Forms.TextBox textBoxAnimals,
                           System.Windows.Forms.TextBox textBoxPersons,
@@ -320,13 +327,6 @@ namespace HitsZoo
             PrintAnimals(textBoxAnimals);
             PrintPersons(textBoxPersons);
             PrintEnclousers(textBoxEnclousers);
-        }
-
-        private Enclouser GetRandomEnclouser()
-        {
-            List<IEntity> enclousers = FindEntitiesByType<Enclouser>();
-            int choice = random.Next(0, enclousers.Count - 1);
-            return (Enclouser)enclousers[choice];
         }
 
         public Zoo ()
